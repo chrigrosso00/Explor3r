@@ -1,0 +1,143 @@
+2024-09-27 14:47:48.467687+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ft_VIAGGIO (\000d\000a    id_viaggio INT AUTO_INCREMENT,\000d\000a    id_utente INT,\000d\000a    Prezzo DECIMAL(10, 2) NOT NULL,\000d\000a    Data_Partenza DATE NOT NULL,\000d\000a    Data_Arrivo DATE NOT NULL,\000d\000a    Continente VARCHAR(100) NOT NULL,\000d\000a    Stato VARCHAR(100) NOT NULL,\000d\000a    Descrizione TEXT,\000d\000a    Itinerario TEXT,\000d\000a    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,\000d\000a\0009PRIMARY KEY(id_viaggio)\000d\000a    [*]CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),\000d\000a    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)\000d\000a)"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,
+	PRIMARY KEY(id_viaggio)
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42001-224]
+2024-09-27 14:47:48.479686+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE df_PREFERITI (
+    id_utente INT,
+    id_viaggio INT,
+    PRIMARY KEY (id_utente, id_viaggio),
+    CONSTRAINT FK_pf_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_pf_vi FOREIGN KEY (id_viaggio) REFERENCES VIAGGIO(id_viaggio)
+) [42102-224]
+2024-09-27 14:47:48.482687+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE df_PRENOTAZIONE (
+    id_utente INT,
+    id_viaggio INT,
+    Data datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id_utente, id_viaggio),
+    CONSTRAINT FK_pr_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_pr_vi FOREIGN KEY (id_viaggio) REFERENCES VIAGGIO(id_viaggio)
+) [42102-224]
+2024-09-27 14:48:09.142183+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ft_VIAGGIO (\000d\000a    id_viaggio INT AUTO_INCREMENT,\000d\000a    id_utente INT,\000d\000a    Prezzo DECIMAL(10, 2) NOT NULL,\000d\000a    Data_Partenza DATE NOT NULL,\000d\000a    Data_Arrivo DATE NOT NULL,\000d\000a    Continente VARCHAR(100) NOT NULL,\000d\000a    Stato VARCHAR(100) NOT NULL,\000d\000a    Descrizione TEXT,\000d\000a    Itinerario TEXT,\000d\000a    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,\000d\000a\0009PRIMARY KEY(id_viaggio)\000d\000a    [*]CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),\000d\000a    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)\000d\000a)"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,
+	PRIMARY KEY(id_viaggio)
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42001-224]
+2024-09-27 14:49:32.473385+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta VARCHAR(20) CHECK (Difficolta IN ('facile', 'intermedio', 'difficile')) NOT NULL,
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42102-224]
+2024-09-27 14:49:56.900148+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta VARCHAR(20) CHECK (Difficolta IN ('facile', 'intermedio', 'difficile')) NOT NULL,
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_ut FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42102-224]
+2024-09-27 14:50:00.075496+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta VARCHAR(20) CHECK (Difficolta IN ('facile', 'intermedio', 'difficile')) NOT NULL,
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_ut FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42102-224]
+2024-09-27 14:52:34.437867+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta VARCHAR(20) CHECK (Difficolta IN ('facile', 'intermedio', 'difficile')) NOT NULL,
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42102-224]
+2024-09-27 14:52:46.909542+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UTENTE" not found; SQL statement:
+CREATE TABLE df_PREFERITI (
+    id_utente INT,
+    id_viaggio INT,
+    PRIMARY KEY (id_utente, id_viaggio),
+    CONSTRAINT FK_pf_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_pf_vi FOREIGN KEY (id_viaggio) REFERENCES ft_VIAGGIO(id_viaggio)
+) [42102-224]
+2024-09-27 14:56:14.574565+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ft_VIAGGIO (\000d\000a    id_viaggio INT AUTO_INCREMENT,\000d\000a    id_utente INT,\000d\000a    Prezzo DECIMAL(10, 2) NOT NULL,\000d\000a    Data_Partenza DATE NOT NULL,\000d\000a    Data_Arrivo DATE NOT NULL,\000d\000a    Continente VARCHAR(100) NOT NULL,\000d\000a    Stato VARCHAR(100) NOT NULL,\000d\000a    Descrizione TEXT,\000d\000a    Itinerario TEXT,\000d\000a    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,\000d\000a\0009PRIMARY KEY(id_viaggio)\000d\000a    [*]CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),\000d\000a    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)\000d\000a)"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE ft_VIAGGIO (
+    id_viaggio INT AUTO_INCREMENT,
+    id_utente INT,
+    Prezzo DECIMAL(10, 2) NOT NULL,
+    Data_Partenza DATE NOT NULL,
+    Data_Arrivo DATE NOT NULL,
+    Continente VARCHAR(100) NOT NULL,
+    Stato VARCHAR(100) NOT NULL,
+    Descrizione TEXT,
+    Itinerario TEXT,
+    Difficolta ENUM('facile', 'intermedio', 'difficile') NOT NULL,
+	PRIMARY KEY(id_viaggio)
+    CONSTRAINT FK_vi_ut FOREIGN KEY (id_utente) REFERENCES UTENTE(id_utente),
+    CONSTRAINT FK_vi_st FOREIGN KEY (Stato, Continente) REFERENCES PAESE(Stato, Continente)
+) [42001-224]
