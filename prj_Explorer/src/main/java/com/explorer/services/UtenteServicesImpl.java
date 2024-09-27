@@ -1,7 +1,7 @@
-package com.explor3r.services;
+package com.explorer.services;
 
-import com.explor3r.entities.Utente;
-import com.explor3r.repos.UtenteDAO;
+import com.explorer.entities.Utente;
+import com.explorer.repos.UtenteDAO;
 
 import java.util.List;
 

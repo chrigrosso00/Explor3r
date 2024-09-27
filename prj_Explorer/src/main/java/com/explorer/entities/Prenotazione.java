@@ -1,4 +1,4 @@
-package com.explor3r.entities;
+package com.explorer.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

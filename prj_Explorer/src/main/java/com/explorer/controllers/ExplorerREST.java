@@ -1,4 +1,4 @@
-package com.explor3r.controllers;
+package com.explorer.controllers;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.explor3r.entities.Utente;
-import com.explor3r.entities.Viaggio;
-import com.explor3r.services.UtenteServices;
-import com.explor3r.services.ViaggioServices;
+import com.explorer.entities.Utente;
+import com.explorer.entities.Viaggio;
+import com.explorer.services.UtenteServices;
+import com.explorer.services.ViaggioServices;
 
 @RestController
 @RequestMapping("api")
