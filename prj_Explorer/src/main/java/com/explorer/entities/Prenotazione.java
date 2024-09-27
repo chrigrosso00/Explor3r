@@ -1,5 +1,8 @@
 package com.explorer.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -17,10 +20,13 @@ public class Prenotazione {
 	@ManyToOne
     @MapsId("utenteId")
     @JoinColumn(name = "id_utente")
+	@JsonManagedReference
     private Utente utente;
+	
     @ManyToOne
     @MapsId("viaggioId")
     @JoinColumn(name = "id_viaggio")
+    @JsonBackReference
     private Viaggio viaggio;
 	
     public Utente getUtente() {
