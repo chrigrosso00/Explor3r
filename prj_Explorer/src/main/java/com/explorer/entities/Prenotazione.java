@@ -1,5 +1,6 @@
 package com.explorer.entities;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,12 +11,15 @@ import jakarta.persistence.Table;
 @Table(name = "df_PRENOTAZIONE")
 public class Prenotazione {
     
+	@EmbeddedId
+    private PrenotazioneId id = new PrenotazioneId();
+	
 	@ManyToOne
-    @MapsId("id_utente")
+    @MapsId("utenteId")
     @JoinColumn(name = "id_utente")
     private Utente utente;
     @ManyToOne
-    @MapsId("id_viaggio")
+    @MapsId("viaggioId")
     @JoinColumn(name = "id_viaggio")
     private Viaggio viaggio;
 	

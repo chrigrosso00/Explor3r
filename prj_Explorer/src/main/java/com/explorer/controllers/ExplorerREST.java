@@ -33,12 +33,12 @@ public class ExplorerREST {
         return utenteServices.findById(id);
     }
     
-    @GetMapping("viaggio")
+    @GetMapping("viaggi")
     public List<Viaggio> getOrdine() {
         return viaggioServices.findAll();
     }
 
-    @GetMapping("viaggio/{id}")
+    @GetMapping("viaggi/{id}")
     public Utente findViaggioById(@PathVariable int id) {
         return utenteServices.findById(id);
     }
