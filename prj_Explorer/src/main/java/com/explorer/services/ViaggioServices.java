@@ -1,8 +1,8 @@
-package com.explor3r.services;
+package com.explorer.services;
 
 import java.util.List;
 
-import com.explor3r.entities.Viaggio;
+import com.explorer.entities.Viaggio;
 
 public interface ViaggioServices {
 	List<Viaggio> findAll();

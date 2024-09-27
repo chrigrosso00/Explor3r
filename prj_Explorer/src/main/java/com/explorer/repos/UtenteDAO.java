@@ -1,7 +1,7 @@
-package com.explor3r.repos;
+package com.explorer.repos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.explor3r.entities.Utente;
+import com.explorer.entities.Utente;
 
-public interface UtenteDAO extends JpaRepository<Utente, Integer> {}
+public interface UtenteDAO extends JpaRepository<Utente,Integer> {}

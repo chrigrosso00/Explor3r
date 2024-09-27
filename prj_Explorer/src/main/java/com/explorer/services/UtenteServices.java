@@ -1,8 +1,8 @@
-package com.explor3r.services;
+package com.explorer.services;
 
 import java.util.List;
 
-import com.explor3r.entities.Utente;
+import com.explorer.entities.Utente;
 
 public interface UtenteServices {
 	List<Utente> findAll();

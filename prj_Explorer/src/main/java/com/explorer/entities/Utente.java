@@ -1,4 +1,4 @@
-package com.explor3r.entities;
+package com.explorer.entities;
 
 import java.util.HashSet;
 import java.util.Set;
