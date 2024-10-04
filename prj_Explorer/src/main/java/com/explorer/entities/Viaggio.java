@@ -1,5 +1,6 @@
 package com.explorer.entities;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,13 +32,15 @@ public class Viaggio {
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
     private Double prezzo;
-    private String data_Partenza;
-    private String data_Arrivo;
+    private LocalDate data_Partenza;
+    private LocalDate data_Arrivo;
     private String continente;
     private String stato;
     private String descrizione;
     private String itinerario;
     private String difficolta;
+    
+    
 	public int getId_viaggio() {
 		return id_viaggio;
 	}
@@ -62,16 +65,16 @@ public class Viaggio {
 	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public String getData_Partenza() {
+	public LocalDate getData_Partenza() {
 		return data_Partenza;
 	}
-	public void setData_Partenza(String data_Partenza) {
+	public void setData_Partenza(LocalDate data_Partenza) {
 		this.data_Partenza = data_Partenza;
 	}
-	public String getData_Arrivo() {
+	public LocalDate getData_Arrivo() {
 		return data_Arrivo;
 	}
-	public void setData_Arrivo(String data_Arrivo) {
+	public void setData_Arrivo(LocalDate data_Arrivo) {
 		this.data_Arrivo = data_Arrivo;
 	}
 	public String getContinente() {
@@ -104,4 +107,6 @@ public class Viaggio {
 	public void setDifficolta(String difficolta) {
 		this.difficolta = difficolta;
 	}
+ 
+    
 }
