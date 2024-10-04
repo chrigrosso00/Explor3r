@@ -1,31 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
+	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title> Registrazione </title>
+		<title>Explor3r - HomePage</title>
 		<meta name="description" content="My new wonderful website">
 		<meta name="author" content="Mister X">
-		<link rel="stylesheet" href=" /utente.css?v=1.1">
+		<link rel="stylesheet" href=" /home.css?v=1.1">
+		<link rel="icon" type="image/png" href=" /logo1-removebg.png">
 	</head>
-<body>
-    <h1>Aggiungi Utente</h1>
-    <form id="utenteForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
-        
-        <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" name="cognome" required><br><br>
-        
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <button type="submit">Invia</button>
-    </form>
-
-    <script src="scriptUtente.js"></script>
-</body>
+	<body>
+		    <header>
+			<img src="/logo1-removebg.png" alt="">
+    	    <h1> Explor3r</h1>
+			<button class="action-btn" onclick="window.location.href='/viaggi'">  Viaggi </button>
+			<button class="action-btn" onclick="window.location.href='/login'">  Login </button>
+    	</header>
+	</body>
 </html>
