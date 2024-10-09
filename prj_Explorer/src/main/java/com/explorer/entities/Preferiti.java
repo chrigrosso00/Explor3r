@@ -8,7 +8,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "df_PREFERITI")
+@Table(name = "df_preferiti")
 public class Preferiti {
 
     @EmbeddedId

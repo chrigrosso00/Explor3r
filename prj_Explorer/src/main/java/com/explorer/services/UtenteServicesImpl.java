@@ -24,7 +24,31 @@ public class UtenteServicesImpl implements UtenteServices {
     }
 
     @Override
-    public Utente save(Utente utente) {
+    public Utente addUtente(Utente utente) {
         return dao.save(utente);
+    }
+    
+    @Override
+    public void deleteUtente(int id) {
+        dao.deleteById(id);
+    }
+
+    @Override
+    public Utente updateCredenziali(int id, Utente user) {
+        return dao.findById(id).map(utente -> {
+            utente.setUsername(user.getUsername());
+            utente.setPassword(user.getPassword());
+            return dao.save(utente);
+        }).orElse(null);
+    }
+    
+    @Override
+    public List<Utente> findByNome(String nome) {
+        return dao.findByNome(nome);
+    }
+    
+    @Override
+    public List<Utente> findByNomeCognome(String nome, String cognome) {
+        return dao.findByNomeAndCognome(nome, cognome);
     }
 }
