@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.explorer.entities.Utente;
 
+
 public interface UtenteDAO extends JpaRepository<Utente,Integer> {
 	
 	@Query("SELECT u FROM Utente u WHERE u.nome = :nome")
