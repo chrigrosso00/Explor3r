@@ -65,7 +65,7 @@ public class UtenteREST {
         }
     }
     
-    @GetMapping("utente/nome/")
+    @GetMapping("/utente/nome/{nome}")
 	public ResponseEntity<List<Utente>> getUtenteByNome(@PathVariable String nome) {
 	    List<Utente> utenti = uService.findByNome(nome);
 	    if (utenti != null && !utenti.isEmpty()) {
@@ -75,7 +75,7 @@ public class UtenteREST {
 	    }
 	}
     
-    @GetMapping("/utente/nomeCognome/")
+    @GetMapping("/utente/cognomeNome/{nome}/{cognome}")
    	public ResponseEntity<List<Utente>> getUtenteByNomeCognome(@PathVariable String nome, @PathVariable String cognome) {
    	    List<Utente> utenti = uService.findByNomeCognome(nome, cognome);
    	    if (utenti != null && !utenti.isEmpty()) {
