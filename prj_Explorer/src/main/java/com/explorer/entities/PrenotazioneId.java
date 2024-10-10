@@ -7,10 +7,8 @@ import jakarta.persistence.Column;
 
 public class PrenotazioneId implements Serializable {
 	
-	@Column(name = "ft_utente")
     private int utenteId;
 
-	@Column(name = "ft_viaggio")
     private int viaggioId;
 
 	public int getUtenteId() {
