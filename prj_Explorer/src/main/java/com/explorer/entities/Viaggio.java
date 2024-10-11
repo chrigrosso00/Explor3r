@@ -27,6 +27,10 @@ public class Viaggio {
     @JoinColumn(name = "id_utente")
     private Utente utente;
     
+    @ManyToOne
+    @JoinColumn(name = "id_paese")  // Aggiunta relazione con Paese
+    private Paese paese;
+    
     @OneToMany(mappedBy = "viaggio", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
@@ -34,8 +38,6 @@ public class Viaggio {
     private Double prezzo;
     private LocalDate data_Partenza;
     private LocalDate data_Arrivo;
-    private String continente;
-    private String stato;
     private String descrizione;
     private String itinerario;
     private String difficolta;
@@ -53,6 +55,13 @@ public class Viaggio {
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
+	public Paese getPaese() {
+		return paese;
+	}
+	public void setPaese(Paese paese) {
+		this.paese = paese;
+	}
+	
 	public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -77,18 +86,7 @@ public class Viaggio {
 	public void setData_Arrivo(LocalDate data_Arrivo) {
 		this.data_Arrivo = data_Arrivo;
 	}
-	public String getContinente() {
-		return continente;
-	}
-	public void setContinente(String continente) {
-		this.continente = continente;
-	}
-	public String getStato() {
-		return stato;
-	}
-	public void setStato(String stato) {
-		this.stato = stato;
-	}
+	
 	public String getDescrizione() {
 		return descrizione;
 	}
