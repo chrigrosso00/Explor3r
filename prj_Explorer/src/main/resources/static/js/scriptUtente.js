@@ -1,14 +1,14 @@
 document.getElementById('utenteForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const utente = {
+    let utente = {
         nome: document.getElementById('nome').value,
         cognome: document.getElementById('cognome').value,
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
     };
 
-    fetch('http://localhost:8080/utente', {
+    fetch('http://localhost:8080/api/add/utente', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -32,7 +33,7 @@ public class Viaggio {
     private Paese paese;
     
     @OneToMany(mappedBy = "viaggio", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
+    @JsonManagedReference("viaggio-prenotazione")
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
     private Double prezzo;
@@ -42,8 +43,7 @@ public class Viaggio {
     private String itinerario;
     private String difficolta;
     
-    
-	public int getId_viaggio() {
+    public int getId_viaggio() {
 		return id_viaggio;
 	}
 	public void setId_viaggio(int id_viaggio) {
@@ -61,7 +61,6 @@ public class Viaggio {
 	public void setPaese(Paese paese) {
 		this.paese = paese;
 	}
-	
 	public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -105,6 +104,4 @@ public class Viaggio {
 	public void setDifficolta(String difficolta) {
 		this.difficolta = difficolta;
 	}
- 
-    
 }
