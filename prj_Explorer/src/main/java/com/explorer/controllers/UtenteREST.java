@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +25,13 @@ public class UtenteREST {
 	@Autowired
 	private UtenteServices uService;
 	
-	@GetMapping("utente")
+	@GetMapping("utenti")
 	public List<Utente> getUtente() {
 		return uService.findAll();
 	}
 	
 	@GetMapping("utente/codice/{id}")
-	public ResponseEntity<Utente> getUtenteById(@PathVariable Integer id) {
+	public ResponseEntity<Utente> getUtenteById(@PathVariable int id) {
 	    Utente utente = uService.findById(id);
 	    if (utente != null) {
 	        return ResponseEntity.ok(utente);
@@ -44,8 +45,8 @@ public class UtenteREST {
 		return new ResponseEntity<Utente>( uService.addUtente(u), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("utente/delete/{id}")
-	public ResponseEntity<String> deleteUtente(@RequestParam int id) {
+	@DeleteMapping("utente/delete/{id}")
+	public ResponseEntity<String> deleteUtente(@PathVariable int id) {
         Utente utente = uService.findById(id);
         if (utente != null) {
             uService.deleteUtente(id);
@@ -65,7 +66,7 @@ public class UtenteREST {
         }
     }
     
-    @GetMapping("/utente/nome/{nome}")
+    @GetMapping("/utenti/nome/{nome}")
 	public ResponseEntity<List<Utente>> getUtenteByNome(@PathVariable String nome) {
 	    List<Utente> utenti = uService.findByNome(nome);
 	    if (utenti != null && !utenti.isEmpty()) {
@@ -75,7 +76,7 @@ public class UtenteREST {
 	    }
 	}
     
-    @GetMapping("/utente/cognomeNome/{nome}/{cognome}")
+    @GetMapping("/utenti/cognomeNome/{nome}/{cognome}")
    	public ResponseEntity<List<Utente>> getUtenteByNomeCognome(@PathVariable String nome, @PathVariable String cognome) {
    	    List<Utente> utenti = uService.findByNomeCognome(nome, cognome);
    	    if (utenti != null && !utenti.isEmpty()) {
@@ -84,8 +85,6 @@ public class UtenteREST {
    	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
    	    }
    	}
-    
-    
 }
 
 	
