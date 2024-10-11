@@ -13,8 +13,8 @@ public class Paese {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_paese;
-    private String Stato;
-    private String Continente;
+    private String stato;
+    private String continente;
     
 	public int getId_paese() {
 		return id_paese;
@@ -23,15 +23,15 @@ public class Paese {
 		this.id_paese = id_paese;
 	}
 	public String getStato() {
-		return Stato;
+		return stato;
 	}
 	public void setStato(String stato) {
-		Stato = stato;
+		stato = stato;
 	}
 	public String getContinente() {
-		return Continente;
+		return continente;
 	}
 	public void setContinente(String continente) {
-		Continente = continente;
+		continente = continente;
 	} 
 }

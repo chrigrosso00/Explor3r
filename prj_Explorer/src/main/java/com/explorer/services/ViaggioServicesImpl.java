@@ -28,4 +28,19 @@ public class ViaggioServicesImpl implements ViaggioServices {
     public Viaggio save(Viaggio viaggio) {
         return dao.save(viaggio);
     }
+
+	@Override
+	public List<Viaggio> getViaggiByContinente(String continente) {
+		return dao.findByContinente(continente);
+	}
+
+	@Override
+	public List<Viaggio> getViaggioByStato(String stato) {
+		return dao.findByStato(stato);
+	}
+
+	@Override
+	public List<Viaggio> getViaggiBydifficolta(String difficolta) {
+		return dao.findByDifficolta(difficolta);
+	}
 }
