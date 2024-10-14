@@ -5,14 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.explorer.entities.Paese;
+import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
+import com.explorer.repos.PaeseDAO;
+import com.explorer.repos.UtenteDAO;
 import com.explorer.repos.ViaggioDAO;
 
 @Service
 public class ViaggioServicesImpl implements ViaggioServices {
     @Autowired
     private ViaggioDAO dao;
+    
+    @Autowired
+    private UtenteDAO utenteDAO;
+    
+    @Autowired
+    private PaeseDAO paeseDAO;
 
     @Override
     public List<Viaggio> findAll() {
@@ -26,6 +35,19 @@ public class ViaggioServicesImpl implements ViaggioServices {
 
     @Override
     public Viaggio save(Viaggio viaggio) {
+    	 // Recupera l'utente dal database
+        if (viaggio.getUtente() != null && viaggio.getUtente().getId_utente() > 0) {
+            Utente utente = utenteDAO.findById(viaggio.getUtente().getId_utente()).orElse(null);
+            viaggio.setUtente(utente);  // Imposta l'utente completo
+        }
+
+        // Recupera il paese dal database
+        if (viaggio.getPaese() != null && viaggio.getPaese().getId_paese() > 0) {
+            Paese paese = paeseDAO.findById(viaggio.getPaese().getId_paese()).orElse(null);
+            viaggio.setPaese(paese);  // Imposta il paese completo
+        }
+
+        // Salva il viaggio
         return dao.save(viaggio);
     }
 
