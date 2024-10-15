@@ -10,6 +10,8 @@ body {
 h1 {
     text-align: center;
     color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
 /* Stile per il modulo */
@@ -18,15 +20,22 @@ h1 {
     margin: 0 auto;
     background: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
+
+#utenteForm:hover {
+    transform: scale(1.02);
+}
+
 
 /* Stile per le etichette */
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #555;
+    font-weight: bold;
 }
 
 /* Stile per i campi di input */
@@ -38,6 +47,27 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
+}
+
+/* Stile per i campi di input */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="tel"] {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus {
+    border-color: #5cb85c;
+    outline: none;
 }
 
 /* Stile per il pulsante */

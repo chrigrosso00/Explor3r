@@ -10,6 +10,18 @@ document.getElementById('utenteForm').addEventListener('submit', function(event)
     }
     
     let data = new Date(document.getElementById('date').value);
+    let today = new Date();
+    let age = today.getFullYear() - data.getFullYear();
+    let monthDifference = today.getMonth() - data.getMonth();
+
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < data.getDate())) {
+        age--;
+    }
+
+    if (age < 18) {
+        alert('Devi avere almeno 18 anni per registrarti.');
+        return;
+    }
 
     let utente = {
         nome: document.getElementById('nome').value,
