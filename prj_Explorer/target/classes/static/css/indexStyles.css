@@ -13,12 +13,13 @@ body {
 
 /* Header */
 header {
-    background-color: #333;
-    color: white;
+    background-color: rgb(158, 158, 158); /* Colore leggermente più chiaro per l'header */
+    color: #000000;
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
 }
 
 header .container {
@@ -31,35 +32,57 @@ header .container {
 /* Barra di navigazione */
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
     display: flex;
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin-right: 50px;
 }
 
 nav ul li a {
-    color: white;
+    color: black;
     text-decoration: none;
+    font-weight: bold; /* Rende il testo in grassetto */
+    transition: color 0.3s; /* Transizione per il colore */
+}
+
+nav ul li a:hover {
+    color: #c0a9af; /* Cambia colore al passaggio del mouse */
 }
 
 /* Login in alto a destra */
 .login {
-    margin-left: auto; /* Sposta il login a destra */
+    margin-left: 50px; /* Sposta il login a destra */
+    display: flex;
+    align-items: center; /* Allinea verticalmente */
 }
 
 .login a {
-    color: white;
+    color: black;
+    font-weight: bold; /* Rende il testo in grassetto */
     text-decoration: none;
-    margin-left: 15px; /* Spazio tra i link */
+    margin-right: 50px; /* Spazio tra i link */
+    display: flex;
+    align-items: center; /* Allinea verticalmente il testo e l'icona */
 }
 
 .login a:hover {
     text-decoration: underline;
 }
 
+/* Icona utente */
+.login .icon {
+    margin-left: 15px; /* Spazio tra l'icona e il testo */
+    font-size: 20px; /* Dimensione dell'icona */
+}
+
+/* Esempio di stile per l'icona utente */
+.icon {
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome per le icone */
+    font-weight: 900; /* Peso per le icone solid */
+}
 
 /* Hero Section with Slideshow */
 /* Hero Section with Slideshow */
