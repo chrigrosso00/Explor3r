@@ -68,7 +68,6 @@ public class ViaggioREST {
 		
 		List<Paese> paesi = paeseServices.findAllPaesi();
 		
-		// Variabile per indicare se lo stato è stato trovato
 		 // Variabile per indicare se lo stato è stato trovato
 	    boolean statoTrovato = false;
 
