@@ -1,19 +1,111 @@
 <!DOCTYPE html>
 <html lang="it">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Explor3r - HomePage</title>
-		<meta name="description" content="My new wonderful website">
-		<meta name="author" content="Mister X">
-		<link rel="stylesheet" href="/css/home.css?v=1.0">
-	</head>
-	<body>
-		    <header>
-    	    <h1> Explor3r</h1>
-			<button class="action-btn" onclick="window.location.href='/viaggi'">  Viaggi </button>
-			<button class="action-btn" onclick="window.location.href='/login'">  Login </button>
-			<button class="action-btn" onclick="window.location.href='/registrazione'">  Registrazione </button>
-    	</header>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sito di Viaggi</title>
+    <link rel="stylesheet" href="indexStyles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>SViagga da solo </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Destinazioni</a></li>
+                    <li><a href="#">Offerte speciali</a></li>
+                    <li><a href="#">Esperienze</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Chi siamo</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="login">
+                <a href="#">Accedi</a> / <a href="#">Registrati</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero">
+        <div class="slideshow">
+            <div class="slide fade" style="background-image: url('sfondoSpiaggia.jpg');">
+                <div class="hero-content">
+                    <h2>Scopri Destinazioni da Sogno</h2>
+                    <p>Esplora il mondo con le nostre offerte imperdibili</p>
+                    <button class="cta-button">Prenota Ora</button>
+                </div>
+            </div>
+            <div class="slide fade" style="background-image: url('sfondoMontagna.jpg');">
+                <div class="hero-content">
+                    <h2>Viaggi Unici per Ogni Occasione</h2>
+                    <p>Trova l'avventura perfetta per te</p>
+                    <button class="cta-button">Scopri di più</button>
+                </div>
+            </div>
+        </div>
+        <div class="search-form">
+            <input type="text" placeholder="Dove vuoi andare?">
+            <input type="date" placeholder="Check-in">
+            <input type="date" placeholder="Check-out">
+            <button>Cerca</button>
+        </div>
+    </section>
+
+    <!-- Viaggi in partenza -->
+<section class="viaggi-in-partenza">
+    <div class="container">
+        <h2>Viaggi Prossimi in Partenza</h2>
+        <div class="viaggi-list">
+            <div class="viaggio">
+                <img src="barcellona.jpg" alt="Viaggio 1">
+                <div class="viaggio-info">
+                    <h3>Barcellona</h3>
+                    <p>Partenza: 15 Ottobre 2024</p>
+                    <p>Prezzo: €350</p>
+                    <button class="cta-button">Prenota</button>
+                </div>
+            </div>
+            <div class="viaggio">
+                <img src="londra.jpg" alt="Viaggio 2">
+                <div class="viaggio-info">
+                    <h3>Londra</h3>
+                    <p>Partenza: 20 Ottobre 2024</p>
+                    <p>Prezzo: €420</p>
+                    <button class="cta-button">Prenota</button>
+                </div>
+            </div>
+            <div class="viaggio">
+                <img src="dubai.jpg" alt="Viaggio 3">
+                <div class="viaggio-info">
+                    <h3>Dubai</h3>
+                    <p>Partenza: 30 Ottobre 2024</p>
+                    <p>Prezzo: €780</p>
+                    <button class="cta-button">Prenota</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sito di Viaggi. Tutti i diritti riservati.</p>
+            <div class="social">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scriptIndex.js"></script>
+</body>
 </html>

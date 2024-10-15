@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Barra di navigazione */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Login in alto a destra */
+.login {
+    margin-left: auto; /* Sposta il login a destra */
+}
+
+.login a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px; /* Spazio tra i link */
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+
+/* Hero Section with Slideshow */
+/* Hero Section with Slideshow */
+.hero {
+    position: relative;
+    height: 50vh; /* Altezza ridotta */
+    width: 100%; /* Larghezza a tutta pagina */
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Nasconde qualsiasi parte in eccesso */
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    display: none;
+    background-size: cover; /* L'immagine copre interamente l'area, mantenendo il rapporto d'aspetto */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* Assicura che la larghezza sia sempre 100% */
+    height: 100%; /* Imposta l'altezza per riempire la Hero Section */
+    position: absolute;
+}
+
+/* Animazione per lo scorrimento */
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.cta-button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.search-form {
+    margin-top: 20px;
+    z-index: 10;
+}
+
+.search-form input, .search-form button {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+
+/* Sezione Viaggi in Partenza */
+.viaggi-in-partenza {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.viaggi-in-partenza h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.viaggi-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.viaggio {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 30%; /* Ogni viaggio occuperà il 30% della larghezza del contenitore */
+    transition: transform 0.3s ease;
+}
+
+.viaggio:hover {
+    transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
+}
+
+.viaggio img {
+    width: 100%;
+    height: auto;
+}
+
+.viaggio-info {
+    padding: 20px;
+}
+
+.viaggio-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.viaggio-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.cta-button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff3b3b;
+}
+
+/* Responsività per schermi più piccoli */
+@media (max-width: 768px) {
+    .viaggio {
+        width: 100%; /* Su dispositivi mobili, ogni riquadro occupa il 100% della larghezza */
+    }
+
+    .viaggi-list {
+        gap: 10px; /* Diminuisce lo spazio tra i riquadri sui dispositivi mobili */
+    }
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
