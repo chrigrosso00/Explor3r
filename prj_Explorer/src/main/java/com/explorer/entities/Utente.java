@@ -1,5 +1,6 @@
 package com.explorer.entities;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,6 +29,8 @@ public class Utente {
     private String cognome;
     private String username;
     private String password;
+    private Date data_nascita;
+    private long telefono;
     
     public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
@@ -65,4 +68,17 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Date getData_nascita() {
+		return data_nascita;
+	}
+	public void setData_nascita(Date data_nascita) {
+		this.data_nascita = data_nascita;
+	}
+	public long getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(long telefono) {
+		this.telefono = telefono;
+	}
+	
 }
