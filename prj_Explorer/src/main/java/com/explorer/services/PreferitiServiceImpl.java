@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.explorer.entities.Preferiti;
+import com.explorer.entities.PreferitiId;
 import com.explorer.repos.PreferitiDAO;
 
 @Service
@@ -27,6 +28,22 @@ public class PreferitiServiceImpl implements PreferitiService {
 		}
 		return false;
 	}
+
+	@Override
+	public void remove(Preferiti p) {
+		// TODO Auto-generated method stub
+		dao.delete(p);
+	}
+
+//	@Override
+//	public boolean remove(int idUtente,int idViaggio) {
+//		// TODO Auto-generated method stub
+//		PreferitiId id = new PreferitiId(idUtente, idViaggio);
+//		dao.deleteById(id);
+//		return false;
+//	}
+	
+	
 	
 	
 }

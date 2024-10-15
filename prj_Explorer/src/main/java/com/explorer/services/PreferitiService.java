@@ -8,5 +8,10 @@ public interface PreferitiService {
 
 	public List<Preferiti> findAll();
 
-	boolean add(Preferiti p);
+	public boolean add(Preferiti p);
+	
+
+//	boolean remove(int idUtente, int idViaggio);
+	
+	void remove(Preferiti p);
 }
