@@ -23,7 +23,7 @@ public class PreferitiServiceImpl implements PreferitiService {
 	
 	@Override
 	public boolean add(Preferiti p) {
-		if(dao.save(p) == p) {
+		if(dao.save(p) != p) {
 			return true;
 		}
 		return false;
