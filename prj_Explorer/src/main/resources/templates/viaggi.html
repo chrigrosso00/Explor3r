@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Viaggi - Sito di Viaggi</title>
-    <link rel="stylesheet" href="/css/indexStyles.css">
+    <link rel="stylesheet" href="/css/viaggiStyles.css">
 </head>
 <body>
 
@@ -17,11 +17,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="viaggi.html">Destinazioni</a></li>
-                    <li><a href="#">Offerte speciali</a></li>
-                    <li><a href="#">Esperienze</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="viaggi">Destinazioni</a></li>
+                    <li><a href="#">Last Minute</a></li>
                     <li><a href="#">Chi siamo</a></li>
                     <li><a href="#">Contatti</a></li>
                 </ul>
@@ -32,41 +30,55 @@
         </div>
     </header>
 
-    <!-- Sezione Viaggi -->
-    <section class="viaggi-section">
-        <div class="container">
-            <h2>Esplora le nostre Destinazioni</h2>
-            <div class="viaggi-list">
-                <div class="viaggio">
-                    <img src="img/tokyo.jpg" alt="Viaggio a Tokyo">
-                    <div class="viaggio-info">
-                        <h3>Tokyo</h3>
-                        <p>Scopri la magia del Giappone con un'esperienza unica nella capitale</p>
-                        <p>Prezzo: €1200</p>
-                        <button class="cta-button">Prenota</button>
-                    </div>
+    <!-- Sezione Viaggi con Filtri per Continenti -->
+    
+    <section class="viaggi-in-partenza">
+    <div class="container">
+        <h2>Esplora le nostre Destinazioni</h2>
+
+        <!-- Filtri per Continenti -->
+        <div class="viaggi-list">
+            <div class="viaggio" style="background-image: url('img/Europa.jpg');" data-continente="Europa">
+                <div class="viaggio-info">
+                    <h3>Europa</h3>
+                    <button class="cta-button">Esplora</button>
                 </div>
-                <div class="viaggio">
-                    <img src="img/newyork.jpg" alt="Viaggio a New York">
-                    <div class="viaggio-info">
-                        <h3>New York</h3>
-                        <p>Esplora la città che non dorme mai con i nostri pacchetti esclusivi</p>
-                        <p>Prezzo: €1500</p>
-                        <button class="cta-button">Prenota</button>
-                    </div>
+            </div>
+            <div class="viaggio" style="background-image: url('img/AmericaDelNord.jpg');" data-continente="America del Nord">
+                <div class="viaggio-info">
+                    <h3>America del Nord</h3>
+                    <button class="cta-button">Esplora</button>
                 </div>
-                <div class="viaggio">
-                    <img src="img/parigi.jpg" alt="Viaggio a Parigi">
-                    <div class="viaggio-info">
-                        <h3>Parigi</h3>
-                        <p>Un viaggio romantico nella città dell'amore</p>
-                        <p>Prezzo: €800</p>
-                        <button class="cta-button">Prenota</button>
-                    </div>
+            </div>
+            <div class="viaggio" style="background-image: url('img/AmericaDelSud.jpg');" data-continente="America del Sud">
+                <div class="viaggio-info">
+                    <h3>America del Sud</h3>
+                    <button class="cta-button">Esplora</button>
+                </div>
+            </div>
+            <div class="viaggio" style="background-image: url('img/Asia.jpg');" data-continente="Asia">
+                <div class="viaggio-info">
+                    <h3>Asia</h3>
+                    <button class="cta-button">Esplora</button>
+                </div>
+            </div>
+            <div class="viaggio" style="background-image: url('img/Africa.jpg');" data-continente="Africa">
+                <div class="viaggio-info">
+                    <h3>Africa</h3>
+                    <button class="cta-button">Esplora</button>
+                </div>
+            </div>
+            <div class="viaggio" style="background-image: url('img/Oceania.jpg');" data-continente="Oceania">
+                <div class="viaggio-info">
+                    <h3>Oceania</h3>
+                    <button class="cta-button">Esplora</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <!-- Footer -->
     <footer>
@@ -80,7 +92,5 @@
         </div>
     </footer>
 
-    <script src="js/scriptViaggi.js"></script>
 </body>
 </html>
->

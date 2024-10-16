@@ -84,48 +84,44 @@ nav ul li a:hover {
     font-weight: 900; /* Peso per le icone solid */
 }
 
-/* Hero Section with Slideshow */
-/* Hero Section with Slideshow */
-.hero {
-    position: relative;
-    height: 50vh; /* Altezza ridotta */
-    width: 100%; /* Larghezza a tutta pagina */
-    color: white;
-    text-align: center;
+
+
+.viaggi-list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; /* Permette di andare a capo dopo 3 elementi */
+    justify-content: space-between; /* Distribuisce lo spazio tra i riquadri */
+    gap: 20px; /* Spazio tra i riquadri */
+}
+
+.viaggio {
+    background-size: cover; /* L'immagine copre tutto il contenitore */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+    display: flex;
+    align-items: flex-end; /* Allinea il contenuto in basso */
     justify-content: center;
-    overflow: hidden; /* Nasconde qualsiasi parte in eccesso */
-    margin-top: 25px;
-}
-
-.slideshow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.slide {
-    display: none;
-    background-size: cover; /* L'immagine copre interamente l'area, mantenendo il rapporto d'aspetto */
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%; /* Assicura che la larghezza sia sempre 100% */
-    height: 100%; /* Imposta l'altezza per riempire la Hero Section */
-    position: absolute;
-}
-
-/* Animazione per lo scorrimento */
-@keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.hero-content {
     position: relative;
-    z-index: 10;
+    height: 480px; /* Altezza fissa per ogni riquadro */
+    width: calc(33.333% - 20px); /* Ogni viaggio occupa un terzo della larghezza della riga meno lo spazio */
+    transition: transform 0.3s ease;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.viaggio-info {
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.viaggio-info h3 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+    text-align: left; /* Allinea il titolo a sinistra */
 }
 
 .cta-button {
@@ -133,98 +129,33 @@ nav ul li a:hover {
     color: white;
     padding: 10px 20px;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 15px;
+    margin-top: 10px; /* Spazio tra il titolo e il pulsante */
+    text-align: left; /* Allinea il pulsante a sinistra */
 }
 
-.search-form {
-    margin-top: 20px;
-    z-index: 10;
-}
-
-.search-form input, .search-form button {
-    padding: 10px;
-    margin-right: 5px;
-}
-
-
-/* Sezione Viaggi in Partenza */
-.viaggi-in-partenza {
-    padding: 50px 0;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.viaggi-in-partenza h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
-
-.viaggi-list {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.viaggio {
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    width: 30%; /* Ogni viaggio occuperà il 30% della larghezza del contenitore */
-    transition: transform 0.3s ease;
+.cta-button:hover {
+    background-color: #00359a;
 }
 
 .viaggio:hover {
     transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
 }
 
-.viaggio img {
-    width: 100%;
-    height: auto;
-}
-
-.viaggio-info {
-    padding: 20px;
-}
-
-.viaggio-info h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.viaggio-info p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-.cta-button {
-    background-color: #00359a;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: ##00359a;
-}
-
 /* Responsività per schermi più piccoli */
 @media (max-width: 768px) {
     .viaggio {
-        width: 100%; /* Su dispositivi mobili, ogni riquadro occupa il 100% della larghezza */
+        width: 100%; /* Ogni riquadro occupa il 100% della larghezza su schermi più piccoli */
+        height: auto;
     }
 
     .viaggi-list {
-        gap: 10px; /* Diminuisce lo spazio tra i riquadri sui dispositivi mobili */
+        gap: 10px; /* Diminuisce lo spazio tra i riquadri su dispositivi mobili */
     }
 }
+
 
 
 /* Footer */
@@ -233,4 +164,5 @@ footer {
     color: white;
     padding: 20px 0;
     text-align: center;
+    margin-top: 47px;
 }
