@@ -13,8 +13,8 @@ body {
 
 /* Header */
 header {
-    background-color: rgb(158, 158, 158); /* Colore leggermente più chiaro per l'header */
-    color: #000000;
+    background-color: #00359a; /* Colore leggermente più chiaro per l'header */
+    color: white;
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
@@ -42,7 +42,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: bold; /* Rende il testo in grassetto */
     transition: color 0.3s; /* Transizione per il colore */
@@ -60,7 +60,7 @@ nav ul li a:hover {
 }
 
 .login a {
-    color: black;
+    color: white;
     font-weight: bold; /* Rende il testo in grassetto */
     text-decoration: none;
     margin-right: 50px; /* Spazio tra i link */
@@ -96,6 +96,7 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     overflow: hidden; /* Nasconde qualsiasi parte in eccesso */
+    margin-top: 25px;
 }
 
 .slideshow {
@@ -128,7 +129,7 @@ nav ul li a:hover {
 }
 
 .cta-button {
-    background-color: #ff6b6b;
+    background-color: #00359a;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -199,7 +200,7 @@ nav ul li a:hover {
 }
 
 .cta-button {
-    background-color: #ff6b6b;
+    background-color: #00359a;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -211,7 +212,7 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: #ff3b3b;
+    background-color: ##00359a;
 }
 
 /* Responsività per schermi più piccoli */
