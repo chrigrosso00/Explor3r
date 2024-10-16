@@ -27,11 +27,12 @@ public class Utente {
     
     private String nome;
     private String cognome;
+    private String email;
     private String username;
     private String password;
     private Date data_nascita;
     private long telefono;
-    
+   
     public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -80,5 +81,10 @@ public class Utente {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
