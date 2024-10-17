@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.explorer.entities.Prenotazione;
@@ -36,7 +35,7 @@ public class PrenotazioneREST {
 	@GetMapping("prenotazioni/utente/{utenteId}")
 	public ResponseEntity<List<Prenotazione>> getPrenotazioneByUtente(@PathVariable int utenteId) {
 		Utente utente = new Utente();
-	    utente.setId_utente(utenteId);
+	    utente.setId_utente((long) utenteId);
 		List<Prenotazione> prenotazioni = pService.findByUtente(utente);
 	    if (prenotazioni != null && !prenotazioni.isEmpty()) {
 	        return ResponseEntity.ok(prenotazioni);
@@ -80,7 +79,7 @@ public class PrenotazioneREST {
 	@GetMapping("prenotazione/utente/totale/{utenteId}")
 	public ResponseEntity<Integer> getTotalePrenotazioniByUtente(@PathVariable int utenteId) {
 		Utente utente = new Utente();
-	    utente.setId_utente(utenteId);
+	    utente.setId_utente((long) utenteId);
 	    int quantita = pService.countByUtente(utente);
         if (quantita >= 0) {
             return ResponseEntity.ok(quantita);
@@ -107,5 +106,4 @@ public class PrenotazioneREST {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prenotazione non trovata.");
         }
     }
-	
 }

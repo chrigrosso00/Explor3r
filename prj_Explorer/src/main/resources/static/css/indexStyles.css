@@ -212,7 +212,7 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: ##00359a;
+    background-color: #00359a;
 }
 
 /* Responsività per schermi più piccoli */
@@ -225,7 +225,6 @@ nav ul li a:hover {
         gap: 10px; /* Diminuisce lo spazio tra i riquadri sui dispositivi mobili */
     }
 }
-
 
 /* Footer */
 footer {

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +20,7 @@ import jakarta.persistence.Table;
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_utente;
+    private Long id_utente;
     
     @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
     @JsonManagedReference("utente-prenotazione")
@@ -27,22 +28,25 @@ public class Utente {
     
     private String nome;
     private String cognome;
-    private String email;
+    //private String email;
     private String username;
     private String password;
     private Date data_nascita;
     private long telefono;
    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserAuthority> authorities;
+    
     public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
 	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
-	public int getId_utente() {
+	public Long getId_utente() {
 		return id_utente;
 	}
-	public void setId_utente(int id_utente) {
+	public void setId_utente(Long id_utente) {
 		this.id_utente = id_utente;
 	}
 	public String getNome() {
@@ -81,10 +85,16 @@ public class Utente {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	public String getEmail() {
+	/*public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}*/
+	public Set<UserAuthority> getAuthorities() {
+	    return authorities;
+	}
+    public void setAuthorities(Set<UserAuthority> authorities) {
+	    this.authorities = authorities;
 	}
 }

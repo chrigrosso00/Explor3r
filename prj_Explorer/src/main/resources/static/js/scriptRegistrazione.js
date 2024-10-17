@@ -26,7 +26,7 @@ document.getElementById('utenteForm').addEventListener('submit', function(event)
     let utente = {
         nome: document.getElementById('nome').value,
         cognome: document.getElementById('cognome').value,
-        email: document.getElementById('email').value,
+        //email: document.getElementById('email').value,
         data_nascita: data,
         telefono: document.getElementById('phone').value,
         username: document.getElementById('username').value,
@@ -34,19 +34,25 @@ document.getElementById('utenteForm').addEventListener('submit', function(event)
     };
 
     fetch('http://localhost:8080/api/add/utente', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(utente)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        alert('Utente aggiunto con successo!');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Errore nell\'aggiunta dell\'utente.');
-    });
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(utente)
+	})
+	.then(response => {
+    	if (!response.ok) {
+        	throw new Error('Network response was not ok ' + response.statusText);
+    	}
+    	return response.json();
+	})
+	.then(data => {
+    	console.log('Success:', data);
+    	alert('Utente aggiunto con successo!');
+	})
+	.catch((error) => {
+    	console.error('Error:', error);
+    	alert('Errore nell\'aggiunta dell\'utente.');
+	});
+
 });

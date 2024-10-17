@@ -1,5 +1,5 @@
 package com.explorer.services;
 
 public interface EmailServices {
-	 void sendEmail(String to, String subject, String text);
+	void sendEmail(String destinatario, String oggetto, String testo);
 }

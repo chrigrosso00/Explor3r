@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>I Derubati - Login</title>
+        <meta name="description" content="My new wonderful website">
+        <meta name="author" content="Mister X">
+        <meta name="csrf-token" content="${_csrf.token}">
+        <link rel="stylesheet" href="/css/home.css?v=1.1">
+    </head>
+<body>
+
+    <header>
+        <h1> "Explorer" Login </h1>
+        <h2> Inserisci le credenziali... </h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+        </form>
+        <button id="logoutButton" style="display:none;">Logout</button>
+    </header>
+    <script src="/js/login.js"></script>
+</body>
+</html>

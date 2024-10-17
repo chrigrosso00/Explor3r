@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +26,8 @@ public class UtenteREST {
 	@Autowired
 	private UtenteServices uService;
 	
-	@Autowired
-	private EmailServices emailService;
+	/*@Autowired
+	private EmailServices emailService;*/
 	
 	@GetMapping("utenti")
 	public List<Utente> getUtente() {
@@ -47,8 +48,11 @@ public class UtenteREST {
 	public ResponseEntity<Utente> addUtente(@RequestBody Utente u) {
 	    try {
 	        Utente nuovoUtente = uService.addUtente(u);
-	        emailService.sendEmail(u.getEmail(), "Benvenuto!", "Grazie per esserti registrato!");
+	        //emailService.sendEmail(u.getEmail(), "Benvenuto!", "Grazie per esserti registrato!");
 	        return new ResponseEntity<Utente>(nuovoUtente, HttpStatus.CREATED);
+	    } catch (MailException e) {
+	        System.err.println("Errore durante l'invio dell'email: " + e.getMessage());
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    } catch (RuntimeException e) {
 	        System.err.println("Errore durante la registrazione: " + e.getMessage());
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
