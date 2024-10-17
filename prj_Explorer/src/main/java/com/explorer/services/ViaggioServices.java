@@ -16,4 +16,6 @@ public interface ViaggioServices {
 	public List<Viaggio> getViaggioByStato(String stato);
 	
 	public List<Viaggio> getViaggiBydifficolta(String difficolta);
+
+	Viaggio createViaggio(Viaggio nuovoViaggio);
 }

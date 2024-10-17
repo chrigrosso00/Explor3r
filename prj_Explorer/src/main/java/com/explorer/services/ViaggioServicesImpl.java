@@ -14,6 +14,7 @@ import com.explorer.repos.ViaggioDAO;
 
 @Service
 public class ViaggioServicesImpl implements ViaggioServices {
+    
     @Autowired
     private ViaggioDAO dao;
     
@@ -35,7 +36,7 @@ public class ViaggioServicesImpl implements ViaggioServices {
 
     @Override
     public Viaggio save(Viaggio viaggio) {
-    	 // Recupera l'utente dal database
+        // Recupera l'utente dal database
         if (viaggio.getUtente() != null && viaggio.getUtente().getId_utente() > 0) {
             Utente utente = utenteDAO.findById(viaggio.getUtente().getId_utente()).orElse(null);
             viaggio.setUtente(utente);  // Imposta l'utente completo
@@ -51,18 +52,23 @@ public class ViaggioServicesImpl implements ViaggioServices {
         return dao.save(viaggio);
     }
 
-	@Override
-	public List<Viaggio> getViaggiByContinente(String continente) {
-		return dao.findByContinente(continente);
-	}
+    // Nuovo metodo per creare un viaggio
+    public Viaggio createViaggio(Viaggio viaggio) {
+        return save(viaggio); // Riutilizza il metodo save per creare un viaggio
+    }
 
-	@Override
-	public List<Viaggio> getViaggioByStato(String stato) {
-		return dao.findByStato(stato);
-	}
+    @Override
+    public List<Viaggio> getViaggiByContinente(String continente) {
+        return dao.findByContinente(continente);
+    }
 
-	@Override
-	public List<Viaggio> getViaggiBydifficolta(String difficolta) {
-		return dao.findByDifficolta(difficolta);
-	}
+    @Override
+    public List<Viaggio> getViaggioByStato(String stato) {
+        return dao.findByStato(stato);
+    }
+
+    @Override
+    public List<Viaggio> getViaggiBydifficolta(String difficolta) {
+        return dao.findByDifficolta(difficolta);
+    }
 }
