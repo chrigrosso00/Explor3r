@@ -1,6 +1,9 @@
 package com.explorer.entities;
 
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -17,6 +20,7 @@ public class UserAuthority implements Serializable {
     private UserAuthorityId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @MapsId("userId")
     private Utente user;
 

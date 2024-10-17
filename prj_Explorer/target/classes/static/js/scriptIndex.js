@@ -6,7 +6,14 @@ function checkLoginStatus() {
         document.getElementById('loginLink').style.display = 'none';
         document.getElementById('registerLink').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'block';
-    } else {
+        
+        let appiglio = document.getElementById('logoutButton');
+        let username = document.createElement('span');
+        
+        username.textContent = JSON.parse(localStorage.getItem('username'));;
+        username.style.marginRight = '10px'; 
+        appiglio.parentNode.insertBefore(username, appiglio);
+   } else {
         // Se il token non è presente, mostra i link di login/registrazione e nascondi il bottone di logout
         document.getElementById('loginLink').style.display = 'block';
         document.getElementById('registerLink').style.display = 'block';
@@ -21,6 +28,8 @@ document.getElementById('logoutButton').addEventListener('click', function() {
     
     // Reindirizza alla pagina index.html
     window.location.href = '/';
+    
+    localStorage.removeItem("username");
     
     // Una volta tornati sulla pagina index, esegui di nuovo il controllo dello stato di login
     checkLoginStatus();

@@ -35,6 +35,7 @@ public class Utente {
     private long telefono;
    
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<UserAuthority> authorities;
     
     public Set<Prenotazione> getPrenotazioni() {

@@ -1,11 +1,11 @@
+let username = JSON.parse(localStorage.getItem('username'));
+
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    let username = document.getElementById('username').value;
+    username = document.getElementById('username').value;
+	localStorage.setItem('username', JSON.stringify(username));
     let password = document.getElementById('password').value;
-
-    console.log('Username:', username);
-    console.log('Password:', password);
 
     let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
