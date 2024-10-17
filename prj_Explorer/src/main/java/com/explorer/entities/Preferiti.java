@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class Preferiti {
 
     @EmbeddedId
-    private PreferitiId id;
+    private PreferitiId id = new PreferitiId();
 
     @ManyToOne
     @MapsId("id_utente")
