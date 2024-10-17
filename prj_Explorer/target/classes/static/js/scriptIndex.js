@@ -10,7 +10,7 @@ function checkLoginStatus() {
         let appiglio = document.getElementById('logoutButton');
         let username = document.createElement('span');
         
-        username.textContent = JSON.parse(localStorage.getItem('username'));;
+        username.textContent = "Hola, " + JSON.parse(localStorage.getItem('username'));
         username.style.marginRight = '10px'; 
         appiglio.parentNode.insertBefore(username, appiglio);
    } else {
