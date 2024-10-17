@@ -98,8 +98,8 @@ nav ul li a:hover {
     background-position: center; /* Centra l'immagine */
     background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
     display: flex;
-    align-items: flex-end; /* Allinea il contenuto in basso */
-    justify-content: center;
+    flex-direction: column; /* Disposizione verticale degli elementi */
+    justify-content: flex-end; /* Allinea il contenuto in basso */
     position: relative;
     height: 480px; /* Altezza fissa per ogni riquadro */
     width: calc(33.333% - 20px); /* Ogni viaggio occupa un terzo della larghezza della riga meno lo spazio */
@@ -110,16 +110,18 @@ nav ul li a:hover {
 }
 
 .viaggio-info {
-    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    background-color: rgba(0, 0, 0, 0.6); /* Sfondo semi-trasparente */
     padding: 20px;
     text-align: left;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1; /* Assicura che il contenuto sia sopra l'immagine di sfondo */
 }
 
 .viaggio-info h3 {
     font-size: 24px;
-    margin: 0;
+    margin: 0 0 10px 0; /* Spazio inferiore tra il titolo e il pulsante */
     color: white;
     text-align: left; /* Allinea il titolo a sinistra */
 }
@@ -134,12 +136,16 @@ nav ul li a:hover {
     border-radius: 15px;
     margin-top: 10px; /* Spazio tra il titolo e il pulsante */
     text-align: left; /* Allinea il pulsante a sinistra */
+    display: inline-block; /* Mantiene il pulsante dimensionato correttamente */
+    text-decoration: none; /* Rimuove la sottolineatura */
 }
 
 .cta-button:hover {
-    background-color: #00359a;
+    background-color: #00287a;
+    text-decoration: none; /* Assicura che non venga aggiunta neanche al passaggio del mouse */
 }
 
+/* Correzione del comportamento al passaggio del mouse */
 .viaggio:hover {
     transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
 }

@@ -28,29 +28,38 @@
     }
 
     // Funzione per mostrare i viaggi nella pagina
-    function mostraViaggi(viaggi) {
-        const container = document.getElementById('lista-viaggi');
-        container.innerHTML = ''; // Svuota il contenitore prima di inserire nuovi viaggi
+function mostraViaggi(viaggi) {
+    const container = document.getElementById('lista-viaggi');
+    container.innerHTML = ''; // Svuota il contenitore prima di inserire nuovi viaggi
 
-        if (viaggi.length === 0) {
-            container.innerHTML = '<p>Nessun viaggio disponibile per il continente selezionato.</p>';
-        } else {
-            viaggi.forEach(viaggio => {
-                const viaggioElement = `
-                    <div class="viaggio">
-                        
-                        <div class="viaggio-info">
-                            <h3>${viaggio.paese}</h3>
-                            <p>Partenza: ${viaggio.dataPartenza}</p>
-                            <p>Prezzo: €${viaggio.prezzo}</p>
-                            <button class="cta-button">Prenota</button>
-                        </div>
+    if (viaggi.length === 0) {
+        container.innerHTML = '<p>Nessun viaggio disponibile per il continente selezionato.</p>';
+    } else {
+        viaggi.forEach(viaggio => {
+            // Accedi correttamente ai dati del JSON
+            const paese = viaggio.paese.stato; // Ottieni il nome del paese
+            const dataPartenza = viaggio.data_Partenza; // Data di partenza
+            const dataArrivo = viaggio.data_Arrivo; // Data di arrivo
+            const prezzo = viaggio.prezzo;
+            const descrizione = viaggio.descrizione;
+
+            // Costruisci l'elemento HTML per ogni viaggio
+            const viaggioElement = `
+                <div class="viaggio">
+                    <div class="viaggio-info">
+                        <h3>Paese: ${paese}</h3>
+                        <p>Descrizione: ${descrizione}</p>
+                        <p>Arrivo: ${dataPartenza}</p>
+                        <p>Partenza: ${dataArrivo}</p>
+                        <p>Prezzo: €${prezzo}</p>
+                        <button class="cta-button">Prenota</button>
                     </div>
-                `;
-                container.innerHTML += viaggioElement;
-            });
-        }
+                </div>
+            `;
+            container.innerHTML += viaggioElement;
+        });
     }
+}
 
     // Chiamata iniziale per caricare i viaggi
     caricaViaggi();
