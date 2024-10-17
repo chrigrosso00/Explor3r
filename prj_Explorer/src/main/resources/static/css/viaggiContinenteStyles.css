@@ -1,0 +1,158 @@
+/* General Styles */
+html, body {
+    height: 100%; /* Assicura che il body occupi sempre tutta l'altezza della finestra */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Il body riempie l'intera altezza della finestra */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    flex: 1; /* Spinge il footer verso il basso */
+}
+
+/* Header */
+header {
+    background-color: #00359a; /* Colore leggermente più chiaro per l'header */
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Barra di navigazione */
+nav ul {
+    list-style: none;
+    margin: 10;
+    padding: 10;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 50px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; /* Rende il testo in grassetto */
+    transition: color 0.3s; /* Transizione per il colore */
+}
+
+nav ul li a:hover {
+    color: #c0a9af; /* Cambia colore al passaggio del mouse */
+}
+
+/* Login in alto a destra */
+.login {
+    margin-left: 50px; /* Sposta il login a destra */
+    display: flex;
+    align-items: center; /* Allinea verticalmente */
+}
+
+.login a {
+    color: white;
+    font-weight: bold; /* Rende il testo in grassetto */
+    text-decoration: none;
+    margin-right: 50px; /* Spazio tra i link */
+    display: flex;
+    align-items: center; /* Allinea verticalmente il testo e l'icona */
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+/* Icona utente */
+.login .icon {
+    margin-left: 15px; /* Spazio tra l'icona e il testo */
+    font-size: 20px; /* Dimensione dell'icona */
+}
+
+/* Esempio di stile per l'icona utente */
+.icon {
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome per le icone */
+    font-weight: 900; /* Peso per le icone solid */
+}
+
+/* sezione viaggi */
+/* Contenitore della lista dei viaggi */
+#lista-viaggi {
+    display: flex;
+    flex-wrap: wrap; /* Permette ai viaggi di andare su più righe */
+    gap: 20px; /* Spazio tra i viaggi */
+}
+
+/* Ogni viaggio occuperà un terzo della larghezza */
+.viaggio {
+    flex: 0 0 calc(33.33% - 20px); /* Larghezza del 33.33% meno lo spazio tra gli elementi */
+    box-sizing: border-box; /* Include padding e bordi nella larghezza */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* Spazio inferiore tra i viaggi */
+}
+
+.viaggio-info {
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.cta-button {
+    background-color: #00359a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 10px; /* Spazio tra il titolo e il pulsante */
+    text-align: left; /* Allinea il pulsante a sinistra */
+}
+
+.cta-button:hover {
+    background-color: #00359a;
+}
+
+.viaggio:hover {
+    transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
+}
+
+/* Per schermi più piccoli, riduci il numero di viaggi per riga */
+@media (max-width: 768px) {
+    .viaggio {
+        flex: 0 0 calc(50% - 20px); /* 2 per riga su tablet o schermi medi */
+    }
+}
+
+@media (max-width: 480px) {
+    .viaggio {
+        flex: 0 0 calc(100% - 20px); /* 1 per riga su schermi piccoli */
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Assicura che il footer sia spinto in fondo */
+}

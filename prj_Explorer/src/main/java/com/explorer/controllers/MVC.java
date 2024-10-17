@@ -25,5 +25,10 @@ public class MVC {
     public String login() {
 		return "login"; 
 	}
+	
+	@GetMapping("viaggiContinente")
+	public String viaggiContinente() {
+		return "viaggiContinente"; 
+	}
 }
 
