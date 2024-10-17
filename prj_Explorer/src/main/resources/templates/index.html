@@ -25,9 +25,13 @@
                 </ul>
             </nav>
             <div class="login">
-    			<a href="/login"><span class="icon"><i class="fas fa-user"></i></span>Accedi</a>
-    			<a href="/registrazione"><span class="icon"><i class="fas fa-user-plus"></i></span>Registrati</a>
-			</div>
+                <!-- Link di login/registrazione -->
+                <a href="/login" id="loginLink"><span class="icon"><i class="fas fa-user"></i></span>Accedi</a>
+                <a href="/registrazione" id="registerLink"><span class="icon"><i class="fas fa-user-plus"></i></span>Registrati</a>
+
+                <!-- Bottone di Logout che verrà mostrato solo se l'utente è loggato -->
+                <button id="logoutButton" style="display: none;">Logout</button>
+            </div>
         </div>
     </header>
 
@@ -65,41 +69,40 @@
     </section>
 
     <!-- Viaggi in partenza -->
-<section class="viaggi-in-partenza">
-    <div class="container">
-        <h2>Viaggi Prossimi in Partenza</h2>
-        <div class="viaggi-list">
-            <div class="viaggio">
-                <img src="img/barcellona.jpg" alt="Viaggio 1">
-                <div class="viaggio-info">
-                    <h3>Barcellona</h3>
-                    <p>Partenza: 15 Ottobre 2024</p>
-                    <p>Prezzo: €350</p>
-                    <button class="cta-button">Prenota</button>
+    <section class="viaggi-in-partenza">
+        <div class="container">
+            <h2>Viaggi Prossimi in Partenza</h2>
+            <div class="viaggi-list">
+                <div class="viaggio">
+                    <img src="img/barcellona.jpg" alt="Viaggio 1">
+                    <div class="viaggio-info">
+                        <h3>Barcellona</h3>
+                        <p>Partenza: 15 Ottobre 2024</p>
+                        <p>Prezzo: €350</p>
+                        <button class="cta-button">Prenota</button>
+                    </div>
                 </div>
-            </div>
-            <div class="viaggio">
-                <img src="img/londra.jpg" alt="Viaggio 2">
-                <div class="viaggio-info">
-                    <h3>Londra</h3>
-                    <p>Partenza: 20 Ottobre 2024</p>
-                    <p>Prezzo: €420</p>
-                    <button class="cta-button">Prenota</button>
+                <div class="viaggio">
+                    <img src="img/londra.jpg" alt="Viaggio 2">
+                    <div class="viaggio-info">
+                        <h3>Londra</h3>
+                        <p>Partenza: 20 Ottobre 2024</p>
+                        <p>Prezzo: €420</p>
+                        <button class="cta-button">Prenota</button>
+                    </div>
                 </div>
-            </div>
-            <div class="viaggio">
-                <img src="img/dubai.jpg" alt="Viaggio 3">
-                <div class="viaggio-info">
-                    <h3>Dubai</h3>
-                    <p>Partenza: 30 Ottobre 2024</p>
-                    <p>Prezzo: €780</p>
-                    <button class="cta-button">Prenota</button>
+                <div class="viaggio">
+                    <img src="img/dubai.jpg" alt="Viaggio 3">
+                    <div class="viaggio-info">
+                        <h3>Dubai</h3>
+                        <p>Partenza: 30 Ottobre 2024</p>
+                        <p>Prezzo: €780</p>
+                        <button class="cta-button">Prenota</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -113,6 +116,7 @@
         </div>
     </footer>
 
+    <!-- Importa il file JavaScript unificato -->
     <script src="js/scriptIndex.js"></script>
 </body>
 </html>
