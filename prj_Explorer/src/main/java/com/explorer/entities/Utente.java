@@ -7,6 +7,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ft_utente")
@@ -26,12 +28,24 @@ public class Utente {
     @JsonManagedReference("utente-prenotazione")
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
+    @NotNull
+    @Column(nullable = false)
     private String nome;
+    @NotNull
+    @Column(nullable = false)
     private String cognome;
     //private String email;
+    @NotNull
+    @Column(unique = true, nullable = false)
     private String username;
+    @NotNull
+    @Column(nullable = false)
     private String password;
+    @NotNull
+    @Column(nullable = false)
     private Date data_nascita;
+    @NotNull
+    @Column(unique = true, nullable = false)
     private long telefono;
    
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

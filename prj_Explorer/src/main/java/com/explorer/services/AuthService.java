@@ -15,6 +15,8 @@ import com.explorer.repos.UtenteDAO;
 import com.explorer.security.JwtTokenProvider;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.sql.Date;
 import java.util.Set;
 
 @Service
@@ -54,7 +56,11 @@ public class AuthService {
             Utente admin = new Utente();
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("adminpassword"));
-
+            admin.setCognome("min");
+            admin.setNome("ad");
+            Date date = Date.valueOf("1950-05-05");
+            admin.setData_nascita(date);
+            admin.setTelefono(0);
             UserAuthority authority = new UserAuthority();
             UserAuthorityId authorityId = new UserAuthorityId();
             authorityId.setUserId(admin.getId_utente());
