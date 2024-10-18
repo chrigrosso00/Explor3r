@@ -38,8 +38,19 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers("/", "/viaggi/**",
-						"/registrazione", "/index", "/api/**", "/css/**", "/js/**", "/img/**", "viaggiContinente/**", "api/add/**"
+				.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers(
+						"/", 
+						"/viaggi/**",
+						"/registrazione", 
+						"/index", 
+						"/api/**",
+						"/css/**", 
+						"/js/**", 
+						"/img/**",
+						"viaggiContinente/**", 
+						"api/add/**", 
+						"api/viaggi/**",
+						"viaggio/**"
 
 				).permitAll()
 						// .requestMatchers(HttpMethod.POST, "/api/ordini").permitAll()

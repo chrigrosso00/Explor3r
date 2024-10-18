@@ -30,5 +30,16 @@ public class MVC {
 	public String viaggiContinente() {
 		return "viaggiContinente"; 
 	}
+	
+	@GetMapping("viaggio")
+	public String viaggio() {
+		return "viaggio"; 
+	}
+	
+	@GetMapping("viaggio/{id}")
+	public String viaggioId() {
+		return "viaggio"; 
+	}
+	
 }
 

@@ -37,6 +37,7 @@ function mostraViaggi(viaggi) {
     } else {
         viaggi.forEach(viaggio => {
             // Accedi correttamente ai dati del JSON
+            const id_viaggio = viaggio.id_viaggio;
             const paese = viaggio.paese.stato; // Ottieni il nome del paese
             const dataPartenza = viaggio.data_Partenza; // Data di partenza
             const dataArrivo = viaggio.data_Arrivo; // Data di arrivo
@@ -49,10 +50,10 @@ function mostraViaggi(viaggi) {
                     <div class="viaggio-info">
                         <h3>Paese: ${paese}</h3>
                         <p>Descrizione: ${descrizione}</p>
-                        <p>Arrivo: ${dataPartenza}</p>
-                        <p>Partenza: ${dataArrivo}</p>
+                        <p>Arrivo: ${dataArrivo}</p>
+                        <p>Partenza: ${dataPartenza}</p>
                         <p>Prezzo: €${prezzo}</p>
-                        <button class="cta-button">Prenota</button>
+                        <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
                     </div>
                 </div>
             `;
@@ -61,5 +62,10 @@ function mostraViaggi(viaggi) {
     }
 }
 
-    // Chiamata iniziale per caricare i viaggi
-    caricaViaggi();
+// Funzione che apre la pagina del viaggio specifico con l'ID passato
+function apriPaginaViaggio(id_viaggio) {
+    window.location.href = `viaggio?id=${id_viaggio}`; // Reindirizza alla pagina con il parametro ID
+}
+
+// Chiamata iniziale per caricare i viaggi
+caricaViaggi();
