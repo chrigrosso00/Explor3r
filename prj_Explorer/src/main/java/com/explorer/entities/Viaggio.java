@@ -41,7 +41,7 @@ public class Viaggio {
     private LocalDate data_Arrivo;
     private String descrizione;
     private String itinerario;
-    private String difficolta;
+    private String tipologia;
     
     public int getId_viaggio() {
 		return id_viaggio;
@@ -98,10 +98,10 @@ public class Viaggio {
 	public void setItinerario(String itinerario) {
 		this.itinerario = itinerario;
 	}
-	public String getDifficolta() {
-		return difficolta;
+	public String getTipologia() {
+		return tipologia;
 	}
-	public void setDifficolta(String difficolta) {
-		this.difficolta = difficolta;
+	public void setTipologia(String tipologia) {
+		this.tipologia = tipologia;
 	}
 }

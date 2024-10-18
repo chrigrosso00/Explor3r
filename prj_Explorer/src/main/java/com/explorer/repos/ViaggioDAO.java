@@ -15,6 +15,6 @@ public interface ViaggioDAO extends JpaRepository<Viaggio, Integer> {
 	@Query("SELECT v FROM Viaggio v WHERE v.paese.stato = :stato")
     List<Viaggio> findByStato(String stato);
 	
-	List<Viaggio> findByDifficolta(String difficolta);
+	List<Viaggio> findByTipologia(String tipologia);
 }
 

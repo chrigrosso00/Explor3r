@@ -83,9 +83,9 @@ public class ViaggioREST {
     }
 
     // Filtro per trovare i viaggi in base alla difficoltà
-    @GetMapping("viaggi/difficolta")
-    public ResponseEntity<List<Viaggio>> getViaggiByDifficolta(@RequestParam String difficolta) {
-        List<Viaggio> viaggi = viaggioServices.getViaggiBydifficolta(difficolta);
+    @GetMapping("viaggi/tipologia")
+    public ResponseEntity<List<Viaggio>> getViaggiByTipologia(@RequestParam String tipologia) {
+        List<Viaggio> viaggi = viaggioServices.getViaggiByTipologia(tipologia);
 
         if (viaggi.isEmpty()) {
             return ResponseEntity.noContent().build(); // 204 se non ci sono viaggi

@@ -68,7 +68,7 @@ public class ViaggioServicesImpl implements ViaggioServices {
     }
 
     @Override
-    public List<Viaggio> getViaggiBydifficolta(String difficolta) {
-        return dao.findByDifficolta(difficolta);
+    public List<Viaggio> getViaggiByTipologia(String tipologia) {
+        return dao.findByTipologia(tipologia);
     }
 }
