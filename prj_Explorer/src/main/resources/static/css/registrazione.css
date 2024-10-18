@@ -1,91 +1,105 @@
 /* Stile base per il body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif; /* Font principale del body */
+    position: relative;
+    height: 100vh;
     margin: 0;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
 }
 
-/* Stile per l'intestazione */
+body::before {
+    content: '';
+    background: url('/img/trip.jpg') no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px);
+    z-index: 1;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo più chiaro */
+    padding: 20px; /* Ridotto il padding */
+    border-radius: 10px; /* Maggiore raggio per gli angoli */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    text-align: center; /* Centra il testo all'interno del box */
+    width: 600px; /* Aumentato per maggiore larghezza */
+    position: relative;
+    z-index: 2;
+}
+
 h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive; /* Font applicato solo all'h1 */
+    font-size: 36px; /* Dimensione del font aumentata */
+    margin-bottom: 10px;
+    color: #00359a;
 }
 
-/* Stile per il modulo */
-#utenteForm {
-    max-width: 400px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+h2 {
+    font-size: 16px; /* Dimensione del sottotitolo ridotta */
+    margin-bottom: 10px; /* Margine ridotto */
+    color: #666;
 }
 
-#utenteForm:hover {
-    transform: scale(1.02);
-}
-
-
-/* Stile per le etichette */
 label {
     display: block;
-    margin-bottom: 8px;
-    color: #555;
+    margin-bottom: 3px; /* Margine ridotto */
     font-weight: bold;
-}
-
-/* Stile per i campi di input */
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
+    color: #333;
+    text-align: center; /* Centra le label */
 }
 
 /* Stile per i campi di input */
 input[type="text"],
 input[type="password"],
 input[type="date"],
-input[type="tel"], 
-input[type="email"] {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+input[type="tel"] {
+    width: 90%; /* Larghezza del 90% per centrare all'interno del box */
+    padding: 8px; /* Ridotto il padding */
+    margin: 0 auto 8px; /* Margine auto per centrare */
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    font-size: 12px; /* Dimensione del font ridotta */
+    background-color: #f0f8ff;
+    color: #333;
+    display: block; /* Assicura che il campo di input sia un blocco */
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
-input[type="tel"]:focus, 
-input[type="email"]:focus  {
-    border-color: #5cb85c;
+input[type="tel"]:focus,
+input[type="email"]:focus {
+    border-color: #0056b3; /* Blu scuro al focus */
     outline: none;
 }
 
 /* Stile per il pulsante */
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5cb85c;
-    color: white;
+    width: 45%; /* Larghezza del 45% per i bottoni */
+    padding: 8px; /* Ridotto il padding */
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Dimensione del font mantenuta */
+    transition: background-color 0.3s;
+    margin: 0 2%; /* Margine orizzontale per separare i bottoni */
+}
+
+button[type="submit"] {
+    background-color: #00359a;
+    color: white;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    opacity: 0.8;
 }
 
 /* Stile per i messaggi di errore */
