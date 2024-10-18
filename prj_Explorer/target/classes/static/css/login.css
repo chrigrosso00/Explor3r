@@ -1,4 +1,5 @@
-/* Stile base per il body */
+/* login.css */
+
 body {
     font-family: Arial, sans-serif; /* Font principale del body */
     position: relative;
@@ -25,12 +26,12 @@ body::before {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo più chiaro */
-    padding: 20px; /* Ridotto il padding */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 50px; /* Maggiore padding per un box più grande */
     border-radius: 10px; /* Maggiore raggio per gli angoli */
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     text-align: center; /* Centra il testo all'interno del box */
-    width: 600px; /* Aumentato per maggiore larghezza */
+    width: 450px; /* Aumenta la larghezza del box */
     position: relative;
     z-index: 2;
 }
@@ -43,52 +44,39 @@ h1 {
 }
 
 h2 {
-    font-size: 16px; /* Dimensione del sottotitolo ridotta */
-    margin-bottom: 10px; /* Margine ridotto */
+    font-size: 22px; /* Dimensione del sottotitolo aumentata */
+    margin-bottom: 20px;
     color: #666;
 }
 
 label {
     display: block;
-    margin-bottom: 3px; /* Margine ridotto */
+    margin-bottom: 5px;
     font-weight: bold;
     color: #333;
     text-align: center; /* Centra le label */
 }
 
-/* Stile per i campi di input */
 input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="tel"] {
+input[type="password"] {
     width: 90%; /* Larghezza del 90% per centrare all'interno del box */
-    padding: 8px; /* Ridotto il padding */
-    margin: 0 auto 8px; /* Margine auto per centrare */
+    padding: 12px;
+    margin: 0 auto 15px; /* Margine auto per centrare */
     border: 1px solid #007bff;
     border-radius: 4px;
-    font-size: 12px; /* Dimensione del font ridotta */
+    font-size: 16px;
     background-color: #f0f8ff;
     color: #333;
     display: block; /* Assicura che il campo di input sia un blocco */
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-input[type="tel"]:focus,
-input[type="email"]:focus {
-    border-color: #0056b3; /* Blu scuro al focus */
-    outline: none;
-}
-
-/* Stile per il pulsante */
 button {
     width: 45%; /* Larghezza del 45% per i bottoni */
-    padding: 8px; /* Ridotto il padding */
+    padding: 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px; /* Dimensione del font mantenuta */
+    font-size: 16px;
     transition: background-color 0.3s;
     margin: 0 2%; /* Margine orizzontale per separare i bottoni */
 }
@@ -98,14 +86,17 @@ button[type="submit"] {
     color: white;
 }
 
+button[type="reset"] {
+    background-color: #dc3545;
+    color: white;
+}
+
 button:hover {
     opacity: 0.8;
 }
 
-/* Stile per i messaggi di errore */
-.error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: -10px;
-    margin-bottom: 10px;
+#logoutButton {
+    margin-top: 15px;
+    background-color: #dc3545;
+    color: white;
 }
