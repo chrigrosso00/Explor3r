@@ -1,70 +1,66 @@
 package com.explorer.services;
 
-import com.explorer.entities.UserAuthority;
-import com.explorer.entities.UserAuthorityId;
-import com.explorer.entities.Utente;
-import com.explorer.repos.UserAuthorityDAO;
-import com.explorer.repos.UtenteDAO;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.explorer.entities.Utente;
+import com.explorer.repos.UtenteDAO;
 
 @Service
 public class UtenteServicesImpl implements UtenteServices {
+
     @Autowired
-    private UtenteDAO dao;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    
-    @Autowired
-    private UserAuthorityDAO userAuthorityDAO;
+    private UtenteDAO utenteDAO; // Iniezione del DAO
 
     @Override
     public List<Utente> findAll() {
-        return dao.findAll();
+        return utenteDAO.findAll();
     }
+
     @Override
     public Utente findById(int id) {
-        return dao.findById((long) id).orElse(null);
+        // Converti l'id in Long prima di passarlo al DAO
+        return utenteDAO.findById((long) id).orElse(null); // Gestisci il caso in cui non esista
     }
+
     @Override
     public Utente addUtente(Utente utente) {
-    	utente.setPassword(passwordEncoder.encode(utente.getPassword()));
-    	Utente savedUtente = dao.save(utente);
-
-    	UserAuthority userAuthority = new UserAuthority();
-        UserAuthorityId userAuthorityId = new UserAuthorityId();
-        userAuthorityId.setUserId(savedUtente.getId_utente());
-        userAuthority.setId(userAuthorityId);
-        userAuthority.setUser(savedUtente);
-        userAuthority.setAuthority("ROLE_USER");
-
-        userAuthorityDAO.save(userAuthority);
-
-        return savedUtente;
+        return utenteDAO.save(utente);
     }
+
     @Override
     public void deleteUtente(int id) {
-        dao.deleteById((long) id);
+        utenteDAO.deleteById((long) id); // Converti l'id in Long
     }
+
     @Override
-    public Utente updateCredenziali(int id, Utente user) {
-        return dao.findById((long) id).map(utente -> {
-            utente.setUsername(user.getUsername());
-            utente.setPassword(user.getPassword());
-            return dao.save(utente);
-        }).orElse(null);
+    public Utente updateCredenziali(int id, Utente utente) {
+        // Prima cerca l'utente esistente
+        Utente utenteEsistente = utenteDAO.findById((long) id).orElse(null);
+        if (utenteEsistente != null) {
+            // Aggiorna le credenziali
+            utenteEsistente.setNome(utente.getNome());
+            utenteEsistente.setCognome(utente.getCognome());
+            // Aggiungi qui altre proprietà che desideri aggiornare
+            return utenteDAO.save(utenteEsistente); // Salva l'utente aggiornato
+        }
+        return null; // Restituisce null se l'utente non esiste
     }
+
     @Override
     public List<Utente> findByNome(String nome) {
-        return dao.findByNome(nome);
+        return utenteDAO.findByNome(nome);
     }
+
     @Override
     public List<Utente> findByNomeCognome(String nome, String cognome) {
-        return dao.findByNomeAndCognome(nome, cognome);
+        return utenteDAO.findByNomeAndCognome(nome, cognome);
+    }
+
+    @Override
+    public Utente findByUsername(String username) {
+        return utenteDAO.findByUsername(username).orElse(null); // Gestisci il caso in cui non esista
     }
 }

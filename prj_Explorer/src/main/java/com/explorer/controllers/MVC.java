@@ -41,5 +41,10 @@ public class MVC {
 		return "viaggio"; 
 	}
 	
+	@GetMapping("crea-viaggio")
+    public String creaViaggio() {
+        return "crea-viaggio"; // Serves crea-viaggio.html
+    }
+	
 }
 

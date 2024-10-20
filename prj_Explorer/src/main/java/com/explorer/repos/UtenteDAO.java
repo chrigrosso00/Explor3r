@@ -19,4 +19,5 @@ public interface UtenteDAO extends JpaRepository<Utente,Long> {
 	List<Utente> findByNomeAndCognome(@Param("nome") String nome, @Param("cognome") String cognome);
 	
 	Optional<Utente> findByUsername(String username);
+	
 }

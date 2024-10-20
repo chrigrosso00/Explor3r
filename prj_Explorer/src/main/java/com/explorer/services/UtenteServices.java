@@ -12,6 +12,7 @@ public interface UtenteServices {
 	Utente updateCredenziali(int id, Utente utente);
 	List<Utente> findByNome(String nome);
 	List<Utente> findByNomeCognome(String nome, String cognome);
+	Utente findByUsername(String username); // Definisci il metodo qui
 	
 }
 

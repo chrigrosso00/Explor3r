@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.explorer.entities.Paese;
+import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
+import com.explorer.security.UserPrincipal;
 import com.explorer.services.PaeseServices;
+import com.explorer.services.UtenteServices;
 import com.explorer.services.ViaggioServices;
 
 @RestController
@@ -26,6 +31,9 @@ public class ViaggioREST {
     
     @Autowired
     private PaeseServices paeseServices;
+    
+    @Autowired
+    private UtenteServices utenteServices;
 
     // Trova tutti i viaggi
     @GetMapping("viaggi")
@@ -98,11 +106,27 @@ public class ViaggioREST {
     @PostMapping("viaggi")
     public ResponseEntity<Viaggio> addNewViaggio(@RequestBody Viaggio nuovoViaggio) {
         try {
-            // Usare il metodo createViaggio del servizio
-            Viaggio salvaViaggio = viaggioServices.createViaggio(nuovoViaggio);
-            return ResponseEntity.status(201).body(salvaViaggio);
+            // 1. Recupera l'utente autenticato
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+
+            // 2. Trova l'utente dal database (presuppone che ci sia un metodo per cercare l'utente per username)
+            Utente utente = utenteServices.findByUsername(username);
+
+            if (utente != null) {
+                // 3. Assegna l'utente al viaggio
+                nuovoViaggio.setUtente(utente);
+
+                // 4. Salva il viaggio con l'utente assegnato
+                Viaggio salvaViaggio = viaggioServices.createViaggio(nuovoViaggio);
+                return ResponseEntity.status(201).body(salvaViaggio);
+            } else {
+                return ResponseEntity.badRequest().body(null); // Restituisce 400 se l'utente non è trovato
+            }
+
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build(); // Gestire eventuali errori
+            return ResponseEntity.badRequest().build(); // Gestisce eventuali errori
         }
     }
-}
+
+    }
