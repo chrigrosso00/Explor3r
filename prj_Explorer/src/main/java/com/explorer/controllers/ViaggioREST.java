@@ -1,8 +1,10 @@
 package com.explorer.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.explorer.entities.Paese;
+import com.explorer.entities.Preferiti;
+import com.explorer.entities.Prenotazione;
+import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
 import com.explorer.services.PaeseServices;
+import com.explorer.services.PrenotazioneServices;
+import com.explorer.services.UtenteServices;
+import com.explorer.services.UtenteServicesImpl;
 import com.explorer.services.ViaggioServices;
 
 @RestController
@@ -26,6 +34,12 @@ public class ViaggioREST {
     
     @Autowired
     private PaeseServices paeseServices;
+    
+    @Autowired
+    private UtenteServices utenteService;
+    
+    @Autowired
+    private PrenotazioneServices prenoServices;
 
     // Trova tutti i viaggi
     @GetMapping("viaggi")
@@ -104,5 +118,22 @@ public class ViaggioREST {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build(); // Gestire eventuali errori
         }
+    }
+    
+    @GetMapping("viaggi/partecipanti/{idViaggio}")
+    public ResponseEntity<List<Utente>> getPartecipanti(@RequestParam int idViaggio) {
+    	if(viaggioServices.findById(idViaggio) == null) {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    	}
+    	List<Prenotazione> prenotazioni = prenoServices.findAll();
+    	List<Utente> Utenti = new ArrayList<>();
+    	for (Prenotazione prenotazione : prenotazioni) {
+			if(prenotazione.getViaggio().getId_viaggio() == idViaggio) {
+				Utenti.add(prenotazione.getUtente());
+			}
+		}
+    	
+    	
+    	return ResponseEntity.ok(Utenti);
     }
 }
