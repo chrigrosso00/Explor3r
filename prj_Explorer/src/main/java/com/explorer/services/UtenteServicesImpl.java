@@ -3,6 +3,7 @@ package com.explorer.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.explorer.entities.Utente;
@@ -14,6 +15,9 @@ public class UtenteServicesImpl implements UtenteServices {
     @Autowired
     private UtenteDAO utenteDAO; // Iniezione del DAO
 
+    @Autowired
+    private PasswordEncoder passwordEncoder; // Iniezione del PasswordEncoder
+
     @Override
     public List<Utente> findAll() {
         return utenteDAO.findAll();
@@ -21,12 +25,15 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Override
     public Utente findById(int id) {
-        // Converti l'id in Long prima di passarlo al DAO
         return utenteDAO.findById((long) id).orElse(null); // Gestisci il caso in cui non esista
     }
 
     @Override
     public Utente addUtente(Utente utente) {
+        // Cripta la password prima di salvare l'utente
+        String encodedPassword = passwordEncoder.encode(utente.getPassword());
+        utente.setPassword(encodedPassword); // Imposta la password criptata
+
         return utenteDAO.save(utente);
     }
 
@@ -43,7 +50,11 @@ public class UtenteServicesImpl implements UtenteServices {
             // Aggiorna le credenziali
             utenteEsistente.setNome(utente.getNome());
             utenteEsistente.setCognome(utente.getCognome());
-            // Aggiungi qui altre proprietà che desideri aggiornare
+            // Se è stata fornita una nuova password, criptala e impostala
+            if (utente.getPassword() != null && !utente.getPassword().isEmpty()) {
+                String encodedPassword = passwordEncoder.encode(utente.getPassword());
+                utenteEsistente.setPassword(encodedPassword);
+            }
             return utenteDAO.save(utenteEsistente); // Salva l'utente aggiornato
         }
         return null; // Restituisce null se l'utente non esiste
