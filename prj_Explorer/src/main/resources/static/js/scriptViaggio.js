@@ -28,17 +28,25 @@
 
         // Funzione per mostrare i dettagli del viaggio nella pagina
         function mostraDettagliViaggio(viaggio) {
-            const container = document.getElementById('dettagli-viaggio');
-            container.innerHTML = `
-                <h2>Paese: ${viaggio.paese.stato}</h2>
-                <p>Descrizione: ${viaggio.descrizione}</p>
-                <p>Arrivo: ${viaggio.data_Arrivo}</p>
-                <p>Partenza: ${viaggio.data_Partenza}</p>
-                <p>Prezzo: €${viaggio.prezzo}</p>
-                <p>Itinerario: ${viaggio.itinerario}</p>
-                <p>Difficoltà: ${viaggio.difficolta}</p>
-            `;
-        }
+    // Aggiorna l'immagine del viaggio
+    const imgSection = document.getElementById('immagine-viaggio');
+    imgSection.style.backgroundImage = `url('img/${viaggio.paese.stato}.jpg')`;
+
+    // Aggiorna il nome del paese
+    const nomePaese = document.getElementById('nome-paese');
+    nomePaese.textContent = `Viaggio in ${viaggio.paese.stato}`;
+
+    // Aggiorna la data di partenza, arrivo e prezzo
+    document.getElementById('data-partenza').textContent = viaggio.data_Partenza;
+    document.getElementById('data-arrivo').textContent = viaggio.data_Arrivo;
+    document.getElementById('prezzo').textContent = viaggio.prezzo;
+
+    // Aggiorna la descrizione, itinerario e difficoltà
+    document.getElementById('descrizione').textContent = viaggio.descrizione;
+    document.getElementById('itinerario').textContent = viaggio.itinerario;
+    document.getElementById('difficolta').textContent = viaggio.difficolta;
+}
+
 
         // Chiamata iniziale per caricare i dettagli del viaggio
         caricaDettagliViaggio();

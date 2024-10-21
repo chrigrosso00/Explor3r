@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Viaggi per Continente</title>
-    <link rel="stylesheet" href="/css/viaggiContinenteStyles.css">
+    <title>Dettagli Viaggio</title>
+    <link rel="stylesheet" href="/css/viaggioStyles.css">
 </head>
 <body>
 
@@ -29,12 +29,34 @@
             </div>
         </div>
     </header>
-    
-    <section id="dettagli-viaggio">
-        <!-- I dettagli del viaggio saranno caricati dinamicamente qui -->
+
+    <!-- Sezione Immagine e Paese -->
+    <section id="top-section">
+        <div id="immagine-viaggio"></div>
+        <div id="paese-viaggio">
+            <h2 id="nome-paese">Paese da Visitare</h2>
+        </div>
     </section>
-    
-    
+
+    <!-- Sezione Dettagli -->
+    <section id="dettagli-viaggio">
+        <div class="container">
+            <!-- Data Partenza, Arrivo e Prezzo -->
+            <div class="data-prezzo">
+                <p><span>Partenza:</span> <span id="data-partenza"></span></p>
+                <p><span>Arrivo:</span> <span id="data-arrivo"></span></p>
+                <p><span>Prezzo:</span> €<span id="prezzo"></span></p>
+            </div>
+            
+            <!-- Descrizione, Itinerario e Difficoltà -->
+            <div class="descrizione-itinerario">
+                <p><span>Descrizione:</span> <span id="descrizione"></span></p>
+                <p><span>Itinerario:</span> <span id="itinerario"></span></p>
+                <p><span>Difficoltà:</span> <span id="difficolta"></span></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -46,6 +68,6 @@
             </div>
         </div>
     </footer>
-    <script src="js/scriptViaggio.js" ></script>
+    <script src="js/scriptViaggio.js"></script>
 </body>
 </html>
