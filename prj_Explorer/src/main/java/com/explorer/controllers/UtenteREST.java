@@ -99,6 +99,16 @@ public class UtenteREST {
    	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
    	    }
    	}
+    
+    @GetMapping("/utente/nominativo/{username}")
+   	public ResponseEntity<Utente> getUtenteByUsername(@PathVariable String username) {
+   	    Utente utente = uService.findByUsername(username);
+   	    if (utente != null) {
+   	        return ResponseEntity.ok(utente);
+   	    } else {
+   	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+   	    }
+   	}
 }
 
 	

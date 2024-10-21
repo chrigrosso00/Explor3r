@@ -46,5 +46,9 @@ public class MVC {
         return "crea-viaggio"; // Serves crea-viaggio.html
     }
 	
+	@GetMapping("profilo")
+    public String profilo() {
+        return "profilo";
+    }	
 }
 

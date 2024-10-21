@@ -26,7 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(data => {
         if (data.token) {
             document.cookie = `token=${data.token}; path=/`;
-            window.location.href = '/';
+            window.location.href = '/profilo';
         }
     })
     .catch(error => {
