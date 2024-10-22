@@ -26,9 +26,8 @@ function caricaDettagliViaggio() {
         });
 }
 
-<<<<<<< Updated upstream
-        // Funzione per mostrare i dettagli del viaggio nella pagina
-        function mostraDettagliViaggio(viaggio) {
+// Funzione per mostrare i dettagli del viaggio nella pagina
+function mostraDettagliViaggio(viaggio) {
     // Aggiorna l'immagine del viaggio
     const imgSection = document.getElementById('immagine-viaggio');
     imgSection.style.backgroundImage = `url('img/${viaggio.paese.stato}.jpg')`;
@@ -47,22 +46,6 @@ function caricaDettagliViaggio() {
     document.getElementById('itinerario').textContent = viaggio.itinerario;
     document.getElementById('tipologia').textContent = viaggio.tipologia;
 }
-
-=======
-// Funzione per mostrare i dettagli del viaggio nella pagina
-function mostraDettagliViaggio(viaggio) {
-    const container = document.getElementById('dettagli-viaggio');
-    container.innerHTML = `
-        <h2>Paese: ${viaggio.paese.stato}</h2>
-        <p>Descrizione: ${viaggio.descrizione}</p>
-        <p>Arrivo: ${viaggio.data_Arrivo}</p>
-        <p>Partenza: ${viaggio.data_Partenza}</p>
-        <p>Prezzo: €${viaggio.prezzo}</p>
-        <p>Itinerario: ${viaggio.itinerario}</p>
-        <p>Difficoltà: ${viaggio.difficolta}</p>
-    `;
-}
->>>>>>> Stashed changes
 
 // Funzione per verificare se il token JWT è presente nei cookie
 function checkLoginStatus() {
