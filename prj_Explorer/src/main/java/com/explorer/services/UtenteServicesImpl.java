@@ -31,7 +31,7 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Override
     public Utente findById(int id) {
-        return utenteDAO.findById((long) id).orElse(null); // Gestisci il caso in cui non esista
+        return utenteDAO.findById(id).orElse(null); // Gestisci il caso in cui non esista
     }
 
     @Override
@@ -55,13 +55,13 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Override
     public void deleteUtente(int id) {
-        utenteDAO.deleteById((long) id); // Converti l'id in Long
+        utenteDAO.deleteById(id); // Converti l'id in Long
     }
 
     @Override
     public Utente updateCredenziali(int id, Utente utente) {
         // Prima cerca l'utente esistente
-        Utente utenteEsistente = utenteDAO.findById((long) id).orElse(null);
+        Utente utenteEsistente = utenteDAO.findById(id).orElse(null);
         if (utenteEsistente != null) {
             // Aggiorna le credenziali
             utenteEsistente.setNome(utente.getNome());

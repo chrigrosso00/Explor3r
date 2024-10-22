@@ -35,7 +35,7 @@ public class PrenotazioneREST {
 	@GetMapping("prenotazioni/utente/{utenteId}")
 	public ResponseEntity<List<Prenotazione>> getPrenotazioneByUtente(@PathVariable int utenteId) {
 		Utente utente = new Utente();
-	    utente.setId_utente((long) utenteId);
+	    utente.setId_utente(utenteId);
 		List<Prenotazione> prenotazioni = pService.findByUtente(utente);
 	    if (prenotazioni != null && !prenotazioni.isEmpty()) {
 	        return ResponseEntity.ok(prenotazioni);
@@ -79,7 +79,7 @@ public class PrenotazioneREST {
 	@GetMapping("prenotazione/utente/totale/{utenteId}")
 	public ResponseEntity<Integer> getTotalePrenotazioniByUtente(@PathVariable int utenteId) {
 		Utente utente = new Utente();
-	    utente.setId_utente((long) utenteId);
+	    utente.setId_utente(utenteId);
 	    int quantita = pService.countByUtente(utente);
         if (quantita >= 0) {
             return ResponseEntity.ok(quantita);

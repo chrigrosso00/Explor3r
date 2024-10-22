@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotNull;
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_utente;
+    private int id_utente;
     
     @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
     @JsonManagedReference("utente-prenotazione")
@@ -58,10 +58,10 @@ public class Utente {
 	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
-	public Long getId_utente() {
+	public int getId_utente() {
 		return id_utente;
 	}
-	public void setId_utente(Long id_utente) {
+	public void setId_utente(int id_utente) {
 		this.id_utente = id_utente;
 	}
 	public String getNome() {
