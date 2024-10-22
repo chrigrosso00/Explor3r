@@ -1,19 +1,31 @@
 .container {
-    display: flex;
-}
-.left, .right {
-    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-.left {
-    background-color: #f0f0f0;
-}
-.right {
-    background-color: #e0e0e0;
 }
 
-.prenotation, .travel {
-    margin-top: 10px;
+.left {
+    background-color: #f0f0f0;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.right {
+    background-color: #e0e0e0;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.prenotation {
+    background-color: #d0d0d0;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.travel {
+    background-color: #c0c0c0;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 }

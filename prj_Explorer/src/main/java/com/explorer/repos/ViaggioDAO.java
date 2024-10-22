@@ -20,5 +20,6 @@ public interface ViaggioDAO extends JpaRepository<Viaggio, Integer> {
 	
 	@Query("SELECT v FROM Viaggio v WHERE v.paese.stato = :stato AND v.data_Partenza = :dataPartenza")
 	List<Viaggio> findByStatoAndDataPartenza(String stato, LocalDate dataPartenza);
+	
 }
 
