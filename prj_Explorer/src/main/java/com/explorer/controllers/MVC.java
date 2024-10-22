@@ -49,6 +49,12 @@ public class MVC {
 	@GetMapping("profilo")
     public String profilo() {
         return "profilo";
+    }
+	
+	@GetMapping("risultati")
+    public String risultati() {
+        return "risultati";
     }	
+	
 }
 

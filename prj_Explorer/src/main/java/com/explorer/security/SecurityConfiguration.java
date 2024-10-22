@@ -51,7 +51,8 @@ public class SecurityConfiguration {
 						"api/add/**", 
 						"api/viaggi/**",
 						"viaggio/**",
-						"/profilo"
+						"/profilo",
+						"/risultati"
 				).permitAll()
 						// .requestMatchers(HttpMethod.POST, "/api/ordini").permitAll()
 						// .requestMatchers(HttpMethod.GET, "/api/ordini").hasAnyRole("ADMIN","USER")

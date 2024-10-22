@@ -1,5 +1,6 @@
 package com.explorer.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.explorer.entities.Viaggio;
@@ -18,4 +19,6 @@ public interface ViaggioServices {
 	public List<Viaggio> getViaggiByTipologia(String tipologia);
 
 	Viaggio createViaggio(Viaggio nuovoViaggio);
+	
+	public List<Viaggio> getViaggioByStatoAndDataPartenza(String stato, LocalDate datPartenza);
 }

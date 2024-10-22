@@ -50,8 +50,8 @@ function mostraViaggi(viaggi) {
                     <div class="viaggio-info">
                         <h3>Paese: ${paese}</h3>
                         <p>Descrizione: ${descrizione}</p>
-                        <p>Arrivo: ${dataArrivo}</p>
                         <p>Partenza: ${dataPartenza}</p>
+                        <p>Arrivo: ${dataArrivo}</p>              
                         <p>Prezzo: €${prezzo}</p>
                         <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
                     </div>

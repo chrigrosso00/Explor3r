@@ -61,6 +61,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Funzione per reindirizzare l'utente alla pagina dei risultati con i parametri di ricerca
+function cercaViaggi() {
+    const destinazione = document.getElementById('destinazione').value;
+    const checkInDate = document.getElementById('checkInDate').value;
+
+    // Controlla se è stata inserita la destinazione
+    if (!destinazione) {
+        alert('Per favore inserisci una destinazione.');
+        return;
+    }
+
+    // Costruisci l'URL con i parametri per la pagina dei risultati
+    let url = `risultati?stato=${encodeURIComponent(destinazione)}`;
+    
+    if (checkInDate) {
+        url += `&dataPartenza=${checkInDate}`;
+    }
+
+    // Reindirizza alla pagina dei risultati
+    window.location.href = url;
+}
+
+// Event listener per il pulsante "Cerca"
+document.getElementById('cercaButton').addEventListener('click', function(event) {
+    event.preventDefault();  // Previene il submit del form standard
+    cercaViaggi();  // Chiama la funzione di ricerca
+});
+
 // Funzione per la gestione dello slideshow
 let slideIndex = 0;
 showSlides();

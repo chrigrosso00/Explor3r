@@ -1,9 +1,11 @@
 package com.explorer.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,7 +81,7 @@ public class ViaggioREST {
 
     // Ricerca i viaggi in base al nome dello stato
     @GetMapping("viaggi/search")
-    public ResponseEntity<List<Viaggio>> getViaggiByStato(@RequestParam String stato) {
+    public ResponseEntity<List<Viaggio>> getViaggiByStato(@RequestParam String stato, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPartenza) {
         List<Paese> paesi = paeseServices.findAllPaesi();
         
         boolean statoTrovato = paesi.stream().anyMatch(paese -> paese.getStato().equalsIgnoreCase(stato));
@@ -87,7 +89,16 @@ public class ViaggioREST {
         if (!statoTrovato) {
             return ResponseEntity.notFound().build();
         } else {
-            List<Viaggio> viaggi = viaggioServices.getViaggioByStato(stato);
+            List<Viaggio> viaggi;
+            
+            if (dataPartenza != null) {
+                // Se è presente la data di partenza, filtriamo per stato e data di partenza
+                viaggi = viaggioServices.getViaggioByStatoAndDataPartenza(stato, dataPartenza);
+            } else {
+                // Altrimenti filtriamo solo per stato
+                viaggi = viaggioServices.getViaggioByStato(stato);
+            }
+
             if (!viaggi.isEmpty()) {
                 return ResponseEntity.ok(viaggi); // restituisce 200 e la lista di tutti i viaggi
             } else {

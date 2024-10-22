@@ -1,5 +1,6 @@
 package com.explorer.repos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,5 +17,8 @@ public interface ViaggioDAO extends JpaRepository<Viaggio, Integer> {
     List<Viaggio> findByStato(String stato);
 	
 	List<Viaggio> findByTipologia(String tipologia);
+	
+	@Query("SELECT v FROM Viaggio v WHERE v.paese.stato = :stato AND v.data_Partenza = :dataPartenza")
+	List<Viaggio> findByStatoAndDataPartenza(String stato, LocalDate dataPartenza);
 }
 

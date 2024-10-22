@@ -85,7 +85,7 @@ nav ul li a:hover {
     font-size: 20px;
 }
 
-/* Sezione Immagine e Paese */
+
 /* Sezione Immagine e Paese */
 #top-section {
     display: flex;
@@ -118,6 +118,7 @@ nav ul li a:hover {
 }
 
 /* Sezione Dettagli Viaggio */
+/* Sezione Dettagli Viaggio */
 #dettagli-viaggio {
     background-color: white;
     padding: 40px;
@@ -126,17 +127,57 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.data-prezzo, .descrizione-itinerario {
-    margin-bottom: 20px;
+/* Contenitore per data di partenza, arrivo e prezzo */
+#data-prezzo-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px; /* Spazio inferiore tra il contenitore e gli altri elementi */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.data-prezzo p, .descrizione-itinerario p {
+/* Allineamento su una sola riga per Partenza, Arrivo e Prezzo */
+.data-prezzo {
+    display: flex;
+    justify-content: space-between; /* Spazio tra gli elementi */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+}
+
+.data-prezzo p {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    flex: 1; /* Consente agli elementi di adattarsi allo spazio disponibile */
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.data-prezzo p:nth-child(2) {
+    text-align: center; /* Centra il testo per il secondo elemento (Arrivo) */
+}
+
+.data-prezzo p:last-child {
+    text-align: right; /* Allinea il prezzo a destra */
+}
+
+/* Sezione descrizione, itinerario e difficoltà */
+.descrizione-itinerario {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.descrizione-itinerario p {
     font-size: 18px;
     color: #333;
     margin-bottom: 10px;
 }
 
-.data-prezzo p span, .descrizione-itinerario p span {
+.descrizione-itinerario p span {
     font-weight: bold;
 }
 

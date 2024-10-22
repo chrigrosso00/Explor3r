@@ -1,5 +1,6 @@
 package com.explorer.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,4 +72,9 @@ public class ViaggioServicesImpl implements ViaggioServices {
     public List<Viaggio> getViaggiByTipologia(String tipologia) {
         return dao.findByTipologia(tipologia);
     }
+
+	@Override
+	public List<Viaggio> getViaggioByStatoAndDataPartenza(String stato, LocalDate datPartenza) {
+		return dao.findByStatoAndDataPartenza(stato, datPartenza);
+	}
 }

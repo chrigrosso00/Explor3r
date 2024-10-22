@@ -44,7 +44,7 @@
     // Aggiorna la descrizione, itinerario e difficoltà
     document.getElementById('descrizione').textContent = viaggio.descrizione;
     document.getElementById('itinerario').textContent = viaggio.itinerario;
-    document.getElementById('difficolta').textContent = viaggio.difficolta;
+    document.getElementById('tipologia').textContent = viaggio.tipologia;
 }
 
 
