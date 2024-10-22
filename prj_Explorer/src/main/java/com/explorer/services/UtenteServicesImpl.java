@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.explorer.entities.UserAuthority;
+import com.explorer.entities.UserAuthorityId;
 import com.explorer.entities.Utente;
+import com.explorer.repos.UserAuthorityDAO;
 import com.explorer.repos.UtenteDAO;
 
 @Service
@@ -17,6 +20,9 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Autowired
     private PasswordEncoder passwordEncoder; // Iniezione del PasswordEncoder
+    
+    @Autowired
+    private UserAuthorityDAO userAuthorityDAO;
 
     @Override
     public List<Utente> findAll() {
@@ -33,8 +39,18 @@ public class UtenteServicesImpl implements UtenteServices {
         // Cripta la password prima di salvare l'utente
         String encodedPassword = passwordEncoder.encode(utente.getPassword());
         utente.setPassword(encodedPassword); // Imposta la password criptata
+        Utente savedUtente = utenteDAO.save(utente);
+        
+        UserAuthority userAuthority = new UserAuthority();
+        UserAuthorityId userAuthorityId = new UserAuthorityId();
+        userAuthorityId.setUserId(savedUtente.getId_utente());
+        userAuthority.setId(userAuthorityId);
+        userAuthority.setUser(savedUtente);
+        userAuthority.setAuthority("ROLE_USER");
 
-        return utenteDAO.save(utente);
+        userAuthorityDAO.save(userAuthority);
+        
+        return savedUtente;
     }
 
     @Override

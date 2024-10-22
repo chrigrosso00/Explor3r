@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Explor3r - Profilo Utente</title>
+		<meta name="description" content="My new wonderful website">
+		<meta name="author" content="Mister X">
+		<link rel="stylesheet" href="/css/indexStyles.css?v=1.0">
+		<link rel="stylesheet" href="/css/profilo.css?v=1.0">
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+	</head>
+<body>
+	<header>
+        <div class="container">
+            <div class="logo">
+				<h1>Viaggia da solo</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="viaggi">Destinazioni</a></li>
+                    <li><a href="#">Last Minute</a></li>
+                    <li id="creaViaggioLink" style="display: none;"><a href="/crea-viaggio">Crea Viaggio</a></li>
+                    <li><a href="#">Chi siamo</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="login">
+                <a href="/login" id="loginLink"><span class="icon"><i class="fas fa-user"></i></span>Accedi</a>
+                <a href="/registrazione" id="registerLink"><span class="icon"><i class="fas fa-user-plus"></i></span>Registrati</a>
+                <button id="logoutButton" style="display: none;">Logout</button>
+            </div>
+        </div>
+    </header>
+	
+	<h1>Profilo Utente</h1>
+	
+	<main class="container">
+        <div class="left" id="left-section"></div>
+        <div class="right" id="right-section"></div>
+    </main>
+	
+	<script src="/js/scriptIndex.js"></script>	
+	<script src="/js/scriptProfilo.js"></script>	
+</body>

@@ -13,9 +13,10 @@ function checkLoginStatus() {
         logoutButton.style.display = 'block';
         creaViaggioLink.style.display = 'inline-block';
 
-        let username = document.createElement('span');
+        let username = document.createElement('a');
         username.textContent = "Ciao, " + JSON.parse(localStorage.getItem('username'));
         username.style.marginRight = '10px';
+        username.href = '/profilo';
         logoutButton.parentNode.insertBefore(username, logoutButton);
     } else {
         // Se il token non è presente, mostra i link di login/registrazione e nascondi il bottone di logout

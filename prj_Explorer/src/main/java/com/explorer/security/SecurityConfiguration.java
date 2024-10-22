@@ -50,13 +50,19 @@ public class SecurityConfiguration {
 						"viaggiContinente/**", 
 						"api/add/**", 
 						"api/viaggi/**",
-						"viaggio/**"
-
+						"viaggio/**",
+						"/profilo"
 				).permitAll()
 						// .requestMatchers(HttpMethod.POST, "/api/ordini").permitAll()
 						// .requestMatchers(HttpMethod.GET, "/api/ordini").hasAnyRole("ADMIN","USER")
-						.requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs.yaml", "/v3/api-docs/**",
-								"/api/v1/auth/**")
+						.requestMatchers("/swagger-ui/**", 
+								"/swagger-ui.html", 
+								"/v3/api-docs.yaml", 
+								"/v3/api-docs/**",
+								"/api/v1/auth/**",
+								"api/utente/codice/**",
+								"api/utente/nominativo/**"
+								)
 						.hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
 				.formLogin(formLogin -> formLogin.loginPage("/login").permitAll())
 				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
