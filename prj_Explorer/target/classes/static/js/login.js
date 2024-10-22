@@ -30,12 +30,14 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             let token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 			let decodedToken = JSON.parse(atob(token.split('.')[1]));	
     		let expirationTime = decodedToken.exp * 1000 - Date.now();
+    		
 
 		    setTimeout(() => {
 		    	logoutUser();
 		    }, expirationTime);
     
             window.location.href = '/profilo';
+            console.log('Expiration time in milliseconds:', expirationTime);
         }
     })
     .catch(error => {
