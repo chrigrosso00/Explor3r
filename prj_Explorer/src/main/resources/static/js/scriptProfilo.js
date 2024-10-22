@@ -1,5 +1,3 @@
-
-
 function caricaUtente() {
 	
 	let user = JSON.parse(localStorage.getItem('username'));
