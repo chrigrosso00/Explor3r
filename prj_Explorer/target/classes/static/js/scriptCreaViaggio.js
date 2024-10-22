@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gestisci l'invio del form
     document.getElementById('creaViaggioForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Impedisce l'invio standard del form
         creaViaggio();
     });
 });
@@ -25,7 +25,12 @@ function caricaPaesi() {
             'Authorization': 'Bearer ' + document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Errore nel caricamento dei paesi');
+        }
+        return response.json();
+    })
     .then(paesi => {
         const select = document.getElementById('paese');
         paesi.forEach(paese => {
@@ -63,7 +68,7 @@ function creaViaggio() {
     .then(viaggio => {
         alert('Viaggio creato con successo!');
         // Reindirizza alla pagina dei dettagli del viaggio appena creato
-        window.location.href = '';
+        window.location.href = `/`; 
     })
     .catch(error => {
         console.error('Errore:', error);

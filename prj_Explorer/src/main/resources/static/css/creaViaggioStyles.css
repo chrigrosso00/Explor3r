@@ -1,46 +1,103 @@
-/* Stile generale per il contenitore dei dettagli del viaggio */
-#dettagli-viaggio {
-    max-width: 800px;
-    margin: 20px auto; /* Aggiunto margine superiore per distanziare dagli elementi superiori */
-    padding: 30px; /* Aumentato padding per un look più arioso */
-    background-color: #ffffff; /* Cambiato a bianco per un contrasto migliore */
-    border-radius: 12px; /* Aggiunto angoli più arrotondati */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
-    transition: transform 0.3s, box-shadow 0.3s; /* Effetto di transizione */
+/* Stile base per il body */
+body {
+    font-family: Arial, sans-serif; /* Font principale del body */
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
 }
 
-#dettagli-viaggio:hover {
-    transform: translateY(-2px); /* Leggero sollevamento al passaggio del mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombra più intensa al passaggio del mouse */
+/* Stile per il container del form */
+#container-viaggio {
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo chiaro con trasparenza */
+    padding: 40px; /* Padding interno */
+    border-radius: 12px; /* Angoli arrotondati */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    z-index: 2; /* Per sovrapporsi all'immagine di sfondo */
+    text-align: center; /* Centra il testo all'interno del box */
+    width: 90%; /* Larghezza al 90% per adattarsi a schermi più piccoli */
+    max-width: 600px; /* Larghezza massima */
 }
 
-/* Stile per i titoli dei dettagli del viaggio */
-#dettagli-viaggio h2 {
-    color: #2c3e50; /* Colore titolo più scuro per un migliore contrasto */
-    border-bottom: 2px solid #3498db; /* Linea blu sotto il titolo */
-    padding-bottom: 12px; /* Aumentato padding sotto il titolo */
+/* Stile per i titoli */
+h1 {
+    font-family: 'Dancing Script', cursive; /* Font applicato solo all'h1 */
+    font-size: 36px; /* Dimensione del font aumentata */
     margin-bottom: 20px; /* Margine sotto il titolo */
-    font-size: 1.8em; /* Dimensione del font aumentata */
+    color: #00359a; /* Colore del titolo */
 }
 
-/* Stile per i paragrafi dei dettagli del viaggio */
-#dettagli-viaggio p {
-    margin: 15px 0; /* Aggiunto margine più uniforme */
-    line-height: 1.8; /* Maggiore spaziatura tra le righe */
-    color: #34495e; /* Colore del testo più morbido */
-    font-size: 1.1em; /* Aumentata la dimensione del font per leggibilità */
+/* Stile per le etichette */
+label {
+    display: block;
+    margin-bottom: 5px; /* Margine sotto le etichette */
+    font-weight: bold;
+    color: #333; /* Colore scuro per il testo delle etichette */
 }
 
-/* Stile per il testo in grassetto */
-#dettagli-viaggio strong {
-    color: #e67e22; /* Colore arancione per evidenziare il testo in grassetto */
+/* Stile per i campi di input */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%; /* Larghezza del 100% per adattarsi al contenitore */
+    padding: 10px; /* Padding interno */
+    margin: 10px 0; /* Margine verticale */
+    border: 1px solid #007bff; /* Bordo blu */
+    border-radius: 4px; /* Angoli arrotondati */
+    font-size: 14px; /* Dimensione del font */
+    background-color: #f0f8ff; /* Colore di sfondo chiaro */
+    color: #333; /* Colore del testo */
+    box-sizing: border-box; /* Include padding e border nella larghezza */
 }
 
-/* Stile per il loader */
-#loader {
-    text-align: center;
-    padding: 30px; /* Aumentato padding per un aspetto più equilibrato */
-    font-style: italic; /* Stile corsivo per il loader */
-    color: #999; /* Colore del testo più chiaro */
-    font-size: 1.2em; /* Dimensione del font aumentata per il loader */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #0056b3; /* Colore del bordo al focus */
+    outline: none; /* Rimuove il bordo di default */
+}
+
+/* Stile per il pulsante */
+button {
+    width: 100%; /* Larghezza del 100% per il pulsante */
+    padding: 10px; /* Padding interno */
+    border: none;
+    border-radius: 4px; /* Angoli arrotondati */
+    cursor: pointer; /* Cursore a mano */
+    font-size: 16px; /* Dimensione del font */
+    background-color: #00359a; /* Colore di sfondo del pulsante */
+    color: white; /* Colore del testo */
+    transition: background-color 0.3s; /* Transizione sul colore di sfondo */
+}
+
+button:hover {
+    background-color: #0056b3; /* Colore di sfondo più chiaro al passaggio del mouse */
+}
+
+/* Stile per i messaggi di errore */
+.error {
+    color: red; /* Colore rosso per i messaggi di errore */
+    font-size: 0.9em; /* Dimensione del font */
+    margin-top: -10px; /* Margine sopra */
+    margin-bottom: 10px; /* Margine sotto */
+}
+
+/* Stile per i gruppi di input */
+.form-group {
+    margin-bottom: 15px; /* Margine sotto ogni gruppo di input */
+}
+
+/* Stile per il footer */
+footer {
+    text-align: center; /* Centra il testo nel footer */
+    padding: 20px; /* Padding interno */
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo chiaro con trasparenza */
+    margin-top: 20px; /* Margine sopra */
 }
