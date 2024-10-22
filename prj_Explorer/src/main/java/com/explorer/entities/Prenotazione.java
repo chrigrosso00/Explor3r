@@ -18,14 +18,14 @@ public class Prenotazione {
     private PrenotazioneId id = new PrenotazioneId();
 	
 	@ManyToOne
-    @MapsId("utenteId")
-	@JoinColumn(name = "utenteId")
+    @MapsId("utente_id")
+	@JoinColumn(name = "utente_id")
 	@JsonBackReference("utente-prenotazione")
     private Utente utente;
 	
     @ManyToOne
-    @MapsId("viaggioId")
-    @JoinColumn(name = "viaggioId")
+    @MapsId("viaggio_id")
+    @JoinColumn(name = "viaggio_id")
     @JsonBackReference("viaggio-prenotazione")
     private Viaggio viaggio;
     

@@ -7,29 +7,29 @@ import jakarta.persistence.Column;
 
 public class PrenotazioneId implements Serializable {
 	
-    private int utenteId;
+    private int utente_id;
 
-    private int viaggioId;
+    private int viaggio_id;
 
 	public int getUtenteId() {
-		return utenteId;
+		return utente_id;
 	}
 
 	public void setUtenteId(int utenteId) {
-		this.utenteId = utenteId;
+		this.utente_id = utenteId;
 	}
 
 	public int getViaggioId() {
-		return viaggioId;
+		return viaggio_id;
 	}
 
 	public void setViaggioId(int viaggioId) {
-		this.viaggioId = viaggioId;
+		this.viaggio_id = viaggioId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(utenteId, viaggioId);
+		return Objects.hash(utente_id, viaggio_id);
 	}
 
 	@Override
@@ -41,6 +41,6 @@ public class PrenotazioneId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PrenotazioneId other = (PrenotazioneId) obj;
-		return utenteId == other.utenteId && viaggioId == other.viaggioId;
+		return utente_id == other.utente_id && viaggio_id == other.viaggio_id;
 	}
 }
