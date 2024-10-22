@@ -4,10 +4,16 @@
 .left, .right {
     flex: 1;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .left {
     background-color: #f0f0f0;
 }
 .right {
     background-color: #e0e0e0;
+}
+
+.prenotation, .travel {
+    margin-top: 10px;
 }

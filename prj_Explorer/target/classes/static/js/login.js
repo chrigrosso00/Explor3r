@@ -26,6 +26,15 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(data => {
         if (data.token) {
             document.cookie = `token=${data.token}; path=/`;
+            
+            let token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+			let decodedToken = JSON.parse(atob(token.split('.')[1]));	
+    		let expirationTime = decodedToken.exp * 1000 - Date.now();
+
+		    setTimeout(() => {
+		    	logoutUser();
+		    }, expirationTime);
+    
             window.location.href = '/profilo';
         }
     })
@@ -52,7 +61,7 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 });
 
 function checkLoginStatus() {
-    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+    let token = document.cookie.split('; ').find(row => row.startsWith('token='));
     if (token) {
         document.getElementById('logoutButton').style.display = 'block';
     } else {
