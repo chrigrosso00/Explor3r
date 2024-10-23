@@ -111,13 +111,21 @@ function prenotaViaggio() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
+            'Authorization': 'Bearer ' + token.split('=')[1]
         },
         body: JSON.stringify({ id_viaggio: id_viaggio })
     })
     .then(response => {
         if (response.status === 201) {
             alert('Prenotazione effettuata con successo!');
+        } else if (response.status === 403) {
+            alert('Non puoi iscriverti al tuo viaggio.');
+        } else if (response.status === 409) {
+            alert('Sei già iscritto a questo viaggio.');
+        } else if (response.status === 400) {
+            alert('Errore: Dati di richiesta non validi. Controlla i dettagli e riprova.');
+        } else if (response.status === 500) {
+            alert('Errore interno del server. Riprova più tardi.');
         } else {
             alert('Errore durante la prenotazione. Riprova più tardi.');
         }
@@ -127,6 +135,7 @@ function prenotaViaggio() {
         alert('Errore durante la prenotazione.');
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();

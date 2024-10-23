@@ -10,6 +10,16 @@ public class PrenotazioneId implements Serializable {
     private int utente_id;
 
     private int viaggio_id;
+    
+    
+ // Costruttore di default
+    public PrenotazioneId() {}
+
+    // Costruttore che accetta utente_id e viaggio_id
+    public PrenotazioneId(int utenteId, int viaggioId) {
+        this.utente_id = utenteId;
+        this.viaggio_id = viaggioId;
+    }
 
 	public int getUtenteId() {
 		return utente_id;

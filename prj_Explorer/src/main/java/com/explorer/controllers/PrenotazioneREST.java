@@ -21,8 +21,10 @@ import com.explorer.entities.PrenotazioneId;
 import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
 import com.explorer.repos.UtenteDAO;
+import com.explorer.repos.ViaggioDAO;
 import com.explorer.security.UserPrincipal;
 import com.explorer.services.PrenotazioneServices;
+import com.explorer.services.ViaggioServices;
 
 @RestController
 @RequestMapping("api")
@@ -33,6 +35,9 @@ public class PrenotazioneREST {
 	
 	@Autowired
 	private UtenteDAO utentedao;
+	
+	@Autowired
+	private ViaggioDAO viaggioDAO;
 	
 	@GetMapping("prenotazioni")
 	public List<Prenotazione> getPrenotazione() {
@@ -96,13 +101,43 @@ public class PrenotazioneREST {
     }
 	
 	@PostMapping("prenotazione")
-	public ResponseEntity<Prenotazione> addPrenotazione(@RequestBody Viaggio viaggio) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        System.out.println(username);
-        Utente currentUser = utentedao.findByUsername(username).orElseThrow();
-		return new ResponseEntity<Prenotazione>(pService.addPrenotazione(currentUser, viaggio), HttpStatus.CREATED);
+	public ResponseEntity<String> addPrenotazione(@RequestBody Viaggio viaggio) {
+	    // 1. Ottieni l'utente autenticato
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String username = authentication.getName();
+
+	    // 2. Trova l'utente attuale dal database tramite il nome utente
+	    Utente currentUser = utentedao.findByUsername(username).orElseThrow();
+
+	    // 3. Recupera il viaggio dal database usando il suo ID
+	    Viaggio viaggioPrenotazione = viaggioDAO.findById(viaggio.getId_viaggio()).orElse(null);
+	    
+	    // 4. Controlla se il viaggio esiste
+	    if (viaggioPrenotazione == null) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Viaggio non trovato");
+	    }
+
+	    // 5. Controlla se l'utente che ha creato il viaggio è lo stesso che sta tentando di prenotare
+	    if (viaggioPrenotazione.getUtente().getId_utente() == currentUser.getId_utente()) {
+	        // Se l'ID dell'utente creatore è uguale a quello dell'utente autenticato
+	        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Non puoi iscriverti al tuo viaggio");
+	    }
+
+	    // 6. Controlla se l'utente è già prenotato per lo stesso viaggio
+	    Optional<Prenotazione> prenotazioneEsistente = pService.findById(new PrenotazioneId(currentUser.getId_utente(), viaggioPrenotazione.getId_viaggio()));
+
+	    if (prenotazioneEsistente.isPresent()) {
+	        // Se esiste già una prenotazione per questo utente e viaggio
+	        return ResponseEntity.status(HttpStatus.CONFLICT).body("Sei già iscritto a questo viaggio");
+	    }
+
+	    // 7. Se l'utente non è il creatore e non è già iscritto, procedi con la prenotazione
+	    Prenotazione nuovaPrenotazione = pService.addPrenotazione(currentUser, viaggioPrenotazione);
+
+	    // 8. Restituisci una conferma di successo
+	    return new ResponseEntity<>("Prenotazione effettuata con successo", HttpStatus.CREATED);
 	}
+
 	
 	@DeleteMapping("prenotazione/delete/{utenteId}/{viaggioId}")
 	public ResponseEntity<String> deletePrenotazione(@PathVariable int utenteId, @PathVariable int viaggioId) {
