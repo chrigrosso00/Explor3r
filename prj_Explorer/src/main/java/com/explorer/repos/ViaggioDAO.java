@@ -23,5 +23,20 @@ public interface ViaggioDAO extends JpaRepository<Viaggio, Integer> {
 	
 	@Query("SELECT v FROM Viaggio v WHERE v.utente.username = :username")
 	List<Viaggio> findViaggiByUsernameUser(String username);
+	
+	@Query("SELECT v FROM Viaggio v WHERE v.paese.stato = :stato AND v.tipologia = :tipologia")
+	List<Viaggio> findByStatoAndTipologia(String stato, String tipologia);
+
+	@Query("SELECT v FROM Viaggio v WHERE v.tipologia = :tipologia AND v.data_Partenza = :dataPartenza")
+	List<Viaggio> findByTipologiaAndDataPartenza(String tipologia, LocalDate dataPartenza);
+
+	@Query("SELECT v FROM Viaggio v WHERE v.paese.stato = :stato AND v.tipologia = :tipologia AND v.data_Partenza = :dataPartenza")
+	List<Viaggio> findByStatoTipologiaAndDataPartenza(String stato, String tipologia, LocalDate dataPartenza);
+	
+	@Query("SELECT v FROM Viaggio v WHERE v.data_Partenza >= :dataPartenza") // Usa >= per includere la data
+	List<Viaggio> findByDataPartenza(LocalDate dataPartenza);
+
+
+
 }
 

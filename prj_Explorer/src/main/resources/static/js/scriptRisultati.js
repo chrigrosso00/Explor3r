@@ -10,13 +10,38 @@ const dataPartenza = getQueryParameter('dataPartenza');
 
 // Funzione per chiamare l'API Spring Boot e ottenere i viaggi per lo stato e la data di partenza
 function caricaViaggi() {
-    // Costruisci l'URL dell'API
-    let apiUrl = `/api/viaggi/search?stato=${encodeURIComponent(stato)}`;
-    
-    if (dataPartenza) {
-        apiUrl += `&dataPartenza=${dataPartenza}`;
+    // Ottieni i valori di stato, data di partenza e tipologia dai campi o variabili
+    // Utilizziamo i parametri estratti dall'URL, se disponibili
+    const tipologiaViaggio = getQueryParameter('tipologia'); // Ottieni la tipologia dalla query string
+
+    // Verifica se almeno uno dei parametri è disponibile
+    if (!stato && !dataPartenza && !tipologiaViaggio) {
+        document.getElementById('lista-viaggi').innerHTML = '<p>Per favore seleziona almeno un criterio di ricerca.</p>';
+        return;
     }
 
+    // Costruisci l'URL dell'API con i parametri dinamici
+    let apiUrl = '/api/viaggi/search?'; // URL base
+
+    // Aggiungi lo stato se presente
+    if (stato) {
+        apiUrl += `stato=${encodeURIComponent(stato)}`;
+    }
+
+    // Aggiungi la data di partenza se presente
+    if (dataPartenza) {
+		const formattedDate = new Date(dataPartenza).toISOString().split('T')[0]; 
+        apiUrl += `&dataPartenza=${formattedDate}`; // Usa `&` perché `stato` è già presente
+    }
+
+    // Aggiungi la tipologia se presente
+    if (tipologiaViaggio) {
+        apiUrl += `&tipologia=${encodeURIComponent(tipologiaViaggio)}`;
+    }
+
+    console.log("Chiamata API a:", apiUrl); // Debug: Log dell'API chiamata
+
+    // Effettua la chiamata API
     fetch(apiUrl)
         .then(response => {
             if (response.ok) {
@@ -30,7 +55,7 @@ function caricaViaggi() {
             }
         })
         .then(viaggi => {
-            mostraViaggi(viaggi); // Mostra i viaggi nella pagina
+            mostraViaggi(viaggi); // Funzione per mostrare i viaggi nella pagina
         })
         .catch(error => {
             console.error('Errore:', error);
@@ -43,38 +68,39 @@ function mostraViaggi(viaggi) {
     const container = document.getElementById('lista-viaggi');
     container.innerHTML = ''; // Svuota il contenitore prima di inserire nuovi viaggi
 
-    if (viaggi.length === 0) {
+    if (!viaggi || viaggi.length === 0) {
         container.innerHTML = '<p>Nessun viaggio disponibile per i criteri di ricerca selezionati.</p>';
-    } else {
-        viaggi.forEach(viaggio => {
-            // Accedi ai dati del viaggio
-            const id_viaggio = viaggio.id_viaggio;
-            const paese = viaggio.paese.stato; // Ottieni il nome del paese
-            const dataPartenza = viaggio.data_Partenza; // Data di partenza
-            const dataArrivo = viaggio.data_Arrivo; // Data di arrivo
-            const prezzo = viaggio.prezzo;
-            const descrizione = viaggio.descrizione;
-			const immagine = viaggio.paese.img;
-			
-            // Costruisci l'elemento HTML per ogni viaggio
-            const viaggioElement = `
-                <div class="viaggio">
-                    <div class="immagine-viaggio">
-                        <img src="${immagine}" alt="Immagine di ${paese}">
-                    </div>
-                    <div class="viaggio-info">
-                        <h3>Paese: ${paese}</h3>
-                        <p>Descrizione: ${descrizione}</p>
-                        <p>Partenza: ${dataPartenza}</p>
-                        <p>Arrivo: ${dataArrivo}</p>              
-                        <p>Prezzo: €${prezzo}</p>
-                        <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
-                    </div>
-                </div>
-            `;
-            container.innerHTML += viaggioElement;
-        });
+        return;
     }
+
+    viaggi.forEach(viaggio => {
+        // Accedi ai dati del viaggio
+        const id_viaggio = viaggio.id_viaggio;
+        const paese = viaggio.paese.stato; // Ottieni il nome del paese
+        const dataPartenza = viaggio.data_Partenza; // Data di partenza
+        const dataArrivo = viaggio.data_Arrivo; // Data di arrivo
+        const prezzo = viaggio.prezzo;
+        const descrizione = viaggio.descrizione;
+        const immagine = viaggio.paese.img; // Assicurati che il campo immagine sia corretto
+
+        // Costruisci l'elemento HTML per ogni viaggio
+        const viaggioElement = `
+            <div class="viaggio">
+                <div class="immagine-viaggio">
+                    <img src="${immagine}" alt="Immagine di ${paese}">
+                </div>
+                <div class="viaggio-info">
+                    <h3>Paese: ${paese}</h3>
+                    <p>Descrizione: ${descrizione}</p>
+                    <p>Partenza: ${dataPartenza}</p>
+                    <p>Arrivo: ${dataArrivo}</p>              
+                    <p>Prezzo: €${prezzo}</p>
+                    <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
+                </div>
+            </div>
+        `;
+        container.innerHTML += viaggioElement; // Aggiungi l'elemento al contenitore
+    });
 }
 
 // Funzione che apre la pagina del viaggio specifico con l'ID passato

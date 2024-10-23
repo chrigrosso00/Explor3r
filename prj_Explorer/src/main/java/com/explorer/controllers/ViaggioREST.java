@@ -80,45 +80,54 @@ public class ViaggioREST {
         }
     }
 
-    // Ricerca i viaggi in base al nome dello stato
     @GetMapping("viaggi/search")
-    public ResponseEntity<List<Viaggio>> getViaggiByStato(@RequestParam String stato, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPartenza) {
-        List<Paese> paesi = paeseServices.findAllPaesi();
-        
-        boolean statoTrovato = paesi.stream().anyMatch(paese -> paese.getStato().equalsIgnoreCase(stato));
+    public ResponseEntity<List<Viaggio>> searchViaggi(
+        @RequestParam(required = false) String stato, 
+        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataPartenza,
+        @RequestParam(required = false) String tipologia) {
 
-        if (!statoTrovato) {
-            return ResponseEntity.notFound().build();
-        } else {
-            List<Viaggio> viaggi;
+        List<Viaggio> viaggi;
+
+        // Controlla se almeno uno dei parametri è stato fornito
+        if (stato == null && dataPartenza == null && tipologia == null) {
+            return ResponseEntity.badRequest().body(null); // 400 Bad Request se non ci sono parametri
+        }
+
+        // Se stato è fornito, verifica che esista nei paesi
+        if (stato != null) {
+            List<Paese> paesi = paeseServices.findAllPaesi();
+            boolean statoTrovato = paesi.stream().anyMatch(paese -> paese.getStato().equalsIgnoreCase(stato));
             
-            if (dataPartenza != null) {
-                // Se è presente la data di partenza, filtriamo per stato e data di partenza
-                viaggi = viaggioServices.getViaggioByStatoAndDataPartenza(stato, dataPartenza);
-            } else {
-                // Altrimenti filtriamo solo per stato
-                viaggi = viaggioServices.getViaggioByStato(stato);
-            }
-
-            if (!viaggi.isEmpty()) {
-                return ResponseEntity.ok(viaggi); // restituisce 200 e la lista di tutti i viaggi
-            } else {
-                return ResponseEntity.noContent().build(); // restituisce 204 se la lista è vuota
+            if (!statoTrovato) {
+                return ResponseEntity.notFound().build(); // 404 se lo stato non è valido
             }
         }
-    }
 
-    // Filtro per trovare i viaggi in base alla difficoltà
-    @GetMapping("viaggi/tipologia")
-    public ResponseEntity<List<Viaggio>> getViaggiByTipologia(@RequestParam String tipologia) {
-        List<Viaggio> viaggi = viaggioServices.getViaggiByTipologia(tipologia);
-
-        if (viaggi.isEmpty()) {
-            return ResponseEntity.noContent().build(); // 204 se non ci sono viaggi
+        // Filtra i viaggi in base ai parametri forniti
+        if (stato != null && tipologia != null && dataPartenza != null) {
+            viaggi = viaggioServices.getViaggiByStatoTipologiaAndDataPartenza(stato, tipologia, dataPartenza);
+        } else if (stato != null && tipologia != null) {
+            viaggi = viaggioServices.getViaggiByStatoAndTipologia(stato, tipologia);
+        } else if (stato != null && dataPartenza != null) {
+            viaggi = viaggioServices.getViaggioByStatoAndDataPartenza(stato, dataPartenza);
+        } else if (tipologia != null && dataPartenza != null) {
+            viaggi = viaggioServices.getViaggiByTipologiaAndDataPartenza(tipologia, dataPartenza);
+        } else if (stato != null) {
+            viaggi = viaggioServices.getViaggioByStato(stato);
+        } else if (tipologia != null) {
+            viaggi = viaggioServices.getViaggiByTipologia(tipologia);
         } else {
-            return ResponseEntity.ok(viaggi); // 200 ok
+            viaggi = viaggioServices.getViaggiByDataPartenza(dataPartenza);
+        }
+
+        // Restituisce la risposta in base ai risultati trovati
+        if (!viaggi.isEmpty()) {
+            return ResponseEntity.ok(viaggi);  // 200 OK, restituisce i viaggi trovati
+        } else {
+            return ResponseEntity.noContent().build();  // 204 No Content, nessun viaggio trovato
         }
     }
+
 
     // Creazione di un nuovo viaggio
     @PostMapping("viaggi")

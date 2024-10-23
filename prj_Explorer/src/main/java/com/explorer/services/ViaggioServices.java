@@ -23,4 +23,12 @@ public interface ViaggioServices {
 	public List<Viaggio> getViaggioByStatoAndDataPartenza(String stato, LocalDate datPartenza);
 	
 	public List<Viaggio> getViaggiByUsernameUser(String username);
+	
+    public List<Viaggio> getViaggiByStatoAndTipologia(String stato, String tipologia);
+    
+    public List<Viaggio> getViaggiByTipologiaAndDataPartenza(String tipologia, LocalDate dataPartenza);
+    
+    public List<Viaggio> getViaggiByStatoTipologiaAndDataPartenza(String stato, String tipologia, LocalDate dataPartenza);
+    
+    public List<Viaggio> getViaggiByDataPartenza(LocalDate dataPartenza);
 }

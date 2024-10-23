@@ -1,103 +1,116 @@
 /* Stile base per il body */
 body {
-    font-family: Arial, sans-serif; /* Font principale del body */
-    position: relative;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Altezza minima per coprire tutto lo schermo */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Inizio dall'alto */
     color: #fff;
-    overflow: hidden;
+    background-color: #f0f0f0; /* Aggiungi uno sfondo di contrasto per visibilità */
+    overflow-y: auto; /* Aggiunge lo scrolling verticale se necessario */
 }
 
 /* Stile per il container del form */
 #container-viaggio {
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo chiaro con trasparenza */
-    padding: 40px; /* Padding interno */
-    border-radius: 12px; /* Angoli arrotondati */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    z-index: 2; /* Per sovrapporsi all'immagine di sfondo */
-    text-align: center; /* Centra il testo all'interno del box */
-    width: 90%; /* Larghezza al 90% per adattarsi a schermi più piccoli */
-    max-width: 600px; /* Larghezza massima */
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto; /* Aggiunge margine sopra/sotto */
+    text-align: left; /* Allinea il testo a sinistra */
+    box-sizing: border-box;
 }
 
-/* Stile per i titoli */
+/* Migliora lo stile del titolo */
 h1 {
-    font-family: 'Dancing Script', cursive; /* Font applicato solo all'h1 */
-    font-size: 36px; /* Dimensione del font aumentata */
-    margin-bottom: 20px; /* Margine sotto il titolo */
-    color: #00359a; /* Colore del titolo */
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #00359a;
+    text-align: center; /* Centra solo il titolo */
 }
 
-/* Stile per le etichette */
+/* Etichette */
 label {
     display: block;
-    margin-bottom: 5px; /* Margine sotto le etichette */
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #333; /* Colore scuro per il testo delle etichette */
+    color: #333;
+    font-size: 14px; /* Font leggermente più grande per visibilità */
 }
 
-/* Stile per i campi di input */
+/* Input */
 input[type="text"],
-input[type="password"],
 input[type="date"],
 input[type="number"],
 textarea,
 select {
-    width: 100%; /* Larghezza del 100% per adattarsi al contenitore */
-    padding: 10px; /* Padding interno */
-    margin: 10px 0; /* Margine verticale */
-    border: 1px solid #007bff; /* Bordo blu */
-    border-radius: 4px; /* Angoli arrotondati */
-    font-size: 14px; /* Dimensione del font */
-    background-color: #f0f8ff; /* Colore di sfondo chiaro */
-    color: #333; /* Colore del testo */
-    box-sizing: border-box; /* Include padding e border nella larghezza */
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px; /* Aggiungi più spazio tra i campi */
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    color: #333;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    border-color: #0056b3; /* Colore del bordo al focus */
-    outline: none; /* Rimuove il bordo di default */
+    border-color: #0056b3;
+    outline: none;
 }
 
-/* Stile per il pulsante */
+/* Stile pulsante */
 button {
-    width: 100%; /* Larghezza del 100% per il pulsante */
-    padding: 10px; /* Padding interno */
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
     border: none;
-    border-radius: 4px; /* Angoli arrotondati */
-    cursor: pointer; /* Cursore a mano */
-    font-size: 16px; /* Dimensione del font */
-    background-color: #00359a; /* Colore di sfondo del pulsante */
-    color: white; /* Colore del testo */
-    transition: background-color 0.3s; /* Transizione sul colore di sfondo */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #00359a;
+    color: white;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3; /* Colore di sfondo più chiaro al passaggio del mouse */
+    background-color: #0056b3;
 }
 
-/* Stile per i messaggi di errore */
-.error {
-    color: red; /* Colore rosso per i messaggi di errore */
-    font-size: 0.9em; /* Dimensione del font */
-    margin-top: -10px; /* Margine sopra */
-    margin-bottom: 10px; /* Margine sotto */
-}
-
-/* Stile per i gruppi di input */
+/* Migliora lo stile del gruppo di input */
 .form-group {
-    margin-bottom: 15px; /* Margine sotto ogni gruppo di input */
+    margin-bottom: 20px; /* Aggiungi spazio tra i gruppi di input */
 }
 
-/* Stile per il footer */
-footer {
-    text-align: center; /* Centra il testo nel footer */
-    padding: 20px; /* Padding interno */
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo chiaro con trasparenza */
-    margin-top: 20px; /* Margine sopra */
+/* Ridimensionamento dinamico per schermi piccoli */
+@media (max-width: 600px) {
+    #container-viaggio {
+        padding: 20px; /* Riduce il padding per schermi piccoli */
+        width: 95%; /* Occupa quasi tutto lo schermo */
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 28px; /* Riduce la dimensione del titolo su schermi piccoli */
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 16px; /* Font leggermente più grande per schermi piccoli */
+    }
+
+    button {
+        font-size: 18px; /* Font del pulsante più grande per una migliore usabilità */
+    }
 }

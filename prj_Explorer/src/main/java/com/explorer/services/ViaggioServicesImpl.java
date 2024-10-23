@@ -81,4 +81,23 @@ public class ViaggioServicesImpl implements ViaggioServices {
 	public List<Viaggio> getViaggiByUsernameUser(String username){
 		return dao.findViaggiByUsernameUser(username);
 	}
+	
+	@Override
+	public List<Viaggio> getViaggiByStatoAndTipologia(String stato, String tipologia) {
+	    return dao.findByStatoAndTipologia(stato, tipologia);
+	}
+
+	@Override
+	public List<Viaggio> getViaggiByTipologiaAndDataPartenza(String tipologia, LocalDate dataPartenza) {
+	    return dao.findByTipologiaAndDataPartenza(tipologia, dataPartenza);
+	}
+
+	@Override
+	public List<Viaggio> getViaggiByStatoTipologiaAndDataPartenza(String stato, String tipologia, LocalDate dataPartenza) {
+	    return dao.findByStatoTipologiaAndDataPartenza(stato, tipologia, dataPartenza);
+	}
+
+	 public List<Viaggio> getViaggiByDataPartenza(LocalDate dataPartenza) {
+		 return dao.findByDataPartenza(dataPartenza);
+	 }
 }

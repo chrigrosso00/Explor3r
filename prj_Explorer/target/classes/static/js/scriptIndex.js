@@ -46,19 +46,37 @@ function cercaViaggi() {
     const checkInDate = document.getElementById('checkInDate').value;
     const tipologiaViaggio = document.getElementById('tipologiaViaggio').value; // Ottieni la tipologia selezionata
 
-    if (!destinazione) {
-        alert('Per favore inserisci una destinazione.');
+    // Controlliamo se almeno uno dei campi è stato inserito
+    if (!destinazione && !checkInDate && !tipologiaViaggio) {
+        alert('Per favore inserisci almeno una destinazione, una data o una tipologia di viaggio.');
         return;
     }
 
-    let url = `risultati?stato=${encodeURIComponent(destinazione)}`;
-    if (checkInDate) {
-        url += `&dataPartenza=${checkInDate}`;
-    }
-    if (tipologiaViaggio) {
-        url += `&tipologia=${tipologiaViaggio}`; 
+    // Inizializziamo l'URL della ricerca
+    let url = 'risultati?'; // Cominciamo con il punto di partenza dell'URL
+    
+    // Aggiungiamo i parametri solo se sono presenti
+    if (destinazione) {
+        url += `stato=${encodeURIComponent(destinazione)}`; // Aggiungi lo stato (destinazione)
     }
 
+    if (checkInDate) {
+        if (url.includes('stato=')) {
+            url += `&dataPartenza=${checkInDate}`; // Aggiungi la data se lo stato è già presente
+        } else {
+            url += `dataPartenza=${checkInDate}`; // Aggiungi solo la data se lo stato non c'è
+        }
+    }
+
+    if (tipologiaViaggio) {
+        if (url.includes('stato=') || url.includes('dataPartenza=')) {
+            url += `&tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi la tipologia se altri parametri sono già presenti
+        } else {
+            url += `tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi solo la tipologia
+        }
+    }
+
+    // Reindirizza alla pagina dei risultati con i parametri di ricerca
     window.location.href = url;
 }
 
