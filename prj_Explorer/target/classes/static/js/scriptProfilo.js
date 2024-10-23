@@ -44,71 +44,40 @@ function caricaUtente() {
 }
 
 function creaViaggio(){
-	let crea = document.createElement('h2');
-	crea.textContent = 'Vuoi creare un viaggio?';
+	let create = document.createElement('h2');
+	create.textContent = 'Vuoi creare un viaggio?';
 	
-	let creaViaggio = document.createElement('a');
-	creaViaggio.href = '/crea-viaggio';
-    creaViaggio.textContent = 'Crea il tuo viaggio ora';
+	let createVoyage = document.createElement('a');
+	createVoyage.href = '/crea-viaggio';
+    createVoyage.textContent = 'Crea il tuo viaggio ora';
     
-    document.getElementById('right-section').append(crea, creaViaggio);
-}
-
-
-function caricaPrenotazioni(){
-	let user = JSON.parse(localStorage.getItem('username'));
-	
-	let carica = document.createElement('h2');
-	carica.textContent = 'Le tue prenotazioni';
-	let empty = document.createElement('p');
-	
-	fetch(`api/utente/nominativo/${user}`)
-       	.then(response => response.json())
-        .then(userDetails => {
-		
-		if(length==0){
-			
-        	empty.textContent = "Non ti sei prenotato per nessun viaggio";
-	    }
-		
-        /*for(let i=0; i<userDetails.prenotazioni[i].length; i++){
-			
-			
-		}*/
-    	
-    })
-    .catch(error => {
-         console.error('Errore nel caricamento dei dettagli utente:', error);
-    });
-	document.getElementById('prenotation-section').append(carica, empty);
+    document.getElementById('right-section').append(create, createVoyage);
 }
 
 function caricaPrenotazioni(){
 	let user = JSON.parse(localStorage.getItem('username'));
 	
-	let carica = document.createElement('h2');
-	carica.textContent = 'Le tue prenotazioni';
+	let load = document.createElement('h2');
+	load.textContent = 'Le tue prenotazioni';
 	let empty = document.createElement('p');
 	
-	fetch(`api/utente/nominativo/${user}`)
+	fetch(`api/prenotazioni`)
        	.then(response => response.json())
-        .then(userDetails => {
+        .then(prenotationDetails => {
 		
-		if(length==0){
-			
-        	empty.textContent = "Non ti sei prenotato per nessun viaggio";
-	    }
+		if(prenotationDetails.prenotazioni.length<=0){
+			empty.textContent = "Non ti sei prenotato per nessun viaggio";
+	    }else{
 		
-        /*for(let i=0; i<userDetails.prenotazioni[i].length; i++){
-			
-			
-		}*/
+		}
+		
+     
     	
     })
     .catch(error => {
          console.error('Errore nel caricamento dei dettagli utente:', error);
     });
-	document.getElementById('prenotation-section').append(carica, empty);
+	document.getElementById('prenotation-section').append(load, empty, state);
 }
 
 

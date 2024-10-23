@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -25,7 +26,7 @@ public class Utente {
     private int id_utente;
     
     @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
-    @JsonManagedReference("utente-prenotazione")
+    @JsonBackReference("utente-prenotazione")
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
     @NotNull

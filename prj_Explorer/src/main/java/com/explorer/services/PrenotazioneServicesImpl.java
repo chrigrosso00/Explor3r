@@ -72,5 +72,9 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
         id.setViaggioId(viaggioId);
         dao.deleteById(id);
     }
-
+    
+    @Override
+    public List<Prenotazione> findByUsernameUser(String username){
+    	return dao.findPrenotazioniByUsernameUser(username);
+    }
 }

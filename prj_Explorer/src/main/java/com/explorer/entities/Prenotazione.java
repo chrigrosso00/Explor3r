@@ -3,6 +3,7 @@ package com.explorer.entities;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -22,17 +23,17 @@ public class Prenotazione {
 	@ManyToOne
     @MapsId("utente_id")
 	@JoinColumn(name = "utente_id")
-	@JsonBackReference("utente-prenotazione")
+	@JsonManagedReference("utente-prenotazione")
     private Utente utente;
 	
     @ManyToOne
     @MapsId("viaggio_id")
     @JoinColumn(name = "viaggio_id")
-    @JsonBackReference("viaggio-prenotazione")
+    @JsonManagedReference("viaggio-prenotazione")
     private Viaggio viaggio;
     
     private Date data;
-	
+    
     public Utente getUtente() {
 		return utente;
 	}
@@ -57,4 +58,5 @@ public class Prenotazione {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
 }

@@ -160,4 +160,14 @@ public class PrenotazioneREST {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prenotazione non trovata.");
         }
     }
+	
+	@GetMapping("prenotazioni/nominativo/{username}")
+	public ResponseEntity<List<Prenotazione>> getByUsernameUser(@PathVariable String username) {
+	    List<Prenotazione> prenotazione = pService.findByUsernameUser(username);
+	    if (prenotazione != null && !prenotazione.isEmpty()) {
+	    	return ResponseEntity.ok(prenotazione);
+	    } else {
+	    	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	    }
+	}
 }

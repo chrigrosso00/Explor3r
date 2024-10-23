@@ -27,5 +27,8 @@ public interface PrenotazioneDAO extends JpaRepository<Prenotazione, Prenotazion
 	List<Prenotazione> findByData(@Param("data") String data); 
 	
 	@Query("SELECT COUNT(p) FROM Prenotazione p WHERE p.utente = :utente")
-	int countByUtente(@Param("utente") Utente utente); 
+	int countByUtente(@Param("utente") Utente utente);
+	
+	@Query("SELECT p FROM Prenotazione p WHERE p.utente.username = :username")
+	List<Prenotazione> findPrenotazioniByUsernameUser(String username);
 }

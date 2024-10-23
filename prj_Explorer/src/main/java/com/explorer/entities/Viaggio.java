@@ -33,7 +33,7 @@ public class Viaggio {
     private Paese paese;
     
     @OneToMany(mappedBy = "viaggio", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("viaggio-prenotazione")
+    @JsonBackReference("viaggio-prenotazione")
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
     private Double prezzo;
