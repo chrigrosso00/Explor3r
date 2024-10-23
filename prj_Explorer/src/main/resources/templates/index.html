@@ -14,7 +14,7 @@
     <header>
         <div class="container">
             <div class="logo">
-				<h1>Viaggia da solo</h1>
+                <h1>Viaggia da solo</h1>
             </div>
             <nav>
                 <ul>
@@ -26,47 +26,35 @@
                 </ul>
             </nav>
             <div class="login">
-                <!-- Link di login/registrazione -->
                 <a href="/login" id="loginLink"><span class="icon"><i class="fas fa-user"></i></span>Accedi</a>
                 <a href="/registrazione" id="registerLink"><span class="icon"><i class="fas fa-user-plus"></i></span>Registrati</a>
-                <!-- Bottone di Logout che verrà mostrato solo se l'utente è loggato -->
                 <button id="logoutButton" style="display: none;">Logout</button>
-                
-                
             </div>
         </div>
     </header>
 
     <!-- Hero Section with Slideshow -->
     <section class="hero">
-        <div class="slideshow">
-            <div class="slide fade" style="background-image: url('img/sfondoSpiaggia.jpg');">
-                <div class="hero-content">
-                    <h2>Scopri Destinazioni da Sogno</h2>
-                    <p>Esplora il mondo con le nostre offerte imperdibili</p>
-                    <a href="viaggi"><button class="cta-button">Prenota Ora</button></a>
+        <div class="search-container">
+            <div class="search-form-modern">
+                <div class="search-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" id="destinazione" placeholder="Dove vuoi andare?">
+                    <div class="search-spinner" id="searchSpinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <div class="suggestions" id="suggestions"></div>
                 </div>
-            </div>
-            <div class="slide fade" style="background-image: url('img/sfondoMontagna.jpg');">
-                <div class="hero-content">
-                     <h2>Scopri Destinazioni da Sogno</h2>
-                    <p>Esplora il mondo con le nostre offerte imperdibili</p>
-                    <a href="viaggi"><button class="cta-button">Prenota Ora</button></a>
+                <div class="search-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="checkInDate" placeholder="Data partenza">
                 </div>
-            </div>
-            <div class="slide fade" style="background-image: url('img/sfondoGranCanon.jpg');">
-                <div class="hero-content">
-                    <h2>Scopri Destinazioni da Sogno</h2>
-                    <p>Esplora il mondo con le nostre offerte imperdibili</p>
-                    <a href="viaggi"><button class="cta-button">Prenota Ora</button></a>
-                </div>
+                <button id="cercaButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                    <span>Cerca</span>
+                </button>
             </div>
         </div>
-        <div class="search-form">
-    		<input type="text" id="destinazione" placeholder="Dove vuoi andare?">
-    		<input type="date" id="checkInDate" placeholder="Check-in">
-    		<button id="cercaButton">Cerca</button>
-		</div>
     </section>
 
     <!-- Viaggi in partenza -->
@@ -75,7 +63,7 @@
             <h2>Viaggi Prossimi in Partenza</h2>
             <div class="viaggi-list">
                 <div class="viaggio">
-                    <img src="img/barcellona.jpg" alt="Viaggio 1">
+                    <img src="img/barcellona.jpg" alt="Viaggio a Barcellona">
                     <div class="viaggio-info">
                         <h3>Barcellona</h3>
                         <p>Partenza: 15 Ottobre 2024</p>
@@ -84,7 +72,7 @@
                     </div>
                 </div>
                 <div class="viaggio">
-                    <img src="img/londra.jpg" alt="Viaggio 2">
+                    <img src="img/londra.jpg" alt="Viaggio a Londra">
                     <div class="viaggio-info">
                         <h3>Londra</h3>
                         <p>Partenza: 20 Ottobre 2024</p>
@@ -93,7 +81,7 @@
                     </div>
                 </div>
                 <div class="viaggio">
-                    <img src="img/dubai.jpg" alt="Viaggio 3">
+                    <img src="img/dubai.jpg" alt="Viaggio a Dubai">
                     <div class="viaggio-info">
                         <h3>Dubai</h3>
                         <p>Partenza: 30 Ottobre 2024</p>

@@ -32,8 +32,8 @@ header .container {
 /* Barra di navigazione */
 nav ul {
     list-style: none;
-    margin: 10;
-    padding: 10;
+    margin: 0; /* Corretto il margine */
+    padding: 0; /* Corretto il padding */
     display: flex;
 }
 
@@ -84,8 +84,7 @@ nav ul li a:hover {
     font-weight: 900; /* Peso per le icone solid */
 }
 
-/* Hero Section with Slideshow */
-/* Hero Section with Slideshow */
+/* Hero Section senza Slideshow */
 .hero {
     position: relative;
     height: 50vh; /* Altezza ridotta */
@@ -99,54 +98,205 @@ nav ul li a:hover {
     margin-top: 25px;
 }
 
-.slideshow {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Contenuto della barra di ricerca */
+.search-form {
+    display: flex; /* Usato per centrare gli input */
+    flex-direction: column; /* Disposizione verticale */
+    align-items: center; /* Centra gli elementi */
+    margin-top: 20px;
+    z-index: 10;
+    position: relative; /* Necessario per il dropdown dei suggerimenti */
+}
+
+/* Aggiungi queste regole dopo la sezione .search-form esistente */
+
+/* Search Container Moderno */
+.search-container {
     width: 100%;
-    height: 100%;
-}
-
-.slide {
-    display: none;
-    background-size: cover; /* L'immagine copre interamente l'area, mantenendo il rapporto d'aspetto */
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%; /* Assicura che la larghezza sia sempre 100% */
-    height: 100%; /* Imposta l'altezza per riempire la Hero Section */
-    position: absolute;
-}
-
-/* Animazione per lo scorrimento */
-@keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
     position: relative;
     z-index: 10;
 }
 
-.cta-button {
+.search-form-modern {
+    display: flex;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-form-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.search-group {
+    flex: 1;
+    position: relative;
+    min-width: 200px;
+}
+
+.search-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    z-index: 1;
+}
+
+.search-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.search-group input:focus {
+    outline: none;
+    border-color: #00359a;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(0, 53, 154, 0.1);
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 30px;
     background-color: #00359a;
     color: white;
-    padding: 10px 20px;
     border: none;
-    font-size: 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #002b7a;
+}
+
+/* Suggerimenti migliorati */
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.suggestions.active {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.suggestion-item i {
+    position: static;
+    transform: none;
+    font-size: 14px;
+}
+
+.suggestion-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Loading Spinner */
+.search-spinner {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    color: #666;
+}
+
+.search-spinner.active {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form-modern {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-group {
+        width: 100%;
+    }
+
+    .search-button {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+    }
+}
+
+.search-form input {
+    padding: 10px;
+    margin: 5px; /* Margini tra gli input e il pulsante */
+    width: 300px; /* Larghezza fissa per il campo di input */
+    border: 1px solid #ccc; /* Bordo del campo di input */
+    border-radius: 4px; /* Bordo arrotondato */
+}
+
+.search-form button {
+    padding: 10px;
+    margin: 5px; /* Margini tra gli input e il pulsante */
     cursor: pointer;
 }
 
-.search-form {
-    margin-top: 20px;
-    z-index: 10;
+/* Dropdown dei suggerimenti */
+.suggestions {
+    position: absolute; /* Posizione assoluta per il dropdown */
+    top: 100%; /* Posiziona direttamente sotto l'input */
+    left: 0;
+    width: 100%; /* Stessa larghezza dell'input */
+    background-color: white; /* Sfondo bianco */
+    border: 1px solid #ccc; /* Bordo del dropdown */
+    border-radius: 4px; /* Bordo arrotondato */
+    z-index: 20; /* Assicura che il dropdown sia sopra altri elementi */
+    max-height: 200px; /* Limita l'altezza del dropdown */
+    overflow-y: auto; /* Abilita lo scorrimento verticale se necessario */
+    display: none; /* Nasconde inizialmente il dropdown */
 }
 
-.search-form input, .search-form button {
-    padding: 10px;
-    margin-right: 5px;
+.suggestions.active {
+    display: block; /* Mostra il dropdown quando attivo */
 }
 
+.suggestion-item {
+    padding: 10px; /* Padding per ogni suggerimento */
+    cursor: pointer; /* Cursore a mano quando si passa sopra */
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0; /* Cambia colore al passaggio del mouse */
+}
 
 /* Sezione Viaggi in Partenza */
 .viaggi-in-partenza {
@@ -212,7 +362,7 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: #00359a;
+    background-color: #0056b3; /* Colore al passaggio del mouse */
 }
 
 /* Responsività per schermi più piccoli */
@@ -223,6 +373,15 @@ nav ul li a:hover {
 
     .viaggi-list {
         gap: 10px; /* Diminuisce lo spazio tra i riquadri sui dispositivi mobili */
+    }
+
+    .search-form {
+        width: 100%; /* Larghezza della barra di ricerca */
+        margin-top: 15px; /* Diminuisce il margine superiore */
+    }
+
+    .search-form input, .search-form button {
+        width: 90%; /* Riduce la larghezza dei campi di input sui dispositivi mobili */
     }
 }
 

@@ -7,7 +7,6 @@ function checkLoginStatus() {
     const creaViaggioLink = document.getElementById('creaViaggioLink');
 
     if (token) {
-        // Se il token è presente, nascondi i link di login/registrazione e mostra il bottone di logout
         loginLink.style.display = 'none';
         registerLink.style.display = 'none';
         logoutButton.style.display = 'block';
@@ -19,7 +18,6 @@ function checkLoginStatus() {
         username.href = '/profilo';
         logoutButton.parentNode.insertBefore(username, logoutButton);
     } else {
-        // Se il token non è presente, mostra i link di login/registrazione e nascondi il bottone di logout
         loginLink.style.display = 'block';
         registerLink.style.display = 'block';
         logoutButton.style.display = 'none';
@@ -29,11 +27,8 @@ function checkLoginStatus() {
 
 // Funzione per gestire il logout
 function handleLogout() {
-    // Cancella il token JWT dal cookie
     document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     localStorage.removeItem("username");
-    
-    // Reindirizza alla pagina index.html
     window.location.href = '/';
 }
 
@@ -43,6 +38,79 @@ function redirectIfNotAuth() {
     if (!token) {
         window.location.href = '/login';
     }
+}
+
+// Funzione per reindirizzare l'utente alla pagina dei risultati con i parametri di ricerca
+function cercaViaggi() {
+    const destinazione = document.getElementById('destinazione').value;
+    const checkInDate = document.getElementById('checkInDate').value;
+
+    if (!destinazione) {
+        alert('Per favore inserisci una destinazione.');
+        return;
+    }
+
+    let url = `risultati?stato=${encodeURIComponent(destinazione)}`;
+    if (checkInDate) {
+        url += `&dataPartenza=${checkInDate}`;
+    }
+
+    window.location.href = url;
+}
+
+// Funzione per mostrare i suggerimenti in base all'input dell'utente
+function showSuggestions(query) {
+    const suggestionsBox = document.getElementById('suggestions');
+    const searchSpinner = document.getElementById('searchSpinner');
+
+    if (query.length < 2) {
+        suggestionsBox.classList.remove('active');
+        return;
+    }
+
+    // Mostra lo spinner
+    searchSpinner.classList.add('active');
+
+    // Chiamata API per i suggerimenti
+    fetch(`/api/suggestions?query=${encodeURIComponent(query)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            suggestionsBox.innerHTML = '';  // Svuota i suggerimenti precedenti
+
+            if (data.length === 0) {
+                suggestionsBox.classList.remove('active'); // Nessun suggerimento
+                return;
+            }
+
+            data.forEach(suggestion => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.className = 'suggestion-item';
+                suggestionItem.innerHTML = `
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${suggestion}</span>
+                `;
+
+                suggestionItem.addEventListener('click', function() {
+                    document.getElementById('destinazione').value = suggestion;
+                    suggestionsBox.classList.remove('active');
+                });
+
+                suggestionsBox.appendChild(suggestionItem);
+            });
+
+            suggestionsBox.classList.add('active');
+        })
+        .catch(error => {
+            console.error('Errore nel recupero dei suggerimenti:', error);
+        })
+        .finally(() => {
+            searchSpinner.classList.remove('active');
+        });
 }
 
 // Event listener per il caricamento del DOM
@@ -55,38 +123,43 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', handleLogout);
     }
 
-    // Se siamo nella pagina di creazione viaggio, controlla l'autenticazione
-    if (window.location.pathname.includes('crea-viaggio.html')) {
-        redirectIfNotAuth();
-    }
-});
+    // Event listener per il pulsante "Cerca"
+    document.getElementById('cercaButton').addEventListener('click', function(event) {
+        event.preventDefault();  // Previene il submit del form standard
+        cercaViaggi();  // Chiama la funzione di ricerca
+    });
 
-// Funzione per reindirizzare l'utente alla pagina dei risultati con i parametri di ricerca
-function cercaViaggi() {
-    const destinazione = document.getElementById('destinazione').value;
-    const checkInDate = document.getElementById('checkInDate').value;
+    // Event listener per l'input del campo destinazione
+    document.getElementById('destinazione').addEventListener('input', function(event) {
+        const query = event.target.value;
+        showSuggestions(query);  // Mostra i suggerimenti mentre l'utente digita
+    });
+	
+	// Chiusura dei suggerimenti quando si clicca fuori
+	document.addEventListener('click', function(e) {
+        const suggestionsBox = document.getElementById('suggestions');
+        const destinazioneInput = document.getElementById('destinazione');
+        
+        if (!destinazioneInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+            suggestionsBox.classList.remove('active');
+        }
+    });
 
-    // Controlla se è stata inserita la destinazione
-    if (!destinazione) {
-        alert('Per favore inserisci una destinazione.');
-        return;
-    }
+    // Gestione focus dell'input
+    document.getElementById('destinazione').addEventListener('focus', function() {
+        if (this.value.length >= 2) {
+            document.getElementById('suggestions').classList.add('active');
+        }
+    });
 
-    // Costruisci l'URL con i parametri per la pagina dei risultati
-    let url = `risultati?stato=${encodeURIComponent(destinazione)}`;
-    
-    if (checkInDate) {
-        url += `&dataPartenza=${checkInDate}`;
-    }
-
-    // Reindirizza alla pagina dei risultati
-    window.location.href = url;
-}
-
-// Event listener per il pulsante "Cerca"
-document.getElementById('cercaButton').addEventListener('click', function(event) {
-    event.preventDefault();  // Previene il submit del form standard
-    cercaViaggi();  // Chiama la funzione di ricerca
+    // Aggiungi debounce per la ricerca
+    let debounceTimer;
+    document.getElementById('destinazione').addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            showSuggestions(e.target.value);
+        }, 300);
+    });
 });
 
 // Funzione per la gestione dello slideshow
@@ -102,6 +175,6 @@ function showSlides() {
     if (slideIndex > slides.length) {
         slideIndex = 1;
     }
-    slides[slideIndex-1].style.display = "block";
+    slides[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 5000); // Cambia immagine ogni 5 secondi
 }
