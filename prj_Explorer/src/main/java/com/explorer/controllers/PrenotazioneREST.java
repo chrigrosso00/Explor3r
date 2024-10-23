@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,8 @@ import com.explorer.entities.Prenotazione;
 import com.explorer.entities.PrenotazioneId;
 import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
+import com.explorer.repos.UtenteDAO;
+import com.explorer.security.UserPrincipal;
 import com.explorer.services.PrenotazioneServices;
 
 @RestController
@@ -26,6 +30,9 @@ public class PrenotazioneREST {
 	
 	@Autowired
 	private PrenotazioneServices pService;
+	
+	@Autowired
+	private UtenteDAO utentedao;
 	
 	@GetMapping("prenotazioni")
 	public List<Prenotazione> getPrenotazione() {
@@ -89,8 +96,12 @@ public class PrenotazioneREST {
     }
 	
 	@PostMapping("prenotazione")
-	public ResponseEntity<Prenotazione> addPrenotazione(@RequestBody Prenotazione prenotazione) {
-		return new ResponseEntity<Prenotazione>(pService.addPrenotazione(prenotazione), HttpStatus.CREATED);
+	public ResponseEntity<Prenotazione> addPrenotazione(@RequestBody Viaggio viaggio) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        System.out.println(username);
+        Utente currentUser = utentedao.findByUsername(username).orElseThrow();
+		return new ResponseEntity<Prenotazione>(pService.addPrenotazione(currentUser, viaggio), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("prenotazione/delete/{utenteId}/{viaggioId}")

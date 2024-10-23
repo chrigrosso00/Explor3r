@@ -6,17 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.explorer.entities.Paese;
 import com.explorer.entities.Prenotazione;
 import com.explorer.entities.PrenotazioneId;
 import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
+import com.explorer.repos.PaeseDAO;
 import com.explorer.repos.PrenotazioneDAO;
+import com.explorer.repos.UtenteDAO;
+import com.explorer.repos.ViaggioDAO;
 
 
 @Service
 public class PrenotazioneServicesImpl implements PrenotazioneServices {
 	@Autowired
     private PrenotazioneDAO dao;
+	
+	@Autowired
+    private UtenteDAO utenteDAO;
+	
+	@Autowired
+    private ViaggioDAO viaggiodao;
 	
 	@Override
     public List<Prenotazione> findAll() {
@@ -43,7 +53,14 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
 		return dao.countByUtente(utente);
 	} 
     @Override
-	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
+	public Prenotazione addPrenotazione(Utente utente, Viaggio viaggio) {
+    	
+    	Prenotazione prenotazione = new Prenotazione();
+    	
+    	prenotazione.setUtente(utente);
+        Viaggio viaggiop = viaggiodao.findById(viaggio.getId_viaggio()).orElseThrow();
+        prenotazione.setViaggio(viaggiop);
+         
     	return dao.save(prenotazione);
 	}
     @Override

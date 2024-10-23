@@ -29,8 +29,7 @@ public class Prenotazione {
     @JsonBackReference("viaggio-prenotazione")
     private Viaggio viaggio;
     
-    @NotNull
-    @Column(nullable = false)
+    
     private String data;
 	
     public Utente getUtente() {

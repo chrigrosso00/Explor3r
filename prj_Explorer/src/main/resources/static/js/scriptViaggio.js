@@ -96,3 +96,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carica i dettagli del viaggio alla fine
     caricaDettagliViaggio();
 });
+
+function prenotaViaggio() {
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+
+    if (!token) {
+        alert("Devi essere loggato per prenotare un viaggio.");
+        return;
+    }
+
+    const id_viaggio = getQueryParameter('id');
+
+    fetch(`/api/prenotazione`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
+        },
+        body: JSON.stringify({ id_viaggio: id_viaggio })
+    })
+    .then(response => {
+        if (response.status === 201) {
+            alert('Prenotazione effettuata con successo!');
+        } else {
+            alert('Errore durante la prenotazione. Riprova più tardi.');
+        }
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Errore durante la prenotazione.');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+    caricaDettagliViaggio();
+
+    // Aggiungi event listener per il pulsante di prenotazione
+    const prenotaButton = document.getElementById('prenotaButton');
+    prenotaButton.addEventListener('click', prenotaViaggio);
+});
