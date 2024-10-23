@@ -111,6 +111,7 @@ nav ul li a:hover {
 /* Aggiungi queste regole dopo la sezione .search-form esistente */
 
 /* Search Container Moderno */
+/* Search Container Moderno */
 .search-container {
     width: 100%;
     max-width: 900px;
@@ -123,22 +124,21 @@ nav ul li a:hover {
 .search-form-modern {
     display: flex;
     gap: 15px;
-    background: white;
+    background: rgba(255, 255, 255, 0.9); /* Sfondo bianco con trasparenza */
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 25px; /* Bordi arrotondati */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ombra per profondità */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-form-modern:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .search-group {
     flex: 1;
     position: relative;
-    min-width: 200px;
 }
 
 .search-group i {
@@ -150,39 +150,39 @@ nav ul li a:hover {
     z-index: 1;
 }
 
-.search-group input {
+.input-field {
     width: 100%;
-    padding: 15px 15px 15px 45px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    padding: 15px 15px 15px 45px; /* Spazio per l'icona */
+    border: 1px solid #e0e0e0; /* Bordo grigio chiaro */
+    border-radius: 20px; /* Bordi arrotondati per i campi di input */
     font-size: 16px;
-    background-color: #f8f9fa;
+    background-color: #f9f9f9; /* Sfondo chiaro per i campi di input */
     transition: all 0.3s ease;
 }
 
-.search-group input:focus {
+.input-field:focus {
     outline: none;
-    border-color: #00359a;
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(0, 53, 154, 0.1);
+    border-color: #00359a; /* Colore blu quando in focus */
+    background-color: #fff; /* Sfondo bianco al focus */
+    box-shadow: 0 0 0 3px rgba(0, 53, 154, 0.1); /* Ombra al focus */
 }
 
 .search-button {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0 30px;
-    background-color: #00359a;
+    padding: 15px 30px; /* Maggiore padding per pulsanti più grandi */
+    background-color: #00359a; /* Colore blu */
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 20px; /* Bordi arrotondati per il pulsante */
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-    background-color: #002b7a;
+    background-color: #002b7a; /* Colore blu scuro al passaggio del mouse */
 }
 
 /* Suggerimenti migliorati */
@@ -201,6 +201,7 @@ nav ul li a:hover {
     overflow-y: auto;
 }
 
+/* Suggerimenti attivi */
 .suggestions.active {
     display: block;
 }
@@ -214,15 +215,10 @@ nav ul li a:hover {
     color: #333;
 }
 
-.suggestion-item i {
-    position: static;
-    transform: none;
-    font-size: 14px;
+.suggestion-item:hover {
+    background-color: #f0f0f0; /* Colore al passaggio del mouse */
 }
 
-.suggestion-item:hover {
-    background-color: #f8f9fa;
-}
 
 /* Loading Spinner */
 .search-spinner {
