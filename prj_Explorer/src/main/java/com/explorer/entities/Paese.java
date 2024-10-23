@@ -15,7 +15,9 @@ public class Paese {
     private int id_paese;
     private String stato;
     private String continente;
+    private String img;
     
+	
 	public int getId_paese() {
 		return id_paese;
 	}
@@ -34,4 +36,10 @@ public class Paese {
 	public void setContinente(String continente) {
 		continente = continente;
 	} 
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 }

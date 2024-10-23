@@ -96,7 +96,7 @@ nav ul li a:hover {
 }
 
 #immagine-viaggio {
-    width: 75%; /* Immagine occupa 3/4 della larghezza */
+    width: 25%; /* Immagine occupa 3/4 della larghezza */
     height: 300px;
     background-size: cover;
     background-position: center;

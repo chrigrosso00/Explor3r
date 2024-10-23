@@ -54,15 +54,19 @@ function mostraViaggi(viaggi) {
             const dataArrivo = viaggio.data_Arrivo; // Data di arrivo
             const prezzo = viaggio.prezzo;
             const descrizione = viaggio.descrizione;
-
+			const immagine = viaggio.paese.img;
+			
             // Costruisci l'elemento HTML per ogni viaggio
             const viaggioElement = `
                 <div class="viaggio">
+                    <div class="immagine-viaggio">
+                        <img src="${immagine}" alt="Immagine di ${paese}">
+                    </div>
                     <div class="viaggio-info">
                         <h3>Paese: ${paese}</h3>
                         <p>Descrizione: ${descrizione}</p>
                         <p>Partenza: ${dataPartenza}</p>
-                        <p>Arrivo: ${dataArrivo}</p>
+                        <p>Arrivo: ${dataArrivo}</p>              
                         <p>Prezzo: €${prezzo}</p>
                         <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
                     </div>

@@ -47,6 +47,7 @@ public class SecurityConfiguration {
 						"/css/**", 
 						"/js/**", 
 						"/img/**",
+						"/images/**",
 						"viaggiContinente/**", 
 						"api/add/**", 
 						"api/viaggi/**",
