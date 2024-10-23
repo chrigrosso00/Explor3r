@@ -1,5 +1,8 @@
 package com.explorer.controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -133,8 +136,13 @@ public class PrenotazioneREST {
 
 	    // 7. Se l'utente non è il creatore e non è già iscritto, procedi con la prenotazione
 	    Prenotazione nuovaPrenotazione = pService.addPrenotazione(currentUser, viaggioPrenotazione);
+	    LocalDate today = LocalDate.now();  // Get today's date
 
-	    // 8. Restituisci una conferma di successo
+	    // Convert LocalDate to java.sql.Date
+	    Date formattedDate = Date.valueOf(today);  // This is a convenient way to convert LocalDate to java.sql.Date
+
+	    nuovaPrenotazione.setData(formattedDate);  // Set the Date
+
 	    return new ResponseEntity<>("Prenotazione effettuata con successo", HttpStatus.CREATED);
 	}
 

@@ -44,6 +44,7 @@ function redirectIfNotAuth() {
 function cercaViaggi() {
     const destinazione = document.getElementById('destinazione').value;
     const checkInDate = document.getElementById('checkInDate').value;
+    const tipologiaViaggio = document.getElementById('tipologiaViaggio').value; // Ottieni la tipologia selezionata
 
     if (!destinazione) {
         alert('Per favore inserisci una destinazione.');
@@ -54,9 +55,13 @@ function cercaViaggi() {
     if (checkInDate) {
         url += `&dataPartenza=${checkInDate}`;
     }
+    if (tipologiaViaggio) {
+        url += `&tipologia=${tipologiaViaggio}`; 
+    }
 
     window.location.href = url;
 }
+
 
 // Funzione per mostrare i suggerimenti in base all'input dell'utente
 function showSuggestions(query) {
@@ -91,7 +96,7 @@ function showSuggestions(query) {
                 const suggestionItem = document.createElement('div');
                 suggestionItem.className = 'suggestion-item';
                 suggestionItem.innerHTML = `
-                    <i class="fas fa-map-marker-alt"></i>
+                    
                     <span>${suggestion}</span>
                 `;
 

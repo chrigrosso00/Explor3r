@@ -21,4 +21,6 @@ public interface ViaggioServices {
 	Viaggio createViaggio(Viaggio nuovoViaggio);
 	
 	public List<Viaggio> getViaggioByStatoAndDataPartenza(String stato, LocalDate datPartenza);
+	
+	public List<Viaggio> getViaggiByUsernameUser(String username);
 }

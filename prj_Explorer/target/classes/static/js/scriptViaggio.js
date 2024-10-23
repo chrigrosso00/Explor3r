@@ -14,7 +14,7 @@ function caricaDettagliViaggio() {
             if (response.ok) {
                 return response.json(); // Parse JSON
             } else {
-                throw new Error('Errore nella chiamata API');
+                throw new Error('Errore nella chiamata API dettagli');
             }
         })
         .then(viaggio => {
@@ -24,6 +24,38 @@ function caricaDettagliViaggio() {
             console.error('Errore:', error);
             document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei dettagli del viaggio.</p>';
         });
+}
+
+function caricaPartecipanti(){
+    fetch(`/api/viaggi/partecipanti/${id_viaggio}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse JSON
+            } else {
+                throw new Error('Errore nella chiamata API partecipanti');
+            }
+        })
+        .then(partecipanti => {
+            mostraPartecipantiViaggio(partecipanti)
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei partecipanti del viaggio.</p>';
+        });
+}
+
+function mostraPartecipantiViaggio(partecipanti){
+    const dettagliViaggio = document.getElementById('partecipanti-viaggio');
+    const listaPartecipanti = document.createElement('ul');
+
+    partecipanti.forEach(partecipante => {
+        const listItem = document.createElement('li');
+        listItem.textContent = partecipante.username;
+        listaPartecipanti.appendChild(listItem);
+    });
+
+    dettagliViaggio.innerHTML = '<h3>Partecipanti al Viaggio:</h3>';
+    dettagliViaggio.appendChild(listaPartecipanti);
 }
 
 // Funzione per mostrare i dettagli del viaggio nella pagina
@@ -140,6 +172,7 @@ function prenotaViaggio() {
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
     caricaDettagliViaggio();
+    caricaPartecipanti();
 
     // Aggiungi event listener per il pulsante di prenotazione
     const prenotaButton = document.getElementById('prenotaButton');

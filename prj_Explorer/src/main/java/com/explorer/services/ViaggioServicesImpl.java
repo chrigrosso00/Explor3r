@@ -77,4 +77,8 @@ public class ViaggioServicesImpl implements ViaggioServices {
 	public List<Viaggio> getViaggioByStatoAndDataPartenza(String stato, LocalDate datPartenza) {
 		return dao.findByStatoAndDataPartenza(stato, datPartenza);
 	}
+	
+	public List<Viaggio> getViaggiByUsernameUser(String username){
+		return dao.findViaggiByUsernameUser(username);
+	}
 }

@@ -35,26 +35,38 @@
 
     <!-- Hero Section with Slideshow -->
     <section class="hero">
-        <div class="search-container">
-            <div class="search-form-modern">
-                <div class="search-group">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <input type="text" id="destinazione" placeholder="Dove vuoi andare?">
-                    <div class="search-spinner" id="searchSpinner">
-                        <i class="fas fa-spinner fa-spin"></i>
-                    </div>
-                    <div class="suggestions" id="suggestions"></div>
-                </div>
-                <div class="search-group">
-                    <i class="fas fa-calendar-alt"></i>
-                    <input type="date" id="checkInDate" placeholder="Data partenza">
-                </div>
-                <button id="cercaButton" class="search-button">
-                    <i class="fas fa-search"></i>
-                    <span>Cerca</span>
-                </button>
+      <div class="search-container">
+    <div class="search-form-modern">
+        <div class="search-group">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" id="destinazione" placeholder="Dove vuoi andare?" class="input-field">
+            <div class="search-spinner" id="searchSpinner">
+                <i class="fas fa-spinner fa-spin"></i>
             </div>
+            <div class="suggestions" id="suggestions"></div>
         </div>
+        <div class="search-group">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="date" id="checkInDate" placeholder="Data partenza" class="input-field">
+        </div>
+        <div class="search-group">
+            <i class="fas fa-tag"></i>
+            <select id="tipologiaViaggio" class="input-field">
+                <option value="">Seleziona la tipologia</option>
+                <option value="AVVENTURA">Avventura</option>
+                <option value="CULTURALE">Culturale</option>
+                <option value="LUSSO">Lusso</option>
+                <option value="NATURA">Natura</option>
+                <option value="RELAX">Relax</option>
+            </select>
+        </div>
+        <button id="cercaButton" class="search-button">
+            <i class="fas fa-search"></i>
+            <span>Cerca</span>
+        </button>
+    </div>
+</div>
+       
     </section>
 
     <!-- Viaggi in partenza -->

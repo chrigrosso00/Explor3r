@@ -1,5 +1,7 @@
 package com.explorer.entities;
 
+import java.sql.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -29,8 +31,7 @@ public class Prenotazione {
     @JsonBackReference("viaggio-prenotazione")
     private Viaggio viaggio;
     
-    
-    private String data;
+    private Date data;
 	
     public Utente getUtente() {
 		return utente;
@@ -50,10 +51,10 @@ public class Prenotazione {
 	public void setId(PrenotazioneId id) {
 		this.id = id;
 	}
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 }

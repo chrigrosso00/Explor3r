@@ -149,7 +149,7 @@ public class ViaggioREST {
 
     
     @GetMapping("viaggi/partecipanti/{idViaggio}")
-    public ResponseEntity<List<Utente>> getPartecipanti(@RequestParam int idViaggio) {
+    public ResponseEntity<List<Utente>> getPartecipanti(@PathVariable int idViaggio) {
     	if(viaggioServices.findById(idViaggio) == null) {
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     	}
@@ -160,8 +160,16 @@ public class ViaggioREST {
 				Utenti.add(prenotazione.getUtente());
 			}
 		}
-    	
-    	
     	return ResponseEntity.ok(Utenti);
+    }
+    
+    @GetMapping("viaggi/nominativo/{username}")
+    public ResponseEntity<List<Viaggio>> getViaggiByUsernameUser(@PathVariable String username) {
+    	List<Viaggio> viaggio = viaggioServices.getViaggiByUsernameUser(username);
+    		if (viaggio != null && !viaggio.isEmpty()) {
+    	        return ResponseEntity.ok(viaggio);
+    	    } else {
+    	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    	    }
     }
 }

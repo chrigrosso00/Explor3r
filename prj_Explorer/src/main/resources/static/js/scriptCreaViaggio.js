@@ -47,6 +47,15 @@ function creaViaggio() {
     const formData = new FormData(document.getElementById('creaViaggioForm'));
     const viaggioData = Object.fromEntries(formData.entries());
 
+    // Verifica le date di partenza e arrivo
+    const dataPartenza = new Date(viaggioData.data_Partenza);
+    const dataArrivo = new Date(viaggioData.data_Arrivo);
+    
+    if (dataArrivo <= dataPartenza) {
+        alert("La data di arrivo deve essere successiva alla data di partenza.");
+        return; // Blocca l'invio se le date non sono valide
+    }
+
     // Converti l'ID del paese in un oggetto
     viaggioData.paese = { id_paese: parseInt(viaggioData['paese.id_paese']) };
     delete viaggioData['paese.id_paese'];
