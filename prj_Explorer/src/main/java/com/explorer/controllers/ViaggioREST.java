@@ -149,7 +149,7 @@ public class ViaggioREST {
 
     
     @GetMapping("viaggi/partecipanti/{idViaggio}")
-    public ResponseEntity<List<Utente>> getPartecipanti(@RequestParam int idViaggio) {
+    public ResponseEntity<List<Utente>> getPartecipanti(@PathVariable int idViaggio) {
     	if(viaggioServices.findById(idViaggio) == null) {
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     	}

@@ -1,5 +1,7 @@
 package com.explorer.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -133,6 +135,10 @@ public class PrenotazioneREST {
 
 	    // 7. Se l'utente non è il creatore e non è già iscritto, procedi con la prenotazione
 	    Prenotazione nuovaPrenotazione = pService.addPrenotazione(currentUser, viaggioPrenotazione);
+	    LocalDate today = LocalDate.now();  // Ottieni la data di oggi
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");  // Definisci il formato desiderato
+        String formattedDate = today.format(formatter);  // Convertila in stringa
+	    nuovaPrenotazione.setData(formattedDate);
 
 	    // 8. Restituisci una conferma di successo
 	    return new ResponseEntity<>("Prenotazione effettuata con successo", HttpStatus.CREATED);
