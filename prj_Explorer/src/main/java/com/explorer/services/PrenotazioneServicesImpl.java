@@ -2,6 +2,7 @@ package com.explorer.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,7 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
     	prenotazione.setUtente(utente);
         Viaggio viaggiop = viaggiodao.findById(viaggio.getId_viaggio()).orElseThrow();
         prenotazione.setViaggio(viaggiop);
+        prenotazione.setData(new Date(System.currentTimeMillis()));
          
     	return dao.save(prenotazione);
 	}
