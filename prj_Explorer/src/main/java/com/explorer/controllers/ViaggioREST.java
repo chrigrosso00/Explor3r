@@ -181,4 +181,16 @@ public class ViaggioREST {
     	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     	    }
     }
+    
+    @GetMapping("viaggi/in-partenza")
+    public ResponseEntity<List<Viaggio>> getViaggiInPartenza(){
+    	List<Viaggio> viaggi = viaggioServices.getViaggiInPartenza();
+    	
+    	if (!viaggi.isEmpty()) {
+            return ResponseEntity.ok(viaggi); // restituisce 200 e la lista dei 3 viaggi
+        } else {
+            return ResponseEntity.noContent().build(); // restituisce 204 se la lista è vuota
+        }
+    }
+    
 }

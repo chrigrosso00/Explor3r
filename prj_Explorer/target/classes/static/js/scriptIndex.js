@@ -137,4 +137,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cercaButton = document.getElementById('cercaButton');
     cercaButton.addEventListener('click', cercaViaggi);
+    
+    // Carica i viaggi in partenza quando la pagina è caricata
+    caricaViaggiInPartenza();
 });
+
+// Funzione per caricare i viaggi in partenza dall'API
+function caricaViaggiInPartenza() {
+    fetch('/api/viaggi/in-partenza')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella chiamata API');
+            }
+            return response.json();
+        })
+        .then(viaggi => {
+            mostraViaggiInPartenza(viaggi); // Funzione per mostrare i viaggi
+        })
+        .catch(error => {
+            console.error('Errore nel caricamento dei viaggi in partenza:', error);
+            document.getElementById('viaggiProssimi').innerHTML = '<p>Nessun viaggio disponibile al momento.</p>';
+        });
+}
+
+// Funzione per mostrare i viaggi in partenza nella sezione HTML
+function mostraViaggiInPartenza(viaggi) {
+    const container = document.getElementById('viaggiProssimi');
+    container.innerHTML = ''; // Pulisci il contenitore prima di inserire nuovi viaggi
+
+    if (viaggi.length === 0) {
+        container.innerHTML = '<p>Nessun viaggio disponibile al momento.</p>';
+    } else {
+        viaggi.forEach(viaggio => {
+            const paese = viaggio.paese.stato; // Ottieni il nome del paese
+            const dataPartenza = viaggio.data_Partenza; // Data di partenza
+            const prezzo = viaggio.prezzo;
+            const img = viaggio.paese.img; // Immagine del paese
+
+            // Costruisci l'elemento HTML per ogni viaggio
+            const viaggioElement = `
+                <div class="viaggio">
+                    <img src="${img}" alt="Viaggio a ${paese}">
+                    <div class="viaggio-info">
+                        <h3>${paese}</h3>
+                        <p>Partenza: ${dataPartenza}</p>
+                        <p>Prezzo: €${prezzo}</p>
+                        <button class="cta-button">Prenota</button>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += viaggioElement;
+        });
+    }
+}

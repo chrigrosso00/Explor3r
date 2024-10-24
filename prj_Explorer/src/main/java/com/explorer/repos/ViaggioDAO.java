@@ -35,7 +35,9 @@ public interface ViaggioDAO extends JpaRepository<Viaggio, Integer> {
 	
 	@Query("SELECT v FROM Viaggio v WHERE v.data_Partenza >= :dataPartenza") // Usa >= per includere la data
 	List<Viaggio> findByDataPartenza(LocalDate dataPartenza);
-
+	
+	@Query(value = "SELECT * FROM ft_viaggio WHERE data_partenza >= CURDATE() ORDER BY data_partenza ASC LIMIT 3", nativeQuery = true)
+	List<Viaggio> findViaggiInPartenza();
 
 
 }
