@@ -70,29 +70,24 @@ function cercaViaggi() {
 
     if (tipologiaViaggio) {
         if (url.includes('stato=') || url.includes('dataPartenza=')) {
-            url += `&tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi la tipologia se altri parametri sono già presenti
+            url += `&tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi tipologia se c'è un altro parametro
         } else {
-            url += `tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi solo la tipologia
+            url += `tipologia=${encodeURIComponent(tipologiaViaggio)}`; // Aggiungi solo tipologia
         }
     }
 
-    // Reindirizza alla pagina dei risultati con i parametri di ricerca
-    window.location.href = url;
+    window.location.href = url; // Reindirizza l'utente alla pagina con i risultati
 }
-
 
 // Funzione per mostrare i suggerimenti in base all'input dell'utente
 function showSuggestions(query) {
     const suggestionsBox = document.getElementById('suggestions');
-    const searchSpinner = document.getElementById('searchSpinner');
+    suggestionsBox.innerHTML = ''; // Pulisci i suggerimenti precedenti
 
     if (query.length < 2) {
-        suggestionsBox.classList.remove('active');
+        suggestionsBox.classList.remove('active'); // Nascondi la casella se la lunghezza è minore di 2
         return;
     }
-
-    // Mostra lo spinner
-    searchSpinner.classList.add('active');
 
     // Chiamata API per i suggerimenti
     fetch(`/api/suggestions?query=${encodeURIComponent(query)}`)
@@ -103,8 +98,6 @@ function showSuggestions(query) {
             return response.json();
         })
         .then(data => {
-            suggestionsBox.innerHTML = '';  // Svuota i suggerimenti precedenti
-
             if (data.length === 0) {
                 suggestionsBox.classList.remove('active'); // Nessun suggerimento
                 return;
@@ -113,91 +106,35 @@ function showSuggestions(query) {
             data.forEach(suggestion => {
                 const suggestionItem = document.createElement('div');
                 suggestionItem.className = 'suggestion-item';
-                suggestionItem.innerHTML = `
-                    
-                    <span>${suggestion}</span>
-                `;
+                suggestionItem.innerHTML = `<span>${suggestion}</span>`;
 
                 suggestionItem.addEventListener('click', function() {
                     document.getElementById('destinazione').value = suggestion;
-                    suggestionsBox.classList.remove('active');
+                    suggestionsBox.classList.remove('active'); // Chiudi i suggerimenti dopo la selezione
                 });
 
                 suggestionsBox.appendChild(suggestionItem);
             });
 
-            suggestionsBox.classList.add('active');
+            suggestionsBox.classList.add('active'); // Mostra i suggerimenti
         })
         .catch(error => {
             console.error('Errore nel recupero dei suggerimenti:', error);
-        })
-        .finally(() => {
-            searchSpinner.classList.remove('active');
         });
 }
 
-// Event listener per il caricamento del DOM
+// Event listener per l'input del campo destinazione
+document.getElementById('destinazione').addEventListener('input', function(event) {
+    const query = event.target.value;
+    showSuggestions(query); // Mostra i suggerimenti mentre l'utente digita
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
 
-    // Aggiungi event listener per il pulsante di logout
     const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', handleLogout);
-    }
+    logoutButton.addEventListener('click', handleLogout);
 
-    // Event listener per il pulsante "Cerca"
-    document.getElementById('cercaButton').addEventListener('click', function(event) {
-        event.preventDefault();  // Previene il submit del form standard
-        cercaViaggi();  // Chiama la funzione di ricerca
-    });
-
-    // Event listener per l'input del campo destinazione
-    document.getElementById('destinazione').addEventListener('input', function(event) {
-        const query = event.target.value;
-        showSuggestions(query);  // Mostra i suggerimenti mentre l'utente digita
-    });
-	
-	// Chiusura dei suggerimenti quando si clicca fuori
-	document.addEventListener('click', function(e) {
-        const suggestionsBox = document.getElementById('suggestions');
-        const destinazioneInput = document.getElementById('destinazione');
-        
-        if (!destinazioneInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-            suggestionsBox.classList.remove('active');
-        }
-    });
-
-    // Gestione focus dell'input
-    document.getElementById('destinazione').addEventListener('focus', function() {
-        if (this.value.length >= 2) {
-            document.getElementById('suggestions').classList.add('active');
-        }
-    });
-
-    // Aggiungi debounce per la ricerca
-    let debounceTimer;
-    document.getElementById('destinazione').addEventListener('input', function(e) {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-            showSuggestions(e.target.value);
-        }, 300);
-    });
+    const cercaButton = document.getElementById('cercaButton');
+    cercaButton.addEventListener('click', cercaViaggi);
 });
-
-// Funzione per la gestione dello slideshow
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    let slides = document.getElementsByClassName("slide");
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 5000); // Cambia immagine ogni 5 secondi
-}
