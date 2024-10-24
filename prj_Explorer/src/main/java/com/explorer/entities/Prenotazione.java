@@ -1,11 +1,10 @@
 package com.explorer.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -33,6 +32,14 @@ public class Prenotazione {
     private Viaggio viaggio;
     
     private Date data;
+    private Double prezzo;
+    private String username;
+    private LocalDate data_Partenza;
+    private LocalDate data_Arrivo;
+    private String descrizione;
+    private String itinerario;
+    private String tipologia;
+    
     
     public Utente getUtente() {
 		return utente;
@@ -52,11 +59,53 @@ public class Prenotazione {
 	public void setId(PrenotazioneId id) {
 		this.id = id;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public Date getData() {
 		return data;
 	}
 	public void setData(Date data) {
 		this.data = data;
 	}
-
+	public Double getPrezzo() {
+		return prezzo;
+	}
+	public void setPrezzo(Double prezzo) {
+		this.prezzo = prezzo;
+	}
+	public LocalDate getData_Partenza() {
+		return data_Partenza;
+	}
+	public void setData_Partenza(LocalDate data_Partenza) {
+		this.data_Partenza = data_Partenza;
+	}
+	public LocalDate getData_Arrivo() {
+		return data_Arrivo;
+	}
+	public void setData_Arrivo(LocalDate data_Arrivo) {
+		this.data_Arrivo = data_Arrivo;
+	}
+	public String getTipologia() {
+		return tipologia;
+	}
+	public void setTipologia(String tipologia) {
+		this.tipologia = tipologia;
+	}
+	public String getDescrizione() {
+		return descrizione;
+	}
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	public String getItinerario() {
+		return itinerario;
+	}
+	public void setItinerario(String itinerario) {
+		this.itinerario = itinerario;
+	}
+	
 }

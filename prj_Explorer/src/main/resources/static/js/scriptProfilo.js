@@ -100,34 +100,59 @@ document.addEventListener('DOMContentLoaded', function() {
     caricaViaggiInPartenza();
 });
 
-function caricaPrenotazioni(){
-	let user = JSON.parse(localStorage.getItem('username'));
-	
-	let load = document.createElement('h2');
-	load.textContent = 'Le tue prenotazioni';
-	let empty = document.createElement('p');
-	
-	fetch(`api/prenotazioni`)
-       	.then(response => response.json())
+function caricaPrenotazioni() {
+    let user = JSON.parse(localStorage.getItem('username'));
+    
+    let load = document.createElement('h2');
+    load.textContent = 'Le tue prenotazioni';
+    let prenotationSection = document.getElementById('prenotation-section');
+    prenotationSection.innerHTML = ''; 
+    prenotationSection.appendChild(load);
+
+    fetch(`api/prenotazioni`)
+        .then(response => response.json())
         .then(prenotationDetails => {
-		
-		if(prenotationDetails.prenotazioni.length<=0){
-			empty.textContent = "Non ti sei prenotato per nessun viaggio";
-	    }else{
-		
-		}
-		
-     
-    	
-    })
-    .catch(error => {
-         console.error('Errore nel caricamento dei dettagli utente:', error);
-    });
-	document.getElementById('prenotation-section').append(load, empty, state);
+            for(let i = 0; i < prenotationDetails.length; i++) {
+                if(prenotationDetails[i].username === user) {
+                    
+                    let dateElement = document.createElement("div");
+					
+					let prenotation = document.createElement("h4");
+                    prenotation.textContent = "Prenotazione";
+                    dateElement.appendChild(prenotation);
+					
+                    let departure = document.createElement("p");
+                    departure.textContent = "Data Partenza: " + prenotationDetails[i].data_Partenza;
+                    dateElement.appendChild(departure);
+
+                    let end = document.createElement("p");
+                    end.textContent = "Data Ritorno: " + prenotationDetails[i].data_Arrivo;
+                    dateElement.appendChild(end);
+
+                    let description = document.createElement("p");
+                    description.textContent = "Descrizione: " + prenotationDetails[i].descrizione;
+                    dateElement.appendChild(description);
+
+                    let itinerary = document.createElement("p");
+                    itinerary.textContent = "Itinerario: " + prenotationDetails[i].itinerario;
+                    dateElement.appendChild(itinerary);
+
+                    let type = document.createElement("p");
+                    type.textContent = "Tipologia: " + prenotationDetails[i].tipologia;
+                    dateElement.appendChild(type);
+
+                    let price = document.createElement("p");
+                    price.textContent = "Prezzo: " + prenotationDetails[i].prezzo;
+                    dateElement.appendChild(price);
+
+                    prenotationSection.appendChild(dateElement);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Errore nel caricamento dei dettagli utente:', error);
+        });
 }
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     caricaUtente();
