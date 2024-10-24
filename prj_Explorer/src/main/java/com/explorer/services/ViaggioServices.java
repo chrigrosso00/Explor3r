@@ -32,5 +32,5 @@ public interface ViaggioServices {
     
     public List<Viaggio> getViaggiByDataPartenza(LocalDate dataPartenza);
     
-    public List<Viaggio> getViaggiInPartenza();
+    public void deleteViaggio(Viaggio viaggio);
 }

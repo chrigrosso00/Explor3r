@@ -102,7 +102,7 @@ public class ViaggioServicesImpl implements ViaggioServices {
 	 }
 
 	@Override
-	public List<Viaggio> getViaggiInPartenza() {
-		return dao.findViaggiInPartenza();
+	public void deleteViaggio(Viaggio viaggio) {
+		dao.delete(viaggio);
 	}
 }

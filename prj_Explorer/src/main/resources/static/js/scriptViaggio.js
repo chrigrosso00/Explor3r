@@ -77,6 +77,7 @@ function mostraDettagliViaggio(viaggio) {
     document.getElementById('descrizione').textContent = viaggio.descrizione;
     document.getElementById('itinerario').textContent = viaggio.itinerario;
     document.getElementById('tipologia').textContent = viaggio.tipologia;
+    document.getElementById('creatore').textContent = viaggio.utente.username;
 }
 
 // Funzione per verificare se il token JWT è presente nei cookie
@@ -176,11 +177,98 @@ function prenotaViaggio() {
     });
 }
 
+function deleteButton(){
+    let utenteId;
+    fetch(`/api/viaggi/${id_viaggio}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse JSON
+            } else {
+                throw new Error('Errore nella chiamata API dettagli');
+            }
+        })
+        .then(viaggio => {
+            utenteId = viaggio.utente.id_utente
+        fetch(`api/utente/nominativo/${user}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Parse JSON
+                } else {
+                    throw new Error('Errore nella chiamata API dettagli');
+                }
+            })
+            .then(utente => {
+                if(utenteId === utente.id_utente){
+                    const cancellaButton = document.getElementById('cancella');
+                    cancellaButton.removeAttribute('hidden');
+                    cancellaButton.addEventListener('click', cancellaViaggio)
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei dettagli del viaggio.</p>';
+            });
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei dettagli del viaggio.</p>';
+        });
+
+        let user = JSON.parse(localStorage.getItem('username'));
+        
+        
+}
+
+function cancellaViaggio(){
+    fetch(`/api/viaggi/${id_viaggio}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse JSON
+            } else {
+                throw new Error('Errore nella chiamata API dettagli');
+            }
+        })
+        .then(viaggio => {
+            fetch(`/api/viaggi/delete`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(viaggio)  // Invia l'oggetto Viaggio direttamente, non come proprietà
+            })
+            .then(response => {
+                if (response.status === 200) {  // Stato corretto: 200 OK
+                    alert('Cancellazione riuscita');
+                } else if (response.status === 403) {
+                    alert('Non puoi iscriverti al tuo viaggio.');
+                } else if (response.status === 404) {
+                    alert('Viaggio non trovato.');
+                } else if (response.status === 400) {
+                    alert('Errore: Dati di richiesta non validi. Controlla i dettagli e riprova.');
+                } else if (response.status === 500) {
+                    alert('Errore interno del server. Riprova più tardi.');
+                } else {
+                    alert('Errore durante la cancellazione. Riprova più tardi.');
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert('Errore durante la cancellazione.');
+            });
+            
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei dettagli del viaggio.</p>';
+        });
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
     caricaDettagliViaggio();
     caricaPartecipanti();
+    deleteButton();
 
     // Aggiungi event listener per il pulsante di prenotazione
     const prenotaButton = document.getElementById('prenotaButton');
