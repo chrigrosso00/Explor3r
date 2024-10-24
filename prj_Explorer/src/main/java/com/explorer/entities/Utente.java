@@ -26,7 +26,7 @@ public class Utente {
     private int id_utente;
     
     @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
-    @JsonBackReference("utente-prenotazione")
+    @JsonManagedReference("utente-prenotazione")
 	private Set<Prenotazione> prenotazioni = new HashSet<>();
     
     @NotNull

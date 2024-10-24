@@ -20,6 +20,7 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
+    width: 100%;
 }
 
 header .container {
@@ -29,11 +30,31 @@ header .container {
     width: 100%;
 }
 
-/* Barra di navigazione */
+/* Logo */
+.logo {
+    flex: 1; /* Occupa 1 unità di spazio */
+    display: flex;
+    justify-content: flex-start; /* Posiziona il logo a sinistra */
+}
+
+.logo img {
+    width: 150px; /* Ridimensiona l'immagine del logo */
+    height: auto; /* Mantiene il rapporto di aspetto */
+    display: block;
+    margin-left: 20px;
+}
+
+/* Navigazione */
+nav {
+    flex: 2; /* Occupa 2 unità di spazio */
+    display: flex;
+    justify-content: center; /* Centra il menu orizzontale */
+}
+
 nav ul {
     list-style: none;
-    margin: 0; /* Corretto il margine */
-    padding: 0; /* Corretto il padding */
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
@@ -41,76 +62,70 @@ nav ul li {
     margin-right: 50px;
 }
 
+nav ul li:last-child {
+    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+}
+
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold; /* Rende il testo in grassetto */
-    transition: color 0.3s; /* Transizione per il colore */
+    transition: color 0.3s;
+    font-size: 23px;
 }
 
 nav ul li a:hover {
     color: #c0a9af; /* Cambia colore al passaggio del mouse */
 }
 
-/* Login in alto a destra */
+/* Login */
 .login {
-    margin-left: 50px; /* Sposta il login a destra */
+    flex: 1; /* Occupa 1 unità di spazio */
     display: flex;
-    align-items: center; /* Allinea verticalmente */
+    justify-content: flex-end; /* Posiziona il login a destra */
+    align-items: center;
 }
 
 .login a {
     color: white;
     font-weight: bold; /* Rende il testo in grassetto */
     text-decoration: none;
-    margin-right: 50px; /* Spazio tra i link */
-    display: flex;
-    align-items: center; /* Allinea verticalmente il testo e l'icona */
+    margin-right: 20px; /* Spazio tra i link e l'icona */
 }
 
 .login a:hover {
     text-decoration: underline;
 }
 
-/* Icona utente */
 .login .icon {
-    margin-left: 15px; /* Spazio tra l'icona e il testo */
     font-size: 20px; /* Dimensione dell'icona */
+    margin-left: 10px; /* Spazio tra il testo e l'icona */
 }
 
-/* Esempio di stile per l'icona utente */
-.icon {
-    font-family: 'Font Awesome 5 Free'; /* Font Awesome per le icone */
-    font-weight: 900; /* Peso per le icone solid */
-}
-
-/* Hero Section senza Slideshow */
+/* Hero Section */
 .hero {
     position: relative;
     height: 50vh; /* Altezza ridotta */
-    width: 100%; /* Larghezza a tutta pagina */
+    width: 100%;
     color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden; /* Nasconde qualsiasi parte in eccesso */
+    overflow: hidden;
     margin-top: 25px;
 }
 
-/* Contenuto della barra di ricerca */
+/* Search Form */
 .search-form {
-    display: flex; /* Usato per centrare gli input */
-    flex-direction: column; /* Disposizione verticale */
-    align-items: center; /* Centra gli elementi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
     z-index: 10;
-    position: relative; /* Necessario per il dropdown dei suggerimenti */
+    position: relative;
 }
 
-/* Aggiungi queste regole dopo la sezione .search-form esistente */
-
-/* Search Container Moderno */
 /* Search Container Moderno */
 .search-container {
     width: 100%;
@@ -124,10 +139,10 @@ nav ul li a:hover {
 .search-form-modern {
     display: flex;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.9); /* Sfondo bianco con trasparenza */
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
-    border-radius: 25px; /* Bordi arrotondati */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ombra per profondità */
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -153,36 +168,36 @@ nav ul li a:hover {
 .input-field {
     width: 100%;
     padding: 15px 15px 15px 45px; /* Spazio per l'icona */
-    border: 1px solid #e0e0e0; /* Bordo grigio chiaro */
-    border-radius: 20px; /* Bordi arrotondati per i campi di input */
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
     font-size: 16px;
-    background-color: #f9f9f9; /* Sfondo chiaro per i campi di input */
+    background-color: #f9f9f9;
     transition: all 0.3s ease;
 }
 
 .input-field:focus {
     outline: none;
-    border-color: #00359a; /* Colore blu quando in focus */
-    background-color: #fff; /* Sfondo bianco al focus */
-    box-shadow: 0 0 0 3px rgba(0, 53, 154, 0.1); /* Ombra al focus */
+    border-color: #00359a;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 53, 154, 0.1);
 }
 
 .search-button {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 15px 30px; /* Maggiore padding per pulsanti più grandi */
-    background-color: #00359a; /* Colore blu */
+    padding: 15px 30px;
+    background-color: #00359a;
     color: white;
     border: none;
-    border-radius: 20px; /* Bordi arrotondati per il pulsante */
+    border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-    background-color: #002b7a; /* Colore blu scuro al passaggio del mouse */
+    background-color: #002b7a;
 }
 
 /* Suggerimenti migliorati */
@@ -201,7 +216,6 @@ nav ul li a:hover {
     overflow-y: auto;
 }
 
-/* Suggerimenti attivi */
 .suggestions.active {
     display: block;
 }
@@ -216,85 +230,18 @@ nav ul li a:hover {
 }
 
 .suggestion-item:hover {
-    background-color: #f0f0f0; /* Colore al passaggio del mouse */
+    background-color: #f0f0f0;
 }
 
-
-/* Loading Spinner */
-.search-spinner {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: none;
-    color: #666;
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.search-spinner.active {
-    display: block;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .search-form-modern {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .search-group {
-        width: 100%;
-    }
-
-    .search-button {
-        width: 100%;
-        justify-content: center;
-        padding: 15px;
-    }
-}
-
-.search-form input {
-    padding: 10px;
-    margin: 5px; /* Margini tra gli input e il pulsante */
-    width: 300px; /* Larghezza fissa per il campo di input */
-    border: 1px solid #ccc; /* Bordo del campo di input */
-    border-radius: 4px; /* Bordo arrotondato */
-}
-
-.search-form button {
-    padding: 10px;
-    margin: 5px; /* Margini tra gli input e il pulsante */
-    cursor: pointer;
-}
-
-/* Dropdown dei suggerimenti */
-.suggestions {
-    position: absolute; /* Posizione assoluta per il dropdown */
-    top: 100%; /* Posiziona direttamente sotto l'input */
-    left: 0;
-    width: 100%; /* Stessa larghezza dell'input */
-    background-color: white; /* Sfondo bianco */
-    border: 1px solid #ccc; /* Bordo del dropdown */
-    border-radius: 4px; /* Bordo arrotondato */
-    z-index: 20; /* Assicura che il dropdown sia sopra altri elementi */
-    max-height: 200px; /* Limita l'altezza del dropdown */
-    overflow-y: auto; /* Abilita lo scorrimento verticale se necessario */
-    display: none; /* Nasconde inizialmente il dropdown */
-}
-
-.suggestions.active {
-    display: block; /* Mostra il dropdown quando attivo */
-}
-
-.suggestion-item {
-    padding: 10px; /* Padding per ogni suggerimento */
-    cursor: pointer; /* Cursore a mano quando si passa sopra */
-}
-
-.suggestion-item:hover {
-    background-color: #f0f0f0; /* Cambia colore al passaggio del mouse */
-}
-
-/* Sezione Viaggi in Partenza */
+/* Viaggi in Partenza */
 .viaggi-in-partenza {
     padding: 50px 0;
     text-align: center;
@@ -318,12 +265,12 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    width: 30%; /* Ogni viaggio occuperà il 30% della larghezza del contenitore */
+    width: 30%;
     transition: transform 0.3s ease;
 }
 
 .viaggio:hover {
-    transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
+    transform: scale(1.05);
 }
 
 .viaggio img {
@@ -358,33 +305,26 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: #0056b3; /* Colore al passaggio del mouse */
+    background-color: #0056b3;
 }
 
-/* Responsività per schermi più piccoli */
+/* Responsive Design */
 @media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Disposizione verticale sui dispositivi mobili */
+        text-align: center;
+    }
+
+    .login {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
     .viaggio {
-        width: 100%; /* Su dispositivi mobili, ogni riquadro occupa il 100% della larghezza */
+        width: 100%;
     }
 
     .viaggi-list {
-        gap: 10px; /* Diminuisce lo spazio tra i riquadri sui dispositivi mobili */
+        gap: 10px;
     }
-
-    .search-form {
-        width: 100%; /* Larghezza della barra di ricerca */
-        margin-top: 15px; /* Diminuisce il margine superiore */
-    }
-
-    .search-form input, .search-form button {
-        width: 90%; /* Riduce la larghezza dei campi di input sui dispositivi mobili */
-    }
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
 }

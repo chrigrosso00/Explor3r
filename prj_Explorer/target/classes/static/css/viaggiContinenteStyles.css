@@ -28,6 +28,7 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
+    width: 100%;
 }
 
 header .container {
@@ -37,11 +38,31 @@ header .container {
     width: 100%;
 }
 
-/* Barra di navigazione */
+/* Logo */
+.logo {
+    flex: 1; /* Occupa 1 unità di spazio */
+    display: flex;
+    justify-content: flex-start; /* Posiziona il logo a sinistra */
+}
+
+.logo img {
+    width: 150px; /* Ridimensiona l'immagine del logo */
+    height: auto; /* Mantiene il rapporto di aspetto */
+    display: block;
+    margin-left: 20px;
+}
+
+/* Navigazione */
+nav {
+    flex: 2; /* Occupa 2 unità di spazio */
+    display: flex;
+    justify-content: center; /* Centra il menu orizzontale */
+}
+
 nav ul {
     list-style: none;
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
@@ -49,11 +70,16 @@ nav ul li {
     margin-right: 50px;
 }
 
+nav ul li:last-child {
+    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+}
+
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold; /* Rende il testo in grassetto */
-    transition: color 0.3s; /* Transizione per il colore */
+    transition: color 0.3s;
+    font-size: 23px;
 }
 
 nav ul li a:hover {
