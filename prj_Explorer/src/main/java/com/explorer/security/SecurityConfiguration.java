@@ -54,7 +54,9 @@ public class SecurityConfiguration {
 						"viaggio/**",
 						"/profilo",
 						"/risultati",
-						"api/viaggi/partecipanti/{idViaggio}"
+						"api/viaggi/partecipanti/{idViaggio}",
+						"api/utente/nominativo/**",
+						"/api/viaggi/delete"
 				).permitAll()
 						// .requestMatchers(HttpMethod.POST, "/api/ordini").permitAll()
 						// .requestMatchers(HttpMethod.GET, "/api/ordini").hasAnyRole("ADMIN","USER")
@@ -63,8 +65,7 @@ public class SecurityConfiguration {
 								"/v3/api-docs.yaml", 
 								"/v3/api-docs/**",
 								"/api/v1/auth/**",
-								"api/utente/codice/**",
-								"api/utente/nominativo/**"
+								"api/utente/codice/**"
 								)
 						.hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
 				.formLogin(formLogin -> formLogin.loginPage("/login").permitAll())

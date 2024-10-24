@@ -139,13 +139,16 @@ public class ViaggioREST {
 
             // 2. Trova l'utente dal database (presuppone che ci sia un metodo per cercare l'utente per username)
             Utente utente = utenteServices.findByUsername(username);
+            
 
             if (utente != null) {
                 // 3. Assegna l'utente al viaggio
                 nuovoViaggio.setUtente(utente);
-
+                
                 // 4. Salva il viaggio con l'utente assegnato
                 Viaggio salvaViaggio = viaggioServices.createViaggio(nuovoViaggio);
+                
+                prenoServices.addPrenotazione(utente, salvaViaggio);
                 return ResponseEntity.status(201).body(salvaViaggio);
             } else {
                 return ResponseEntity.badRequest().body(null); // Restituisce 400 se l'utente non è trovato
@@ -181,4 +184,14 @@ public class ViaggioREST {
     	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     	    }
     }
+    @PostMapping("viaggi/delete")
+    public ResponseEntity<Void> deleteViaggio(@RequestBody Viaggio viaggio) {
+        if (viaggioServices.findById(viaggio.getId_viaggio()) == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        viaggioServices.deleteViaggio(viaggio);
+        return ResponseEntity.ok().build();  // Nessun contenuto da restituire
+    }
+    
 }

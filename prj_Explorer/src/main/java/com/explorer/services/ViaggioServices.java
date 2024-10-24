@@ -31,4 +31,6 @@ public interface ViaggioServices {
     public List<Viaggio> getViaggiByStatoTipologiaAndDataPartenza(String stato, String tipologia, LocalDate dataPartenza);
     
     public List<Viaggio> getViaggiByDataPartenza(LocalDate dataPartenza);
+    
+    public void deleteViaggio(Viaggio viaggio);
 }
