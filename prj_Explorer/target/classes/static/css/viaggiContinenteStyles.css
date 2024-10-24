@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Work Sans', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Il body riempie l'intera altezza della finestra */

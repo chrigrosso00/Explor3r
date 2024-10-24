@@ -1,116 +1,122 @@
-/* Stile base per il body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /* Altezza minima per coprire tutto lo schermo */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Inizio dall'alto */
-    color: #fff;
-    background-color: #f0f0f0; /* Aggiungi uno sfondo di contrasto per visibilità */
-    overflow-y: auto; /* Aggiunge lo scrolling verticale se necessario */
-}
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            min-height: 100vh;
+        }
 
-/* Stile per il container del form */
-#container-viaggio {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto; /* Aggiunge margine sopra/sotto */
-    text-align: left; /* Allinea il testo a sinistra */
-    box-sizing: border-box;
-}
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-/* Migliora lo stile del titolo */
-h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #00359a;
-    text-align: center; /* Centra solo il titolo */
-}
+        #container-viaggio {
+            background-color: rgba(255, 255, 255, 0.97);
+            padding: 2px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-/* Etichette */
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-    font-size: 14px; /* Font leggermente più grande per visibilità */
-}
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #00359a;
+            text-align: center;
+        }
 
-/* Input */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-textarea,
-select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 20px; /* Aggiungi più spazio tra i campi */
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    background-color: #f0f8ff;
-    color: #333;
-    font-size: 14px;
-    box-sizing: border-box;
-}
+        #creaViaggioForm {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
 
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #0056b3;
-    outline: none;
-}
+        .form-group {
+            margin: 0;
+        }
 
-/* Stile pulsante */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: #00359a;
-    color: white;
-    transition: background-color 0.3s ease;
-}
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
 
-button:hover {
-    background-color: #0056b3;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
 
-/* Migliora lo stile del gruppo di input */
-.form-group {
-    margin-bottom: 20px; /* Aggiungi spazio tra i gruppi di input */
-}
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            background-color: #f0f8ff;
+            color: #333;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
 
-/* Ridimensionamento dinamico per schermi piccoli */
-@media (max-width: 600px) {
-    #container-viaggio {
-        padding: 20px; /* Riduce il padding per schermi piccoli */
-        width: 95%; /* Occupa quasi tutto lo schermo */
-        margin: 10px;
-    }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
 
-    h1 {
-        font-size: 28px; /* Riduce la dimensione del titolo su schermi piccoli */
-    }
+        textarea#itinerario {
+            height: 150px;
+        }
 
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    textarea,
-    select {
-        font-size: 16px; /* Font leggermente più grande per schermi piccoli */
-    }
+        .date-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            grid-column: 1 / -1;
+        }
 
-    button {
-        font-size: 18px; /* Font del pulsante più grande per una migliore usabilità */
-    }
-}
+        button {
+            grid-column: 1 / -1;
+            padding: 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: #00359a;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            #creaViaggioForm {
+                grid-template-columns: 1fr;
+            }
+
+            .date-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }

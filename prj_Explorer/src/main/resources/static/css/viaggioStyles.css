@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Work Sans', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -144,7 +144,6 @@ nav ul li a:hover {
 }
 
 /* Sezione Dettagli Viaggio */
-/* Sezione Dettagli Viaggio */
 #dettagli-viaggio {
     background-color: white;
     padding: 40px;
@@ -195,6 +194,9 @@ nav ul li a:hover {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    display: flex;  /* Usa flexbox per layout orizzontale */
+    justify-content: space-between; /* Spaziatura tra testo e bottone */
+    align-items: center; /* Allinea il contenuto al centro */
 }
 
 .descrizione-itinerario p {
@@ -207,17 +209,57 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
+/* Bottone Iscriviti - maggiore grandezza e visibilità */
+#prenota-container {
+    display: flex;
+    justify-content: flex-end; /* Posiziona il bottone a destra */
+}
+
+#prenotaButton {
+    padding: 15px 30px; /* Dimensioni maggiori per il bottone */
+    background-color: #00359a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px; /* Font-size più grande per visibilità */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra per effetto */
+}
+
+#prenotaButton:hover {
+    background-color: #0056b3; /* Colore al passaggio del mouse */
+}
+
+/* Responsività: layout a colonna su schermi piccoli */
+@media (max-width: 768px) {
+    .descrizione-itinerario {
+        flex-direction: column; /* Disposizione verticale per schermi piccoli */
+        align-items: flex-start; /* Allinea a sinistra il testo */
+    }
+
+    #prenota-container {
+        width: 100%;
+        margin-top: 20px;
+        justify-content: center; /* Centra il bottone su schermi piccoli */
+    }
+}
+
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #00359a;
     color: white;
     padding: 20px 0;
     text-align: center;
-    margin-top: auto;
 }
 
 footer p {
     margin: 0;
+    padding: 0;
+}
+
+footer .social {
+    margin-top: 10px;
 }
 
 footer .social a {
@@ -227,27 +269,5 @@ footer .social a {
 }
 
 footer .social a:hover {
-    color: #ffcc00;
-}
-
-/* Responsività */
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-
-    #top-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #immagine-viaggio, #paese-viaggio {
-        width: 100%;
-    }
-
-    #paese-viaggio {
-        padding-left: 0;
-        text-align: center;
-        margin-top: 20px;
-    }
+    text-decoration: underline;
 }

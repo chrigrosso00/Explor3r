@@ -54,6 +54,52 @@ function creaViaggio(){
     document.getElementById('right-section').append(create, createVoyage);
 }
 
+function checkLoginStatus() {
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+    const loginLink = document.getElementById('loginLink');
+    const registerLink = document.getElementById('registerLink');
+    const logoutButton = document.getElementById('logoutButton');
+    const creaViaggioLink = document.getElementById('creaViaggioLink');
+
+    if (token) {
+        loginLink.style.display = 'none';
+        registerLink.style.display = 'none';
+        logoutButton.style.display = 'block';
+        creaViaggioLink.style.display = 'inline-block';
+
+        let username = document.createElement('a');
+        username.textContent = "Ciao, " + JSON.parse(localStorage.getItem('username'));
+        username.style.marginRight = '10px';
+        username.href = '/profilo';
+        logoutButton.parentNode.insertBefore(username, logoutButton);
+    } else {
+        loginLink.style.display = 'block';
+        registerLink.style.display = 'block';
+        logoutButton.style.display = 'none';
+        creaViaggioLink.style.display = 'none';
+    }
+}
+
+// Funzione per gestire il logout
+function handleLogout() {
+    document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    localStorage.removeItem("username");
+    window.location.href = '/';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton.addEventListener('click', handleLogout);
+
+    const cercaButton = document.getElementById('cercaButton');
+    cercaButton.addEventListener('click', cercaViaggi);
+    
+    // Carica i viaggi in partenza quando la pagina è caricata
+    caricaViaggiInPartenza();
+});
+
 function caricaPrenotazioni(){
 	let user = JSON.parse(localStorage.getItem('username'));
 	
