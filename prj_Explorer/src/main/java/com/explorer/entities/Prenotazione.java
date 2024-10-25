@@ -39,7 +39,7 @@ public class Prenotazione {
     private String descrizione;
     private String itinerario;
     private String tipologia;
-    
+    private String paese;
     
     public Utente getUtente() {
 		return utente;
@@ -107,5 +107,10 @@ public class Prenotazione {
 	public void setItinerario(String itinerario) {
 		this.itinerario = itinerario;
 	}
-	
+	public String getPaese() {
+		return paese;
+	}
+	public void setPaese(String paese) {
+		this.paese = paese;
+	}	
 }

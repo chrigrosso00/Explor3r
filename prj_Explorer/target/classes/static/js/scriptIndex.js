@@ -169,6 +169,7 @@ function mostraViaggiInPartenza(viaggi) {
         container.innerHTML = '<p>Nessun viaggio disponibile al momento.</p>';
     } else {
         viaggi.forEach(viaggio => {
+			const id_viaggio = viaggio.id_viaggio;
             const paese = viaggio.paese.stato; // Ottieni il nome del paese
             const dataPartenza = viaggio.data_Partenza; // Data di partenza
             const prezzo = viaggio.prezzo;
@@ -182,11 +183,16 @@ function mostraViaggiInPartenza(viaggi) {
                         <h3>${paese}</h3>
                         <p>Partenza: ${dataPartenza}</p>
                         <p>Prezzo: €${prezzo}</p>
-                        <button class="cta-button">Info</button>
+                        <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
                     </div>
                 </div>
             `;
             container.innerHTML += viaggioElement;
         });
     }
+}
+
+// Funzione che apre la pagina del viaggio specifico con l'ID passato
+function apriPaginaViaggio(id_viaggio) {
+    window.location.href = `viaggio?id=${id_viaggio}`; // Reindirizza alla pagina con il parametro ID
 }

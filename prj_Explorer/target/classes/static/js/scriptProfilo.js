@@ -120,6 +120,10 @@ function caricaPrenotazioni() {
 					let prenotation = document.createElement("h4");
                     prenotation.textContent = "Prenotazione";
                     dateElement.appendChild(prenotation);
+                    
+                    let country = document.createElement("p");
+                    country.textContent = "Paese: " + prenotationDetails[i].paese;
+                    dateElement.appendChild(country);
 					
                     let departure = document.createElement("p");
                     departure.textContent = "Data Partenza: " + prenotationDetails[i].data_Partenza;

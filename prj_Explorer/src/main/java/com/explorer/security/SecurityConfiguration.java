@@ -40,6 +40,7 @@ public class SecurityConfiguration {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers(
 						"/", 
+						"/**",
 						"/viaggi/**",
 						"/registrazione", 
 						"/index", 

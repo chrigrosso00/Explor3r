@@ -69,6 +69,7 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
         prenotazione.setDescrizione(viaggio.getDescrizione());
         prenotazione.setItinerario(viaggio.getItinerario());
         prenotazione.setTipologia(viaggio.getTipologia());
+        prenotazione.setPaese(viaggio.getPaese().getStato());
         		
     	return dao.save(prenotazione);
 	}

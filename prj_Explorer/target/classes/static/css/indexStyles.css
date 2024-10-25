@@ -307,6 +307,22 @@ nav ul li a:hover {
     background-color: #004494;
 }
 
+.cta-button {
+    background-color: #00359a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 10px; /* Spazio tra il titolo e il pulsante */
+    text-align: left; /* Allinea il pulsante a sinistra */
+}
+
+.cta-button:hover {
+    background-color: #00359a;
+}
+
 /* Footer */
 footer {
     background-color: #00359a;
