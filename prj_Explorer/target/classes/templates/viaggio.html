@@ -7,6 +7,7 @@
     <title>ViaggioDaSolo - Dettagli Viaggio</title>
     <link rel="stylesheet" href="/css/viaggioStyles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,9 +15,10 @@
     <header>
         <div class="container">
             <div class="logo">
-           <a href="/">
-            <img src="/img/logo_explorer_converted.png" alt="Logo Explorer">
-        </div>
+                <a href="/">
+                    <img src="/img/logo_explorer.png" alt="Logo Explorer">
+                </a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -55,21 +57,21 @@
 
         <!-- Sezione descrizione, itinerario e difficoltà -->
         <div class="descrizione-itinerario">
-            <p>Descrizione: <span id="descrizione"></span></p>
-            <p>Itinerario: <span id="itinerario"></span></p>
-            <p>Tipologia: <span id="tipologia"></span></p>
+            <div class="testo">
+                <p>Descrizione: <span id="descrizione"></span></p>
+                <p>Itinerario: <span id="itinerario"></span></p>
+                <p>Tipologia: <span id="tipologia"></span></p>
+            </div>
+            <div id="prenota-container">
+                <button id="prenotaButton">Iscriviti</button>
+            </div>
         </div>
-        <div class="descrizione-itinerario">
-            <p>Creatore del viaggio: <span id="creatore"></span></p>
-        </div>
-        <div id="prenota-container">
-        <button id="prenotaButton">Iscriviti</button>
-        <button id="cancella" hidden>Cancella Viaggio</button>
-    </div>
     </section>
+
     <section id="partecipanti-viaggio">
         <!-- I dettagli del viaggio e i partecipanti saranno mostrati qui -->
     </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">

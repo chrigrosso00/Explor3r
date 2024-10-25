@@ -62,7 +62,14 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
         Viaggio viaggiop = viaggiodao.findById(viaggio.getId_viaggio()).orElseThrow();
         prenotazione.setViaggio(viaggiop);
         prenotazione.setData(new Date(System.currentTimeMillis()));
-         
+        prenotazione.setUsername(utente.getUsername());
+        prenotazione.setPrezzo(viaggio.getPrezzo());
+        prenotazione.setData_Partenza(viaggio.getData_Partenza());
+        prenotazione.setData_Arrivo(viaggio.getData_Arrivo());
+        prenotazione.setDescrizione(viaggio.getDescrizione());
+        prenotazione.setItinerario(viaggio.getItinerario());
+        prenotazione.setTipologia(viaggio.getTipologia());
+        		
     	return dao.save(prenotazione);
 	}
     @Override
