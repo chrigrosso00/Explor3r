@@ -11,7 +11,28 @@
 		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 <body>
-<header>
+
+    <!-- Header per il menu di navigazione -->
+    <header>
+        <div class="container">
+            <div class="logo">
+				<a href="/"> <img src="/img/logo_explorer.png"
+					alt="Logo Explorer">
+			</div>
+            <nav>
+                <ul>
+                    <li><a href="viaggi">Destinazioni</a></li>
+                    <li><a href="#">Last Minute</a></li>
+                    <li id="creaViaggioLink" style="display: none;"><a href="/crea-viaggio">Crea Viaggio</a></li>
+                    <li><a href="#">Chi siamo</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+    
+    <div class="registrati-container">
     <h1>Registrati</h1>
     <h2>Inserici i tuoi dati...</h2>
     <form id="utenteForm">
@@ -42,10 +63,7 @@
         <button type="submit">Invia</button>
     </form>
 
-    <!-- Ancora per tornare alla home -->
-    <p><a href="/">Torna alla home</a></p>
-
-</header>
+</div>
     <script src="/js/scriptRegistrazione.js"></script>
 </body>
 </html>

@@ -24,19 +24,86 @@ body::before {
     z-index: 1;
 }
 
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 header {
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo più chiaro */
-    padding: 20px; /* Ridotto il padding */
-    border-radius: 10px; /* Maggiore raggio per gli angoli */
+    background-color: #00359a;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    position: fixed; /* Mantiene il menu fisso in alto */
+    top: 0;
+    z-index: 3; /* Assicura che il menu sia sopra tutto il resto */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    
+}
+
+/* Logo */
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+.logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin-left: 0px;
+}
+/* Navigazione */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1000px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+}
+
+nav ul li a:hover {
+    background-color: #0f3460;
+}
+
+
+/* Contenitore del login */
+.registrati-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-    text-align: center; /* Centra il testo all'interno del box */
-    width: 600px; /* Aumentato per maggiore larghezza */
+    text-align: center;
+    width: 450px;
     position: relative;
     z-index: 2;
+    margin-top: 100px; /* Per distanziare il contenitore dal menu fisso */
 }
 
 h1 {
-    font-family: 'Dancing Script', cursive; /* Font applicato solo all'h1 */
+    font-family: 'Work Sans', sans-serif
     font-size: 36px; /* Dimensione del font aumentata */
     margin-bottom: 10px;
     color: #00359a;

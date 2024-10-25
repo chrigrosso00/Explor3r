@@ -1,37 +1,59 @@
 <!doctype html>
 <html lang="it">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <title>ViaggioDaSolo - Login</title>
-        <meta name="description" content="My new wonderful website">
-        <meta name="author" content="Mister X">
-        <meta name="csrf-token" content="${_csrf.token}">
-        <link rel="stylesheet" href="/css/login.css?v=1.1">
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ViaggioDaSolo - Login</title>
+    <meta name="description" content="Il mio nuovo meraviglioso sito web">
+    <meta name="author" content="Mister X">
+    <meta name="csrf-token" content="${_csrf.token}">
+    <link rel="stylesheet" href="/css/login.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Aggiungi FontAwesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
-
+    <!-- Header per il menu di navigazione -->
     <header>
-        <h1> "Explorer" Login </h1>
-        <h2> Inserisci le credenziali... </h2>
+        <div class="container">
+            <div class="logo">
+				<a href="/"> <img src="/img/logo_explorer.png"
+					alt="Logo Explorer">
+			</div>
+            <nav>
+                <ul>
+                    <li><a href="viaggi">Destinazioni</a></li>
+                    <li><a href="#">Last Minute</a></li>
+                    <li id="creaViaggioLink" style="display: none;"><a href="/crea-viaggio">Crea Viaggio</a></li>
+                    <li><a href="#">Chi siamo</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <!-- Contenuto della pagina di login -->
+    <div class="login-container">
+        <h1>"Explorer" Login</h1>
+        <h2>Inserisci le credenziali...</h2>
         <form id="loginForm">
-            <label for="username">Username:</label>
+            <label for="username">Nome utente:</label>
             <input type="text" id="username" name="username" required>
             <br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <br>
             <button type="submit">Login</button>
-            <button type="reset">Reset</button>
+            <button type="reset">Reimposta</button>
         </form>
-        <button id="logoutButton" style="display:none;">Logout</button>
-
+        <!-- Pulsante di logout -->
+        <button id="logoutButton" style="display:none;">Esci</button>
         <!-- Ancora per tornare alla home -->
-        <p><a href="/">Torna alla home</a></p>
-    </header>
+    </div>
+
     <script src="/js/login.js"></script>
 </body>
 </html>
