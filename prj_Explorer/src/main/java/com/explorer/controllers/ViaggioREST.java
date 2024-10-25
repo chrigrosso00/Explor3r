@@ -194,4 +194,15 @@ public class ViaggioREST {
         return ResponseEntity.ok().build();  // Nessun contenuto da restituire
     }
     
+    @GetMapping("viaggi/in-partenza")
+    public ResponseEntity<List<Viaggio>> getViaggiInPartenza(){
+    	List<Viaggio> viaggi = viaggioServices.getViaggiInPartenza();
+    	
+    	if (!viaggi.isEmpty()) {
+            return ResponseEntity.ok(viaggi); // restituisce 200 e la lista dei 3 viaggi
+        } else {
+            return ResponseEntity.noContent().build(); // restituisce 204 se la lista è vuota
+        }
+    }
+    
 }

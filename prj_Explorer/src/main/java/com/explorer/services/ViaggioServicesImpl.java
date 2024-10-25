@@ -101,6 +101,11 @@ public class ViaggioServicesImpl implements ViaggioServices {
 		 return dao.findByDataPartenza(dataPartenza);
 	 }
 
+	 @Override
+		public List<Viaggio> getViaggiInPartenza() {
+			return dao.findViaggiInPartenza();
+		}
+	 
 	@Override
 	public void deleteViaggio(Viaggio viaggio) {
 		dao.delete(viaggio);

@@ -182,7 +182,7 @@ function mostraViaggiInPartenza(viaggi) {
                         <h3>${paese}</h3>
                         <p>Partenza: ${dataPartenza}</p>
                         <p>Prezzo: €${prezzo}</p>
-                        <button class="cta-button">Prenota</button>
+                        <button class="cta-button">Info</button>
                     </div>
                 </div>
             `;
