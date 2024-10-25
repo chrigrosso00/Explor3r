@@ -16,9 +16,8 @@ public class Paese {
     private String stato;
     private String continente;
     private String img;
-    
 	
-	public int getId_paese() {
+    public int getId_paese() {
 		return id_paese;
 	}
 	public void setId_paese(int id_paese) {
@@ -28,14 +27,14 @@ public class Paese {
 		return stato;
 	}
 	public void setStato(String stato) {
-		stato = stato;
+		this.stato = stato;
 	}
 	public String getContinente() {
 		return continente;
 	}
 	public void setContinente(String continente) {
-		continente = continente;
-	} 
+		this.continente = continente;
+	}
 	public String getImg() {
 		return img;
 	}
