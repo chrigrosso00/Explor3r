@@ -124,6 +124,10 @@ function caricaPrenotazioni() {
                     let country = document.createElement("p");
                     country.textContent = "Paese: " + prenotationDetails[i].paese;
                     dateElement.appendChild(country);
+                    
+                    let price = document.createElement("p");
+                    price.textContent = "Prezzo: " + prenotationDetails[i].prezzo;
+                    dateElement.appendChild(price);
 					
                     let departure = document.createElement("p");
                     departure.textContent = "Data Partenza: " + prenotationDetails[i].data_Partenza;
@@ -145,10 +149,6 @@ function caricaPrenotazioni() {
                     type.textContent = "Tipologia: " + prenotationDetails[i].tipologia;
                     dateElement.appendChild(type);
 
-                    let price = document.createElement("p");
-                    price.textContent = "Prezzo: " + prenotationDetails[i].prezzo;
-                    dateElement.appendChild(price);
-
                     prenotationSection.appendChild(dateElement);
                 }
             }
@@ -158,8 +158,66 @@ function caricaPrenotazioni() {
         });
 }
 
+function caricaViaggi() {
+    let user = JSON.parse(localStorage.getItem('username'));
+    
+    let load = document.createElement('h2');
+    load.textContent = 'I tuoi viaggi creati';
+    let travelSection = document.getElementById('travel-section');
+    travelSection.innerHTML = ''; 
+    travelSection.appendChild(load);
+
+    fetch(`api/viaggi/nominativo/${user}`)
+        .then(response => response.json())
+        .then(travelDetails => {
+            for(let i = 0; i < travelDetails.length; i++) {
+        
+                    let dateElement = document.createElement("div");
+					
+					let travel = document.createElement("h4");
+                    travel.textContent = "Viaggio";
+                    dateElement.appendChild(travel);
+                    
+                    let country = document.createElement("p");
+                    country.textContent = "Paese: " + travelDetails[i].paese.stato;
+                    dateElement.appendChild(country);
+                    
+                    let price = document.createElement("p");
+                    price.textContent = "Prezzo: " + travelDetails[i].prezzo;
+                    dateElement.appendChild(price);
+					
+                    let departure = document.createElement("p");
+                    departure.textContent = "Data Partenza: " + travelDetails[i].data_Partenza;
+                    dateElement.appendChild(departure);
+
+                    let end = document.createElement("p");
+                    end.textContent = "Data Ritorno: " + travelDetails[i].data_Arrivo;
+                    dateElement.appendChild(end);
+
+                    let description = document.createElement("p");
+                    description.textContent = "Descrizione: " + travelDetails[i].descrizione;
+                    dateElement.appendChild(description);
+
+                    let itinerary = document.createElement("p");
+                    itinerary.textContent = "Itinerario: " + travelDetails[i].itinerario;
+                    dateElement.appendChild(itinerary);
+
+                    let type = document.createElement("p");
+                    type.textContent = "Tipologia: " + travelDetails[i].tipologia;
+                    dateElement.appendChild(type);
+
+                    travelSection.appendChild(dateElement);   
+            }
+        })
+        .catch(error => {
+            console.error('Errore nel caricamento dei dettagli utente:', error);
+        });
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     caricaUtente();
     creaViaggio();
-    caricaPrenotazioni()
+    caricaPrenotazioni();
+    caricaViaggi();
 });
