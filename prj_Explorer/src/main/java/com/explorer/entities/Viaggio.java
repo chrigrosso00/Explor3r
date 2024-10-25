@@ -85,7 +85,6 @@ public class Viaggio {
 	public void setData_Arrivo(LocalDate data_Arrivo) {
 		this.data_Arrivo = data_Arrivo;
 	}
-	
 	public String getDescrizione() {
 		return descrizione;
 	}

@@ -57,10 +57,12 @@ function fetchWithAuth(url, options = {}) {
     return fetch(url, options);
 }
 
-document.getElementById('logoutButton').addEventListener('click', function() {
-    document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    window.location.href = '/login';
-});
+function logoutUser() {
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        window.location.href = '/login';
+    });
+}
 
 function checkLoginStatus() {
     let token = document.cookie.split('; ').find(row => row.startsWith('token='));
