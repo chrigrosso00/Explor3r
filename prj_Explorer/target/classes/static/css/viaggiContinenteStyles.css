@@ -118,27 +118,58 @@ nav ul li a:hover {
     font-weight: 900; /* Peso per le icone solid */
 }
 
-/* sezione viaggi */
-/* Contenitore della lista dei viaggi */
-#lista-viaggi {
-    display: flex;
-    flex-wrap: wrap; /* Permette ai viaggi di andare su più righe */
-    gap: 20px; /* Spazio tra i viaggi */
+/* Viaggi in Partenza */
+.viaggi-in-partenza {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-top: 30px;
 }
 
-/* Ogni viaggio occuperà un terzo della larghezza */
+.viaggi-in-partenza h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.viaggi-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .viaggio {
-    flex: 0 0 calc(33.33% - 20px); /* Larghezza del 33.33% meno lo spazio tra gli elementi */
-    box-sizing: border-box; /* Include padding e bordi nella larghezza */
     background-color: white;
-    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px; /* Spazio inferiore tra i viaggi */
+    border-radius: 10px;
+    overflow: hidden;
+    width: 30%;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.viaggio:hover {
+    transform: scale(1.05);
+}
+
+.viaggio img {
+    width: 100%;
+    height: auto;
 }
 
 .viaggio-info {
+    padding: 20px;
     text-align: left; /* Allinea il testo a sinistra */
+}
+
+.viaggio-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.viaggio-info p {
+    margin: 5px 0;
+    font-size: 16px;
 }
 
 .cta-button {
@@ -149,28 +180,23 @@ nav ul li a:hover {
     font-size: 16px;
     cursor: pointer;
     border-radius: 15px;
-    margin-top: 10px; /* Spazio tra il titolo e il pulsante */
-    text-align: left; /* Allinea il pulsante a sinistra */
+    margin-top: 10px;
 }
 
 .cta-button:hover {
-    background-color: #00359a;
+    background-color: #00287a;
 }
 
-.viaggio:hover {
-    transform: scale(1.05); /* Ingrandisce leggermente al passaggio del mouse */
-}
-
-/* Per schermi più piccoli, riduci il numero di viaggi per riga */
+/* Per schermi più piccoli, adatta il layout */
 @media (max-width: 768px) {
     .viaggio {
-        flex: 0 0 calc(50% - 20px); /* 2 per riga su tablet o schermi medi */
+        width: 48%;
     }
 }
 
 @media (max-width: 480px) {
     .viaggio {
-        flex: 0 0 calc(100% - 20px); /* 1 per riga su schermi piccoli */
+        width: 100%;
     }
 }
 
