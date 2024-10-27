@@ -326,10 +326,28 @@ nav ul li a:hover {
 /* Footer */
 footer {
     background-color: #00359a;
-    color: white;
-    text-align: center;
+    color: #fff;
     padding: 20px 0;
-    margin-top: 30px;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 4px solid #001f5c;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer .social a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+footer .social a:hover {
+    color: #ffd700;
 }
 
 /* Animations */

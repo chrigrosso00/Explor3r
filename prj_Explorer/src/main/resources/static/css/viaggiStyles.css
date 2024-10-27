@@ -13,13 +13,14 @@ body {
 
 /* Header */
 header {
-    background-color: #00359a; /* Colore leggermente più chiaro per l'header */
+    background-color: #00359a;
     color: white;
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
 header .container {
@@ -52,61 +53,68 @@ nav {
 
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
-nav ul li {
-    margin-right: 50px;
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #0f3460;
 }
 
 nav ul li:last-child {
     margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold; /* Rende il testo in grassetto */
-    transition: color 0.3s;
-    font-size: 23px;
-}
 
-nav ul li a:hover {
-    color: #c0a9af; /* Cambia colore al passaggio del mouse */
-}
 
-/* Login in alto a destra */
+/* Login */
 .login {
-    margin-left: 50px; /* Sposta il login a destra */
+    flex: 1;
     display: flex;
-    align-items: center; /* Allinea verticalmente */
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .login a {
     color: white;
-    font-weight: bold; /* Rende il testo in grassetto */
+    font-weight: bold;
     text-decoration: none;
-    margin-right: 50px; /* Spazio tra i link */
-    display: flex;
-    align-items: center; /* Allinea verticalmente il testo e l'icona */
+    margin-right: 20px;
 }
 
 .login a:hover {
     text-decoration: underline;
 }
 
-/* Icona utente */
 .login .icon {
-    margin-left: 15px; /* Spazio tra l'icona e il testo */
-    font-size: 20px; /* Dimensione dell'icona */
+    font-size: 20px;
+    margin-left: 10px;
 }
 
-/* Esempio di stile per l'icona utente */
-.icon {
-    font-family: 'Font Awesome 5 Free'; /* Font Awesome per le icone */
-    font-weight: 900; /* Peso per le icone solid */
+#logoutButton {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #e63946;
 }
 
 
@@ -191,9 +199,27 @@ nav ul li a:hover {
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: #00359a;
+    color: #fff;
     padding: 20px 0;
     text-align: center;
-    margin-top: 47px;
+    margin-top: 20px;
+    border-top: 4px solid #001f5c;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer .social a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+footer .social a:hover {
+    color: #ffd700;
 }

@@ -7,16 +7,17 @@
     <title>ViaggioDaSolo - Dettagli Viaggio</title>
     <link rel="stylesheet" href="/css/viaggioStyles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">
-           <a href="/">
-            <img src="/img/logo_explorer_converted.png" alt="Logo Explorer">
-        </div>
+		<div class="container">
+			<div class="logo">
+				<a href="/"> <img src="/img/logo_explorer.png"
+					alt="Logo Explorer">
+			</div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -43,33 +44,47 @@
     </section>
 
     <!-- Sezione Dettagli -->
-    <section id="dettagli-viaggio">
-        <!-- Contenitore per data di partenza, arrivo e prezzo -->
+<section id="dettagli-viaggio">
+    <!-- Card per Data e Prezzo -->
+    <div class="card">
+        <h3>Informazioni di Viaggio</h3>
         <div id="data-prezzo-container">
-            <div class="data-prezzo">
-                <p>Partenza: <span id="data-partenza"></span></p>
-                <p>Arrivo: <span id="data-arrivo"></span></p>
-                <p>Prezzo: €<span id="prezzo"></span></p>
-            </div>
+            <p>Partenza: <span id="data-partenza">10 Giugno 2024</span></p>
+            <p>Arrivo: <span id="data-arrivo">20 Giugno 2024</span></p>
+            <p>Prezzo: €<span id="prezzo">1200</span></p>
         </div>
+    </div>
 
-        <!-- Sezione descrizione, itinerario e difficoltà -->
-        <div class="descrizione-itinerario">
-            <p>Descrizione: <span id="descrizione"></span></p>
-            <p>Itinerario: <span id="itinerario"></span></p>
-            <p>Tipologia: <span id="tipologia"></span></p>
-        </div>
-        <div class="descrizione-itinerario">
-            <p>Creatore del viaggio: <span id="creatore"></span></p>
-        </div>
-        <div id="prenota-container">
-        <button id="prenotaButton">Iscriviti</button>
+    <!-- Card per la Descrizione -->
+    <div class="card">
+        <h3>Descrizione</h3>
+        <p>Descrizione: <span id="descrizione">Un emozionante viaggio alla scoperta delle meraviglie naturali e culturali.</span></p>
+        <p>Itinerario: <span id="itinerario">Parigi - Londra - Berlino</span></p>
+        <p>Tipologia: <span id="tipologia">Avventura</span></p>
+    </div>
+
+    <!-- Card per il Creatore del Viaggio -->
+    <div class="card">
+        <h3>Creatore del Viaggio</h3>
+        <p>Creatore: <span id="creatore">Marco Rossi</span></p>
+    </div>
+
+    <!-- Card per la lista dei Partecipanti -->
+    <div class="card" id="partecipanti-viaggio">
+        <h3>Partecipanti</h3>
+        <p>?<span id="lista-partecipanti">Partecipanti al viaggio saranno mostrati qui.</span></p>
+    </div>
+</section>
+
+<!-- Pulsante "Iscriviti" posizionato sotto tutte le cards -->
+<div id="iscriviti-container">
+    <button id="prenotaButton">Iscriviti</button>
+</div>
+
+<div id="cancella-container">
         <button id="cancella" hidden>Cancella Viaggio</button>
     </div>
-    </section>
-    <section id="partecipanti-viaggio">
-        <!-- I dettagli del viaggio e i partecipanti saranno mostrati qui -->
-    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
