@@ -34,36 +34,49 @@
     
     <div class="registrati-container">
     <h1>Registrati</h1>
-    <h2>Inserici i tuoi dati...</h2>
+    <h2>Inserisci i tuoi dati...</h2>
     <form id="utenteForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
-        
-        <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" name="cognome" required><br>
+        <!-- Prima riga: Nome e Cognome -->
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div>
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required>
+        </div>
 
-		<!-- <label for="email">Email:</label>
-    	<input type="email" id="email" name="email" required><br><br> -->
-    	
-		<label for="date">Data di nascita:</label>
-		<input type="date" id="date" name="date" required><br>
+        <!-- Seconda riga: Data di nascita e Numero di telefono -->
+        <div>
+            <label for="date">Data di nascita:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+            <label for="phone">Numero di telefono:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
 
-		<label for="phone">Numero di telefono:</label>
-		<input type="tel" id="phone" name="phone" required><br>
-		
-		<label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        
-        <label for="confirm_password">Ripeti Password:</label>
-		<input type="password" id="confirm_password" name="confirm_password" required><br><br>
-        
+        <!-- Campi a larghezza intera -->
+        <div class="full-width">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="full-width">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="full-width">
+            <label for="confirm_password">Ripeti Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+
+        <!-- Pulsante Invia su larghezza completa -->
         <button type="submit">Invia</button>
     </form>
-
 </div>
+    
     <script src="/js/scriptRegistrazione.js"></script>
 </body>
 </html>
