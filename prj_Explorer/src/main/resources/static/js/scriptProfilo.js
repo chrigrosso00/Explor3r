@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function caricaPrenotazioni() {
     let user = JSON.parse(localStorage.getItem('username'));
-    
     let load = document.createElement('h2');
     load.textContent = 'Le tue prenotazioni';
     let prenotationSection = document.getElementById('prenotation-section');
@@ -112,51 +111,61 @@ function caricaPrenotazioni() {
     fetch(`api/prenotazioni`)
         .then(response => response.json())
         .then(prenotationDetails => {
-            for(let i = 0; i < prenotationDetails.length; i++) {
-                if(prenotationDetails[i].username === user) {
-                    
+            prenotationDetails.forEach((prenotation) => {
+                if (prenotation.username === user) {
                     let dateElement = document.createElement("div");
-					
-					let prenotation = document.createElement("h4");
-                    prenotation.textContent = "Prenotazione";
-                    dateElement.appendChild(prenotation);
+
+                    let prenotationTitle = document.createElement("h4");
+                    prenotationTitle.textContent = "Prenotazione";
+                    dateElement.appendChild(prenotationTitle);
                     
                     let country = document.createElement("p");
-                    country.textContent = "Paese: " + prenotationDetails[i].paese;
+                    country.textContent = "Paese: " + prenotation.paese;
                     dateElement.appendChild(country);
-                    
+
                     let price = document.createElement("p");
-                    price.textContent = "Prezzo: " + prenotationDetails[i].prezzo;
+                    price.textContent = "Prezzo: €" + prenotation.prezzo;
                     dateElement.appendChild(price);
-					
+
                     let departure = document.createElement("p");
-                    departure.textContent = "Data Partenza: " + prenotationDetails[i].data_Partenza;
+                    departure.textContent = "Data Partenza: " + prenotation.data_Partenza;
                     dateElement.appendChild(departure);
 
                     let end = document.createElement("p");
-                    end.textContent = "Data Ritorno: " + prenotationDetails[i].data_Arrivo;
+                    end.textContent = "Data Ritorno: " + prenotation.data_Arrivo;
                     dateElement.appendChild(end);
 
                     let description = document.createElement("p");
-                    description.textContent = "Descrizione: " + prenotationDetails[i].descrizione;
+                    description.textContent = "Descrizione: " + prenotation.descrizione;
+                    description.classList.add("hidden-content");
                     dateElement.appendChild(description);
 
                     let itinerary = document.createElement("p");
-                    itinerary.textContent = "Itinerario: " + prenotationDetails[i].itinerario;
+                    itinerary.textContent = "Itinerario: " + prenotation.itinerario;
+                    itinerary.classList.add("hidden-content");
                     dateElement.appendChild(itinerary);
 
-                    let type = document.createElement("p");
-                    type.textContent = "Tipologia: " + prenotationDetails[i].tipologia;
-                    dateElement.appendChild(type);
+                    let toggleButton = document.createElement("button");
+                    toggleButton.textContent = "Leggi di più";
+                    toggleButton.classList.add("toggle-button");
+                    toggleButton.addEventListener("click", () => {
+                        description.classList.toggle("hidden-content");
+                        itinerary.classList.toggle("hidden-content");
+                        toggleButton.textContent = description.classList.contains("hidden-content")
+                            ? "Mostra di più"
+                            : "Mostra meno";
+                    });
 
+                    dateElement.appendChild(toggleButton);
                     prenotationSection.appendChild(dateElement);
                 }
-            }
+            });
         })
         .catch(error => {
             console.error('Errore nel caricamento dei dettagli utente:', error);
         });
 }
+
 
 function caricaViaggi() {
     let user = JSON.parse(localStorage.getItem('username'));
@@ -171,48 +180,63 @@ function caricaViaggi() {
         .then(response => response.json())
         .then(travelDetails => {
             for(let i = 0; i < travelDetails.length; i++) {
-        
-                    let dateElement = document.createElement("div");
-					
-					let travel = document.createElement("h4");
-                    travel.textContent = "Viaggio";
-                    dateElement.appendChild(travel);
-                    
-                    let country = document.createElement("p");
-                    country.textContent = "Paese: " + travelDetails[i].paese.stato;
-                    dateElement.appendChild(country);
-                    
-                    let price = document.createElement("p");
-                    price.textContent = "Prezzo: " + travelDetails[i].prezzo;
-                    dateElement.appendChild(price);
-					
-                    let departure = document.createElement("p");
-                    departure.textContent = "Data Partenza: " + travelDetails[i].data_Partenza;
-                    dateElement.appendChild(departure);
+                
+                let dateElement = document.createElement("div");
 
-                    let end = document.createElement("p");
-                    end.textContent = "Data Ritorno: " + travelDetails[i].data_Arrivo;
-                    dateElement.appendChild(end);
+                let travel = document.createElement("h4");
+                travel.textContent = "Viaggio";
+                dateElement.appendChild(travel);
+                
+                let country = document.createElement("p");
+                country.textContent = "Paese: " + travelDetails[i].paese.stato;
+                dateElement.appendChild(country);
+                
+                let price = document.createElement("p");
+                price.textContent = "Prezzo: €" + travelDetails[i].prezzo;
+                dateElement.appendChild(price);
+                
+                let departure = document.createElement("p");
+                departure.textContent = "Data Partenza: " + travelDetails[i].data_Partenza;
+                dateElement.appendChild(departure);
 
-                    let description = document.createElement("p");
-                    description.textContent = "Descrizione: " + travelDetails[i].descrizione;
-                    dateElement.appendChild(description);
+                let end = document.createElement("p");
+                end.textContent = "Data Ritorno: " + travelDetails[i].data_Arrivo;
+                dateElement.appendChild(end);
 
-                    let itinerary = document.createElement("p");
-                    itinerary.textContent = "Itinerario: " + travelDetails[i].itinerario;
-                    dateElement.appendChild(itinerary);
+                // Creazione elementi Descrizione e Itinerario con classe "hidden"
+                let description = document.createElement("p");
+                description.textContent = "Descrizione: " + travelDetails[i].descrizione;
+                description.classList.add("hidden");
+                
+                let itinerary = document.createElement("p");
+                itinerary.textContent = "Itinerario: " + travelDetails[i].itinerario;
+                itinerary.classList.add("hidden");
+                
+                // Bottone "Leggi di più"
+                let toggleButton = document.createElement("button");
+                toggleButton.textContent = "Leggi di più";
+                toggleButton.onclick = function() {
+                    description.classList.toggle("hidden");
+                    itinerary.classList.toggle("hidden");
+                    toggleButton.textContent = description.classList.contains("hidden") ? "Mostra di più" : "Mostra meno";
+                };
 
-                    let type = document.createElement("p");
-                    type.textContent = "Tipologia: " + travelDetails[i].tipologia;
-                    dateElement.appendChild(type);
+                dateElement.appendChild(description);
+                dateElement.appendChild(itinerary);
+                dateElement.appendChild(toggleButton);
 
-                    travelSection.appendChild(dateElement);   
+                let type = document.createElement("p");
+                type.textContent = "Tipologia: " + travelDetails[i].tipologia;
+                dateElement.appendChild(type);
+
+                travelSection.appendChild(dateElement);
             }
         })
         .catch(error => {
             console.error('Errore nel caricamento dei dettagli utente:', error);
         });
 }
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

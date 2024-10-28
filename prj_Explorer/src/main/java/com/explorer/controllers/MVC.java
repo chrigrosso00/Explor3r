@@ -56,5 +56,10 @@ public class MVC {
         return "risultati";
     }	
 	
+	@GetMapping("mission")
+	public String mission() {
+		return "mission";
+	}
+	
 }
 

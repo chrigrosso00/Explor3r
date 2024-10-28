@@ -1,0 +1,182 @@
+/* General Styles */
+body {
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Imposta l'altezza minima per occupare l'intera finestra */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    flex: 1; /* Occupa tutto lo spazio disponibile */
+}
+
+/* Header */
+header {
+    background-color: #00359a;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo */
+.logo {
+    flex: 1; /* Occupa 1 unità di spazio */
+    display: flex;
+    justify-content: flex-start; /* Posiziona il logo a sinistra */
+}
+
+.logo img {
+    width: 150px; /* Ridimensiona l'immagine del logo */
+    height: auto; /* Mantiene il rapporto di aspetto */
+    display: block;
+    margin-left: 20px;
+}
+
+/* Navigazione */
+nav {
+    flex: 2; /* Occupa 2 unità di spazio */
+    display: flex;
+    justify-content: center; /* Centra il menu orizzontale */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #0f3460;
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+}
+
+/* Login */
+.login {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.login .icon {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#logoutButton {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #e63946;
+}
+
+/* Main Content */
+.mission-section {
+    padding: 20px 0; /* Padding per il contenuto principale */
+}
+
+/* Footer */
+footer {
+    background-color: #00359a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 4px solid #001f5c;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer .social a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+footer .social a:hover {
+    color: #ffd700;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Maggiore larghezza su schermi più piccoli */
+    }
+
+    nav ul {
+        flex-direction: column; /* Menu verticale su schermi piccoli */
+        gap: 10px;
+    }
+
+    .login {
+        flex-direction: column; /* Login verticale su schermi piccoli */
+    }
+
+    .login a, #logoutButton {
+        margin-right: 0; /* Reset del margine */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 14px; /* Dimensione font più piccola per schermi molto piccoli */
+    }
+
+    footer p {
+        font-size: 12px; /* Dimensione font più piccola nel footer */
+    }
+}
