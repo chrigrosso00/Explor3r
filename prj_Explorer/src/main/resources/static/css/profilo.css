@@ -8,10 +8,8 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
-    padding: 0 15px;
 }
 
 /* Header */
@@ -119,11 +117,11 @@ main.container {
     display: flex;
     flex-direction: column;
     gap: 15px;
-<<<<<<< HEAD
+ HEAD
     overflow-y: auto; /* Aggiungi lo scroll se il contenuto supera l'altezza */
-=======
+
     max-width: 300px;
->>>>>>> 3583d8b4a9ae739d169bbbef7d6beb9e01f8248a
+
 }
 
 .left h2 {
