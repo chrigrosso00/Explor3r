@@ -8,7 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     color: #fff;
-    overflow: hidden;
+    overflow-x: hidden; /* Permette lo scrolling verticale, evitando quello orizzontale */
+    min-height: 100vh;
 }
 
 body::before {
@@ -32,7 +33,7 @@ body::before {
 header {
     background-color: #00359a;
     color: white;
-    padding: 15px 0;
+    padding: 1px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +50,6 @@ header .container {
     align-items: center;
     width: 100%;
     text-align: center;
-    
 }
 
 /* Logo */
@@ -64,6 +64,7 @@ header .container {
     display: block;
     margin-left: 0px;
 }
+
 /* Navigazione */
 nav ul {
     list-style: none;
@@ -71,32 +72,30 @@ nav ul {
     gap: 15px;
     justify-content: center;
     align-items: center;
-    margin-right: 1000px;
+    margin-right: 400px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 10px 50px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    
 }
 
 nav ul li a:hover {
     background-color: #0f3460;
 }
 
-
-/* Contenitore del login */
+/* Contenitore del form */
 .registrati-container {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 50px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 450px;
+    width: 350px;
     position: relative;
     z-index: 2;
     margin-top: 100px; /* Per distanziare il contenitore dal menu fisso */
@@ -128,15 +127,15 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="tel"] {
-    width: 90%; /* Larghezza del 90% per centrare all'interno del box */
-    padding: 8px; /* Ridotto il padding */
-    margin: 0 auto 8px; /* Margine auto per centrare */
+    width: 100%; /* Campo riempie completamente la cella */
+    padding: 8px;
+    margin: 0 auto 8px;
     border: 1px solid #007bff;
     border-radius: 4px;
     font-size: 12px; /* Dimensione del font ridotta */
     background-color: #f0f8ff;
     color: #333;
-    display: block; /* Assicura che il campo di input sia un blocco */
+    display: block;
 }
 
 input[type="text"]:focus,
@@ -151,11 +150,11 @@ input[type="email"]:focus {
 /* Stile per il pulsante */
 button {
     width: 45%; /* Larghezza del 45% per i bottoni */
-    padding: 8px; /* Ridotto il padding */
+    padding: 8px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px; /* Dimensione del font mantenuta */
+    font-size: 14px;
     transition: background-color 0.3s;
     margin: 0 2%; /* Margine orizzontale per separare i bottoni */
 }
@@ -175,4 +174,18 @@ button:hover {
     font-size: 0.9em;
     margin-top: -10px;
     margin-bottom: 10px;
+}
+
+/* Layout a griglia per il form */
+#utenteForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Due colonne di uguale larghezza */
+    gap: 20px; /* Spazio tra i campi */
+    width: 100%;
+    align-items: center;
+}
+
+/* Campi di input che occupano tutta la larghezza */
+#utenteForm .full-width {
+    grid-column: span 2; /* Campo a larghezza piena su entrambe le colonne */
 }
