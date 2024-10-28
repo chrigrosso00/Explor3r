@@ -50,8 +50,7 @@ header .container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    text-align: center;
-    
+    /* No need for text-align: center here if you want only the nav centered */
 }
 
 /* Logo */
@@ -64,21 +63,23 @@ header .container {
     width: 150px;
     height: auto;
     display: block;
-    margin-left: 0px;
 }
-/* Navigazione */
+
+/* Navigation */
 nav {
-    flex: 2; /* Occupa 2 unità di spazio */
+    flex: 2; /* Occupies 2 units of flex space */
     display: flex;
-    justify-content: center; /* Centra il menu orizzontale */
+    justify-content: center; /* Centers the navigation menu horizontally */
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
-    justify-content: center;
+
     align-items: center;
+    padding: 0;
+    margin: 0; /* Remove default margin for better alignment */
 }
 
 nav ul li a {
@@ -95,9 +96,8 @@ nav ul li a:hover {
 }
 
 nav ul li:last-child {
-    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+    margin-right: 0; /* Removes right margin from the last item */
 }
-
 
 
 /* Contenitore del login */

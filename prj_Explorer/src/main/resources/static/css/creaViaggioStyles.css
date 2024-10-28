@@ -1,122 +1,190 @@
 body {
-            font-family: 'Work Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-            min-height: 100vh;
-        }
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        main {
-            padding: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
 
-        #container-viaggio {
-            background-color: rgba(255, 255, 255, 0.97);
-            padding: 2px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            box-sizing: border-box;
-        }
+/* Header */
+header {
+    background-color: #00359a;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #00359a;
-            text-align: center;
-        }
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-        #creaViaggioForm {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
+/* Logo */
+.logo {
+    flex: 1; /* Occupa 1 unità di spazio */
+    display: flex;
+    justify-content: flex-start; /* Posiziona il logo a sinistra */
+}
 
-        .form-group {
-            margin: 0;
-        }
+.logo img {
+    width: 150px; /* Ridimensiona l'immagine del logo */
+    height: auto; /* Mantiene il rapporto di aspetto */
+    display: block;
+    margin-left: 20px;
+}
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
+/* Navigazione */
+nav {
+    flex: 2; /* Occupa 2 unità di spazio */
+    display: flex;
+    justify-content: flex-start;
+        margin-left: 20px;
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            color: #333;
-        }
+}
 
-        input[type="text"],
-        input[type="date"],
-        input[type="number"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            background-color: #f0f8ff;
-            color: #333;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
 
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
 
-        textarea#itinerario {
-            height: 150px;
-        }
+    margin-left: 20px;
+}
 
-        .date-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            grid-column: 1 / -1;
-        }
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+}
 
-        button {
-            grid-column: 1 / -1;
-            padding: 15px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            background-color: #00359a;
-            color: white;
-            transition: all 0.3s ease;
-        }
+nav ul li a:hover {
+    background-color: #0f3460;
+}
 
-        button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+nav ul li:last-child {
+    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+}
 
-        @media (max-width: 768px) {
-            main {
-                padding: 20px;
-            }
 
-            #creaViaggioForm {
-                grid-template-columns: 1fr;
-            }
 
-            .date-container {
-                grid-template-columns: 1fr;
-            }
 
-            h1 {
-                font-size: 28px;
-            }
-        }
+/* Main Content */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#container-viaggio {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 53, 154, 0.2);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    color: #00359a;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #00359a;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d1d9e6;
+    border-radius: 5px;
+    color: #00359a;
+    background-color: #f9faff;
+    box-shadow: inset 0 1px 3px rgba(0, 53, 154, 0.1);
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #00359a;
+    outline: none;
+}
+
+/* Button Styles */
+.btn-submit {
+    background-color: #00359a;
+    color: #ffffff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background-color: #0054d4;
+    transform: scale(1.05);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #00359a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    border-top: 3px solid #001f5c;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .social a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer .social a:hover {
+    color: #ffd700;
+}
