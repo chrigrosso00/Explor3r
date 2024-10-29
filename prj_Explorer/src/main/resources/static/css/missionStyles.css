@@ -141,6 +141,60 @@ nav ul li:last-child {
     margin: 10px 0; /* Margine sopra e sotto */
 }
 
+/* Main Content Styles */
+.mission-section {
+    padding: 40px 20px; /* Increased padding for more white space */
+    background-color: #ffffff; /* White background for the content section */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.tutorial-section {
+    margin-top: 40px; /* Space above the tutorial section */
+}
+
+h2, h3 {
+    color: #00359a; /* Use primary color for headings */
+}
+
+h2 {
+    font-size: 2rem; /* Larger font size for main headings */
+    margin-bottom: 20px; /* Increased space below main headings */
+}
+
+h3 {
+    font-size: 1.5rem; /* Size for subheadings */
+    margin-top: 20px; /* Margin above subheadings */
+}
+
+.tutorial-step {
+    margin-bottom: 30px; /* Space between tutorial steps */
+    padding: 20px; /* Padding around each step */
+    border: 1px solid #ddd; /* Light border around each step */
+    border-radius: 8px; /* Rounded corners for each step */
+    background-color: #f9f9f9; /* Light gray background for steps */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.tutorial-step:hover {
+    background-color: #eaeaea; /* Change background color on hover */
+}
+
+/* Screenshot Styles */
+.screenshot {
+    width: 100%; /* Full width images */
+    max-width: 500px; /* Maximum width for all screenshots */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    margin: 15px 0; /* Margin above and below */
+}
+
+/* Specific styling for the first screenshot */
+.tutorial-step:first-child .screenshot {
+    max-width: 300px; /* Smaller width for the first screenshot */
+}
+
 
 
 
