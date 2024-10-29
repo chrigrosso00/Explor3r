@@ -2,9 +2,9 @@ package com.explorer.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import jakarta.persistence.Embeddable;
 
-import jakarta.persistence.Column;
-
+@Embeddable
 public class PrenotazioneId implements Serializable {
 	
     private int utente_id;
