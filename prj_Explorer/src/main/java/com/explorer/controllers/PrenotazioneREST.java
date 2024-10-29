@@ -115,6 +115,21 @@ public class PrenotazioneREST {
 	    // 3. Recupera il viaggio dal database usando il suo ID
 	    Viaggio viaggioPrenotazione = viaggioDAO.findById(viaggio.getId_viaggio()).orElse(null);
 	    
+	    List<Prenotazione> prenotazioniUtente =  pService.findByUtente(currentUser);
+        
+        for (Prenotazione prenotazione : prenotazioniUtente) {
+            LocalDate dataInizioEsistente = prenotazione.getData_Partenza();
+            LocalDate dataFineEsistente = prenotazione.getData_Arrivo();
+            LocalDate dataInizioNuovo = viaggioPrenotazione.getData_Partenza();
+            LocalDate dataFineNuovo = viaggioPrenotazione.getData_Arrivo();
+
+            // Verifica la sovrapposizione delle date
+            if ((dataInizioNuovo.isBefore(dataFineEsistente) && dataFineNuovo.isAfter(dataInizioEsistente))
+                    || dataInizioNuovo.equals(dataInizioEsistente) || dataFineNuovo.equals(dataFineEsistente)) {
+                return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body("Sei già in un viaggio in queste date"); // 409 CONFLICT - Viaggio sovrapposto
+            }
+        }
+	    
 	    // 4. Controlla se il viaggio esiste
 	    if (viaggioPrenotazione == null) {
 	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Viaggio non trovato");
@@ -153,6 +168,7 @@ public class PrenotazioneREST {
 	    id.setUtenteId(utenteId);
 	    id.setViaggioId(viaggioId);
 	    Optional<Prenotazione> prenotazione = pService.findById(id);
+	    
         if (prenotazione.isPresent()) {
             pService.deletePrenotazione(utenteId, viaggioId);
             return ResponseEntity.ok("Prenotazione eliminata con successo.");

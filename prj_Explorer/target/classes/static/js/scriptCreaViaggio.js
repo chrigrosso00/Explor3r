@@ -69,9 +69,14 @@ function creaViaggio() {
         body: JSON.stringify(viaggioData)
     })
     .then(response => {
-        if (!response.ok) {
+        if(response.status === 409){
+            alert('Sei già in un viaggio in queste date');
+            throw new Error('Sei già in un altro viaggio');
+        }
+        else if (!response.ok) {
             throw new Error('Errore nella creazione del viaggio');
         }
+        
         return response.json();
     })
     .then(viaggio => {

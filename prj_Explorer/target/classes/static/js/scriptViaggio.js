@@ -165,6 +165,8 @@ function prenotaViaggio() {
             alert('Sei già iscritto a questo viaggio.');
         } else if (response.status === 400) {
             alert('Errore: Dati di richiesta non validi. Controlla i dettagli e riprova.');
+        }else if (response.status === 418) {
+            alert('Sei gia in viaggio in queste date');
         } else if (response.status === 500) {
             alert('Errore interno del server. Riprova più tardi.');
         } else {
