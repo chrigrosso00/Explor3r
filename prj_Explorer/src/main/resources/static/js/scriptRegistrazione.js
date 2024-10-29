@@ -26,7 +26,7 @@ document.getElementById('utenteForm').addEventListener('submit', function(event)
     let utente = {
         nome: document.getElementById('nome').value,
         cognome: document.getElementById('cognome').value,
-        //email: document.getElementById('email').value,
+        email: document.getElementById('email').value,
         data_nascita: data,
         telefono: document.getElementById('phone').value,
         username: document.getElementById('username').value,

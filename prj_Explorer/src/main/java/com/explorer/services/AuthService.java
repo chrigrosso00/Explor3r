@@ -61,6 +61,7 @@ public class AuthService {
             Date date = Date.valueOf("1950-05-05");
             admin.setData_nascita(date);
             admin.setTelefono(0);
+            admin.setEmail("admin@email.com");
             UserAuthority authority = new UserAuthority();
             UserAuthorityId authorityId = new UserAuthorityId();
             authorityId.setUserId(admin.getId_utente());

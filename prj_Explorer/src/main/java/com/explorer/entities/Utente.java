@@ -35,7 +35,9 @@ public class Utente {
     @NotNull
     @Column(nullable = false)
     private String cognome;
-    //private String email;
+    @NotNull
+    @Column(nullable = false)
+    private String email;
     @NotNull
     @Column(unique = true, nullable = false)
     private String username;
@@ -101,12 +103,12 @@ public class Utente {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	/*public String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}*/
+	}
 	public Set<UserAuthority> getAuthorities() {
 	    return authorities;
 	}
