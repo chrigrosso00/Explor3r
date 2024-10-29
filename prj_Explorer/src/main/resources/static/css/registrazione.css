@@ -4,6 +4,7 @@ body {
     position: relative;
     height: 100vh;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +50,6 @@ header .container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    text-align: center;
 }
 
 /* Logo */
@@ -58,34 +58,73 @@ header .container {
     display: flex;
     justify-content: flex-start;
 }
+
 .logo img {
     width: 150px;
     height: auto;
     display: block;
-    margin-left: 0px;
+    margin-left: 20px;
 }
 
-/* Navigazione */
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
     justify-content: center;
     align-items: center;
-    margin-right: 400px;
+    margin-right: 150px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 50px;
+    padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
     background-color: #0f3460;
+}
+
+/* Login */
+.login {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.login .icon {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#logoutButton {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #e63946;
 }
 
 /* Contenitore del form */

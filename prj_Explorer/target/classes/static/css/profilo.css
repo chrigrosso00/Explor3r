@@ -28,29 +28,37 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 /* Logo */
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .logo img {
-    width: 120px;
+    width: 150px;
     height: auto;
-    margin-left: 10px;
+    display: block;
+    margin-left: 20px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    margin-right: 150px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -59,17 +67,28 @@ nav ul li a:hover {
     background-color: #0f3460;
 }
 
+/* Login */
 .login {
+    flex: 1;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
 }
 
 .login a {
-    color: #ffffff;
+    color: white;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 14px;
+    margin-right: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.login .icon {
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 #logoutButton {

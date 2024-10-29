@@ -50,7 +50,6 @@ header .container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* No need for text-align: center here if you want only the nav centered */
 }
 
 /* Logo */
@@ -59,41 +58,28 @@ header .container {
     display: flex;
     justify-content: flex-start;
 }
+
 .logo img {
     width: 150px;
     height: auto;
     display: block;
-}
-
-/* Navigation */
-nav {
-    flex: 2; /* Occupies 2 units of flex space */
-    display: flex;
-    justify-content: center; /* Centers the navigation menu horizontally */
+    margin-left: 20px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
-
+    justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    padding: 0;
-    margin: 0; /* Remove default margin for better alignment */
-=======
-<<<<<<< Updated upstream
-=======
-    margin-right: 400px;
->>>>>>> Stashed changes
->>>>>>> 3583d8b4a9ae739d169bbbef7d6beb9e01f8248a
+    margin-right: 150px;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 50px;
+    padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -102,8 +88,43 @@ nav ul li a:hover {
     background-color: #0f3460;
 }
 
-nav ul li:last-child {
-    margin-right: 0; /* Removes right margin from the last item */
+/* Login */
+.login {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.login .icon {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#logoutButton {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #e63946;
 }
 
 

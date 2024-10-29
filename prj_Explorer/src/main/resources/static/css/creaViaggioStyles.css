@@ -31,34 +31,25 @@ header .container {
 
 /* Logo */
 .logo {
-    flex: 1; /* Occupa 1 unità di spazio */
+    flex: 1;
     display: flex;
-    justify-content: flex-start; /* Posiziona il logo a sinistra */
+    justify-content: flex-start;
 }
 
 .logo img {
-    width: 150px; /* Ridimensiona l'immagine del logo */
-    height: auto; /* Mantiene il rapporto di aspetto */
+    width: 150px;
+    height: auto;
     display: block;
     margin-left: 20px;
-}
-
-/* Navigazione */
-nav {
-    flex: 2; /* Occupa 2 unità di spazio */
-    display: flex;
-    justify-content: flex-start;
-        margin-left: 20px;
-
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
-
-
-    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 150px;
 }
 
 nav ul li a {
@@ -68,15 +59,49 @@ nav ul li a {
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin-left: 20px;
 }
 
 nav ul li a:hover {
     background-color: #0f3460;
 }
 
-nav ul li:last-child {
-    margin-right: 0; /* Rimuove il margine destro dall'ultimo elemento */
+/* Login */
+.login {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+.login .icon {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#logoutButton {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #e63946;
 }
 
 

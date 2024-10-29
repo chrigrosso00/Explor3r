@@ -8,34 +8,37 @@
     <meta name="author" content="Mister X">
     <meta name="csrf-token" content="${_csrf.token}">
     <link rel="stylesheet" href="/css/login.css?v=1.1">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+
     <!-- Aggiungi FontAwesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header per il menu di navigazione -->
     <header>
-        <div class="container">
-            <div class="logo">
+		<div class="container">
+			<div class="logo">
 				<a href="/"> <img src="/img/logo_explorer.png"
 					alt="Logo Explorer">
 			</div>
-			
-            <nav>
-                <ul>
-                    <li><a href="viaggi">Destinazioni</a></li>
-                    <li><a href="#">Last Minute</a></li>
-                    <li id="creaViaggioLink" style="display: none;"><a href="/crea-viaggio">Crea Viaggio</a></li>
-                    <li><a href="/mission">La nostra Mission</a></li>
-                    <li><a href="#">Contatti</a></li>
-                </ul>
-            </nav>
-            
-        </div>
-    </header>
+			<nav>
+				<ul>
+					<li><a href="viaggi">Destinazioni</a></li>
+					<li><a href="#">Last Minute</a></li>
+					<li id="creaViaggioLink" style="display: none;"><a
+						href="/crea-viaggio">Crea Viaggio</a></li>
+					<li><a href="/mission">La nostra Mission</a></li>
+					<li><a href="#">Contatti</a></li>
+				</ul>
+			</nav>
+			<div class="login">
+				<a href="/login" id="loginLink"><span class="icon"></span></a> <a href="/registrazione"
+					id="registerLink"><span class="icon"></span></a>
+				<button id="logoutButton" style="display: none;"></button>
+			</div>
+		</div>
+	</header>
 
     <!-- Contenuto della pagina di login -->
     <div class="login-container">
