@@ -155,9 +155,22 @@ function caricaPrenotazioni() {
                             ? "Mostra di più"
                             : "Mostra meno";
                     });
-
-                    dateElement.appendChild(toggleButton);
+                    
+                    // Bottone per visualizzare i dettagli del viaggio
+                    const viaggioId = prenotation.id.viaggioId;
+                    let dettagliButton = document.createElement("button");
+                    dettagliButton.textContent = "Visualizza Viaggio";
+                    dettagliButton.classList.add("view-button");
+                    dettagliButton.addEventListener("click", () => {
+                    window.location.href = `/viaggio?id=${viaggioId}`;
+                    });
+                    
+                    
+                    
+ 					dateElement.appendChild(toggleButton);
+                    dateElement.appendChild(dettagliButton);
                     prenotationSection.appendChild(dateElement);
+                    
                 }
             });
         })
