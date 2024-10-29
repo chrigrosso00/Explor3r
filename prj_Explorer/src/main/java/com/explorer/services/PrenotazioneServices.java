@@ -18,4 +18,5 @@ public interface PrenotazioneServices {
 	Prenotazione addPrenotazione(Utente utente, Viaggio viaggio);
 	void deletePrenotazione(int utenteId, int viaggioId);
 	List<Prenotazione> findByUsernameUser(String username);
+	void cancellaPrenotazione(Prenotazione p);
 }

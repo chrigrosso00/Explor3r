@@ -77,7 +77,9 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
     public void deletePrenotazione(int utenteId, int viaggioId) {
         PrenotazioneId id = new PrenotazioneId();
         id.setUtenteId(utenteId);
+        System.out.println(utenteId);
         id.setViaggioId(viaggioId);
+        System.out.println(viaggioId);
         dao.deleteById(id);
     }
     
@@ -85,4 +87,9 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
     public List<Prenotazione> findByUsernameUser(String username){
     	return dao.findPrenotazioniByUsernameUser(username);
     }
+	@Override
+	public void cancellaPrenotazione(Prenotazione p) {
+		dao.delete(p);
+		
+	}
 }

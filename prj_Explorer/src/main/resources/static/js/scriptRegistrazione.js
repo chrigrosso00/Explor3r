@@ -49,6 +49,7 @@ document.getElementById('utenteForm').addEventListener('submit', function(event)
 	.then(data => {
     	console.log('Success:', data);
     	alert('Utente aggiunto con successo!');
+    	window.location.href = '/login';
 	})
 	.catch((error) => {
     	console.error('Error:', error);

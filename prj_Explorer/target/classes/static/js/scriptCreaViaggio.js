@@ -77,7 +77,7 @@ function creaViaggio() {
     .then(viaggio => {
         alert('Viaggio creato con successo!');
         // Reindirizza alla pagina dei dettagli del viaggio appena creato
-        window.location.href = `/`; 
+        window.location.href = `/profilo`; 
     })
     .catch(error => {
         console.error('Errore:', error);

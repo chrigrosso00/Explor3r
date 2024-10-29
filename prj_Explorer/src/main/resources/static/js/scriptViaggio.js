@@ -250,6 +250,7 @@ function cancellaViaggio(){
                 } else {
                     alert('Errore durante la cancellazione. Riprova più tardi.');
                 }
+                window.location.href = `/profilo`
             })
             .catch(error => {
                 console.error('Errore:', error);

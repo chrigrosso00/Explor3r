@@ -3,6 +3,7 @@ package com.explorer.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.explorer.entities.Paese;
 
 import com.explorer.entities.Prenotazione;
+import com.explorer.entities.PrenotazioneId;
 import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
 import com.explorer.services.PaeseServices;
@@ -186,12 +188,34 @@ public class ViaggioREST {
     }
     @PostMapping("viaggi/delete")
     public ResponseEntity<Void> deleteViaggio(@RequestBody Viaggio viaggio) {
-        if (viaggioServices.findById(viaggio.getId_viaggio()) == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        viaggioServices.deleteViaggio(viaggio);
-        return ResponseEntity.ok().build();  // Nessun contenuto da restituire
+        try {
+            if (viaggioServices.findById(viaggio.getId_viaggio()) == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+            
+            List<Prenotazione> prenotazioniDaCancellare = prenoServices.findByViaggio(viaggio);
+            
+            viaggioServices.deleteViaggio(viaggio);
+            
+            for (Prenotazione prenotazione : prenotazioniDaCancellare) {
+                if (prenotazione.getUtente() != null && prenotazione.getViaggio() != null) {
+                    PrenotazioneId id = new PrenotazioneId();
+                    id.setUtenteId(prenotazione.getUtente().getId_utente());
+                    id.setViaggioId(prenotazione.getViaggio().getId_viaggio());
+                    
+                    Optional<Prenotazione> prenotazioneF = prenoServices.findById(id);
+                    if (prenotazioneF.isPresent()) {
+                        prenoServices.deletePrenotazione(prenotazione.getUtente().getId_utente(), prenotazione.getViaggio().getId_viaggio());
+                    }
+                }
+            }
+            
+            return ResponseEntity.ok().build();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } // Nessun contenuto da restituire
     }
     
     @GetMapping("viaggi/in-partenza")
