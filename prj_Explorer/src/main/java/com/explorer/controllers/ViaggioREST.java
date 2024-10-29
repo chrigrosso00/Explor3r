@@ -142,6 +142,21 @@ public class ViaggioREST {
             // 2. Trova l'utente dal database (presuppone che ci sia un metodo per cercare l'utente per username)
             Utente utente = utenteServices.findByUsername(username);
             
+            List<Prenotazione> prenotazioniUtente =  prenoServices.findByUtente(utente);
+            
+            for (Prenotazione prenotazione : prenotazioniUtente) {
+                LocalDate dataInizioEsistente = prenotazione.getData_Partenza();
+                LocalDate dataFineEsistente = prenotazione.getData_Arrivo();
+                LocalDate dataInizioNuovo = nuovoViaggio.getData_Partenza();
+                LocalDate dataFineNuovo = nuovoViaggio.getData_Arrivo();
+
+                // Verifica la sovrapposizione delle date
+                if ((dataInizioNuovo.isBefore(dataFineEsistente) && dataFineNuovo.isAfter(dataInizioEsistente))
+                        || dataInizioNuovo.equals(dataInizioEsistente) || dataFineNuovo.equals(dataFineEsistente)) {
+                    return ResponseEntity.status(HttpStatus.CONFLICT)
+                            .body(null); // 409 CONFLICT - Viaggio sovrapposto
+                }
+            }
 
             if (utente != null) {
                 // 3. Assegna l'utente al viaggio
