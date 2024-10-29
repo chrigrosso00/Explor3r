@@ -244,4 +244,16 @@ public class ViaggioREST {
         }
     }
     
+    @GetMapping("prenotazioni/viaggi/limite/{id}")
+    public Boolean getLimite(@PathVariable int id){
+    	
+        Viaggio viaggio = viaggioServices.findById(id);
+
+        if (viaggio != null && viaggio.getUtente() != null) {
+        	int limit = viaggio.getPrenotazioni().size();
+            return limit <= viaggio.getMaxPartecipanti();
+        } else {
+            return false; 
+        }
+    }
 }

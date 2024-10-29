@@ -273,7 +273,26 @@ document.addEventListener('DOMContentLoaded', function() {
     caricaPartecipanti();
     deleteButton();
 
-    // Aggiungi event listener per il pulsante di prenotazione
     const prenotaButton = document.getElementById('prenotaButton');
+    const id_viaggio = getQueryParameter('id');
+
+    fetch(`/api/prenotazioni/viaggi/limite/${id_viaggio}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data) {
+            prenotaButton.style.display = 'none';
+        }
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Errore durante la verifica del limite di partecipanti.');
+    });
+    
     prenotaButton.addEventListener('click', prenotaViaggio);
 });

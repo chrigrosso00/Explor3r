@@ -2,7 +2,6 @@ package com.explorer.controllers;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +24,7 @@ import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
 import com.explorer.repos.UtenteDAO;
 import com.explorer.repos.ViaggioDAO;
-import com.explorer.security.UserPrincipal;
 import com.explorer.services.PrenotazioneServices;
-import com.explorer.services.ViaggioServices;
 
 @RestController
 @RequestMapping("api")

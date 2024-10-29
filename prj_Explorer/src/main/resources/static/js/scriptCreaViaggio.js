@@ -43,7 +43,7 @@ function caricaPaesi() {
     .catch(error => console.error('Errore nel caricamento dei paesi:', error));
 }
 
-function creaViaggio() {
+/*function creaViaggio() {
     const formData = new FormData(document.getElementById('creaViaggioForm'));
     const viaggioData = Object.fromEntries(formData.entries());
 
@@ -88,4 +88,60 @@ function creaViaggio() {
         console.error('Errore:', error);
         alert('Si è verificato un errore durante la creazione del viaggio.');
     });
-}
+}*/
+
+document.getElementById('creaViaggioForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previene l'invio predefinito del form
+
+    const submitButton = document.querySelector('.btn-submit');
+    submitButton.disabled = true; // Disabilita il pulsante
+
+    const formData = new FormData(this);
+    const viaggioData = Object.fromEntries(formData.entries());
+
+    // Verifica le date di partenza e arrivo
+    const dataPartenza = new Date(viaggioData.data_Partenza);
+    const dataArrivo = new Date(viaggioData.data_Arrivo);
+    
+    if (dataArrivo <= dataPartenza) {
+        alert("La data di arrivo deve essere successiva alla data di partenza.");
+        submitButton.disabled = false; // Riabilita il pulsante
+        return; // Blocca l'invio se le date non sono valide
+    }
+
+    // Converti l'ID del paese in un oggetto
+    viaggioData.paese = { id_paese: parseInt(viaggioData['paese.id_paese']) };
+    delete viaggioData['paese.id_paese'];
+
+    fetch('/api/viaggi', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
+        },
+        body: JSON.stringify(viaggioData)
+    })
+    .then(response => {
+        if(response.status === 409){
+            alert('Sei già in un viaggio in queste date');
+            throw new Error('Sei già in un altro viaggio');
+        }
+        else if (!response.ok) {
+            throw new Error('Errore nella creazione del viaggio');
+        }
+        
+        return response.json();
+    })
+    .then(viaggio => {
+        alert('Viaggio creato con successo!');
+        // Reindirizza alla pagina dei dettagli del viaggio appena creato
+        window.location.href = `/profilo`; 
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Si è verificato un errore durante la creazione del viaggio.');
+    })
+    .finally(() => {
+        submitButton.disabled = false; // Riabilita il pulsante alla fine
+    });
+});

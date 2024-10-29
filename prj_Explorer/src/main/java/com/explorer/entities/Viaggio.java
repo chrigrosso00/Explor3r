@@ -42,6 +42,7 @@ public class Viaggio {
     private String descrizione;
     private String itinerario;
     private String tipologia;
+    private int maxPartecipanti;
     
     public int getId_viaggio() {
 		return id_viaggio;
@@ -102,5 +103,11 @@ public class Viaggio {
 	}
 	public void setTipologia(String tipologia) {
 		this.tipologia = tipologia;
+	}
+	public int getMaxPartecipanti() {
+		return maxPartecipanti;
+	}
+	public void setMaxPartecipanti(int maxPartecipanti) {
+		this.maxPartecipanti = maxPartecipanti;
 	}
 }

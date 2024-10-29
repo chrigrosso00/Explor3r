@@ -112,5 +112,6 @@ public class Prenotazione {
 	}
 	public void setPaese(String paese) {
 		this.paese = paese;
-	}	
+	}
+		
 }
