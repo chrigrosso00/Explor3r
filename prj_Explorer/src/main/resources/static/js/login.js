@@ -36,7 +36,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 		    	logoutUser();
 		    }, expirationTime);
     
-            window.location.href = '/profilo';
+            window.location.href = '/';
             console.log('Expiration time in milliseconds:', expirationTime);
         }
     })

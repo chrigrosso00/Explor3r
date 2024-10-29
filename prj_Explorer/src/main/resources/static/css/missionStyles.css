@@ -124,6 +124,27 @@ nav ul li:last-child {
     padding: 20px 0; /* Padding per il contenuto principale */
 }
 
+.screenshot {
+    width: 300px; /* Larghezza fissa per l'immagine */
+    height: auto; /* Mantiene il rapporto di aspetto */
+    border: 1px solid #ccc; /* Aggiunge un bordo sottile */
+    border-radius: 5px; /* Angoli arrotondati */
+    margin: 10px 0; /* Margine sopra e sotto */
+}
+
+.screenshot_homepage {
+    width: 800px; /* Aumenta la larghezza */
+    height: 500px; /* Aumenta l'altezza */
+    object-fit: contain; /* Mantiene l'intera immagine visibile */
+    border: 1px solid #ccc; /* Aggiunge un bordo sottile */
+    border-radius: 5px; /* Angoli arrotondati */
+    margin: 10px 0; /* Margine sopra e sotto */
+}
+
+
+
+
+
 /* Footer */
 footer {
     background-color: #00359a;

@@ -8,8 +8,10 @@
 <link rel="stylesheet" href="/css/indexStyles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-	
+<link
+	href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap"
+	rel="stylesheet">
+
 
 <link rel="icon" type="image/png" sizes="32x32"
 	href="/img/favicon-32x32.png">
@@ -28,10 +30,9 @@
 			<nav>
 				<ul>
 					<li><a href="viaggi">Destinazioni</a></li>
-					<li><a href="#">Last Minute</a></li>
 					<li id="creaViaggioLink" style="display: none;"><a
 						href="/crea-viaggio">Crea Viaggio</a></li>
-					<li><a href="/mission">La nostra Mission</a></li>
+					<li><a href="/mission">Come Funziona</a></li>
 					<li><a href="#">Contatti</a></li>
 				</ul>
 			</nav>
@@ -45,61 +46,59 @@
 		</div>
 	</header>
 
-<section class="hero">
-    <div class="search-wrapper">
-        <div class="search-container">
-            <!-- Destination Search -->
-            <div class="search-box">
-                <label>Destinazione</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <input type="text" id="destinazione" placeholder="Dove vuoi andare?">
-                </div>
-                <div class="suggestions-box" id="suggestions"></div>
-            </div>
+	<section class="hero">
+		<div class="search-wrapper">
+			<div class="search-container">
+				<!-- Destination Search -->
+				<div class="search-box">
+					<label>Destinazione</label>
+					<div class="input-wrapper">
+						<i class="fas fa-map-marker-alt"></i> <input type="text"
+							id="destinazione" placeholder="Dove vuoi andare?">
+					</div>
+					<div class="suggestions-box" id="suggestions"></div>
+				</div>
 
-            <!-- Date Selection -->
-            <div class="search-box">
-                <label>Data Partenza</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-calendar-alt"></i>
-                    <input type="date" id="checkInDate">
-                </div>
-            </div>
+				<!-- Date Selection -->
+				<div class="search-box">
+					<label>Data Partenza</label>
+					<div class="input-wrapper">
+						<i class="fas fa-calendar-alt"></i> <input type="date"
+							id="checkInDate">
+					</div>
+				</div>
 
-            <!-- Trip Type Selection -->
-            <div class="search-box">
-                <label>Tipo di Viaggio</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-tag"></i>
-                    <select id="tipologiaViaggio">
-                        <option value="">Seleziona tipologia</option>
-                        <option value="AVVENTURA">Avventura</option>
-                        <option value="CULTURALE">Culturale</option>
-                        <option value="LUSSO">Lusso</option>
-                        <option value="NATURA">Natura</option>
-                        <option value="RELAX">Relax</option>
-                    </select>
-                </div>
-            </div>
+				<!-- Trip Type Selection -->
+				<div class="search-box">
+					<label>Tipo di Viaggio</label>
+					<div class="input-wrapper">
+						<i class="fas fa-tag"></i> <select id="tipologiaViaggio">
+							<option value="">Seleziona tipologia</option>
+							<option value="AVVENTURA">Avventura</option>
+							<option value="CULTURALE">Culturale</option>
+							<option value="LUSSO">Lusso</option>
+							<option value="NATURA">Natura</option>
+							<option value="RELAX">Relax</option>
+						</select>
+					</div>
+				</div>
 
-            <!-- Search Button -->
-            <button id="cercaButton" class="search-btn">
-                <i class="fas fa-search"></i>
-                Cerca
-            </button>
-        </div>
-    </div>
-</section>
+				<!-- Search Button -->
+				<button id="cercaButton" class="search-btn">
+					<i class="fas fa-search"></i> Cerca
+				</button>
+			</div>
+		</div>
+	</section>
 
 	<!-- Viaggi in partenza -->
 	<section class="viaggi-in-partenza">
-    	<div class="container">
-        	<h2>Viaggi in Partenza</h2>
-        	<div class="viaggi-list" id="viaggiProssimi">
-            	<!-- I viaggi saranno caricati qui dentro-->
-        	</div>
-    	</div>
+		<div class="container">
+			<h2>Viaggi in Partenza</h2>
+			<div class="viaggi-list" id="viaggiProssimi">
+				<!-- I viaggi saranno caricati qui dentro-->
+			</div>
+		</div>
 	</section>
 
 	<!-- Footer -->
