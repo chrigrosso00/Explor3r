@@ -159,20 +159,25 @@ public class PrenotazioneREST {
 	}
 
 	
-	@DeleteMapping("prenotazione/delete/{utenteId}/{viaggioId}")
-	public ResponseEntity<String> deletePrenotazione(@PathVariable int utenteId, @PathVariable int viaggioId) {
-		PrenotazioneId id = new PrenotazioneId();
-	    id.setUtenteId(utenteId);
-	    id.setViaggioId(viaggioId);
-	    Optional<Prenotazione> prenotazione = pService.findById(id);
+	@DeleteMapping("prenotazione/delete/{username}/{viaggioId}")
+	public ResponseEntity<String> deletePrenotazione(@PathVariable String username, @PathVariable int viaggioId) {
+	    Optional<Utente> utenteOptional = utentedao.findByUsername(username);
+		if (!utenteOptional.isPresent()) {
+		    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato.");
+		}
+		    
+	    Utente utente = utenteOptional.get();
+		PrenotazioneId prenotazioneId = new PrenotazioneId(utente.getId_utente(), viaggioId);
 	    
-        if (prenotazione.isPresent()) {
-            pService.deletePrenotazione(utenteId, viaggioId);
-            return ResponseEntity.ok("Prenotazione eliminata con successo.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prenotazione non trovata.");
-        }
-    }
+	    Optional<Prenotazione> prenotazioneOptional = pService.findById(prenotazioneId);
+	    
+	    if (prenotazioneOptional.isPresent()) {
+	        pService.deletePrenotazione(prenotazioneOptional.get());
+	        return ResponseEntity.ok("Prenotazione eliminata con successo.");
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prenotazione non trovata.");
+	    }
+	}
 	
 	@GetMapping("prenotazioni/nominativo/{username}")
 	public ResponseEntity<List<Prenotazione>> getByUsernameUser(@PathVariable String username) {

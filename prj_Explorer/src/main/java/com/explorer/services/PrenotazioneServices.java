@@ -16,7 +16,7 @@ public interface PrenotazioneServices {
 	List<Prenotazione> findByData(String data); 
 	int countByUtente(Utente utente); 
 	Prenotazione addPrenotazione(Utente utente, Viaggio viaggio);
-	void deletePrenotazione(int utenteId, int viaggioId);
+	void deletePrenotazione(Prenotazione prenotazione);
 	List<Prenotazione> findByUsernameUser(String username);
 	void cancellaPrenotazione(Prenotazione p);
 }

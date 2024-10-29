@@ -108,19 +108,18 @@ nav ul li a:hover {
 
 /* Main Profile Layout */
 main.container {
-<<<<<<< HEAD
+
    max-width: 1200px; /* Larghezza massima per il contenitore */
    margin: 40px auto;
    padding: 40px;
    background-color: #ffffff;
    border-radius: 12px;
    box-shadow: 0 6px 15px rgba(0, 53, 154, 0.15);
-=======
-    display: flex;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
->>>>>>> 3583d8b4a9ae739d169bbbef7d6beb9e01f8248a
+   display: flex;
+   gap: 20px;
+   margin-top: 30px;
+   flex-wrap: wrap;
+
 }
 
 /* Sidebar Styles */
@@ -136,10 +135,8 @@ main.container {
     display: flex;
     flex-direction: column;
     gap: 15px;
- HEAD
     overflow-y: auto; /* Aggiungi lo scroll se il contenuto supera l'altezza */
-
-    max-width: 300px;
+	max-width: 300px;
 
 }
 

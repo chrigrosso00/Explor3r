@@ -73,14 +73,10 @@ public class PrenotazioneServicesImpl implements PrenotazioneServices {
         		
     	return dao.save(prenotazione);
 	}
+    
     @Override
-    public void deletePrenotazione(int utenteId, int viaggioId) {
-        PrenotazioneId id = new PrenotazioneId();
-        id.setUtenteId(utenteId);
-        System.out.println(utenteId);
-        id.setViaggioId(viaggioId);
-        System.out.println(viaggioId);
-        dao.deleteById(id);
+    public void deletePrenotazione(Prenotazione prenotazione) {
+        dao.delete(prenotazione);
     }
     
     @Override

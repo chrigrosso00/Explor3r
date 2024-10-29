@@ -220,7 +220,7 @@ public class ViaggioREST {
                     
                     Optional<Prenotazione> prenotazioneF = prenoServices.findById(id);
                     if (prenotazioneF.isPresent()) {
-                        prenoServices.deletePrenotazione(prenotazione.getUtente().getId_utente(), prenotazione.getViaggio().getId_viaggio());
+                        prenoServices.deletePrenotazione(prenotazione);
                     }
                 }
             }

@@ -266,6 +266,40 @@ function cancellaViaggio(){
         });
 }
 
+function discriviViaggio() {
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+
+    if (!token) {
+        alert("Devi essere loggato per disiscriverti da un viaggio.");
+        return;
+    }
+
+    const id_viaggio = getQueryParameter('id');
+    const username = JSON.parse(localStorage.getItem('username'));
+
+    fetch(`/api/prenotazione/delete/${username}/${id_viaggio}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + token.split('=')[1]
+        }
+    })
+    .then(response => {
+        if (response.status === 200) {
+            alert('Disiscrizione effettuata con successo!');
+        } else if (response.status === 404) {
+            alert('Prenotazione non trovata.');
+        } else if (response.status === 500) {
+            alert('Errore interno del server. Riprova più tardi.');
+        } else {
+            alert('Errore durante la disiscrizione. Riprova più tardi.');
+        }
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Errore durante la disiscrizione.');
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
@@ -274,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteButton();
 
     const prenotaButton = document.getElementById('prenotaButton');
+    const disiscrivitiButton = document.getElementById('discrivitiButton');
     const id_viaggio = getQueryParameter('id');
 
     fetch(`/api/prenotazioni/viaggi/limite/${id_viaggio}`, {
@@ -295,4 +330,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     prenotaButton.addEventListener('click', prenotaViaggio);
+    disiscrivitiButton.addEventListener('click', discriviViaggio);
 });
