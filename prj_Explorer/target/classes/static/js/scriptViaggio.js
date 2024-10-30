@@ -62,7 +62,8 @@ function mostraPartecipantiViaggio(partecipanti){
 function mostraDettagliViaggio(viaggio) {
     // Aggiorna l'immagine del viaggio
     const imgSection = document.getElementById('immagine-viaggio');
-    imgSection.style.backgroundImage = `url('images/${viaggio.paese.stato}.jpg')`;
+	
+    imgSection.style.backgroundImage = `url('images/${viaggio.paese.stato.replace(/\s+/g, '')}.jpg')`;
 
     // Aggiorna il nome del paese
     const nomePaese = document.getElementById('nome-paese');
