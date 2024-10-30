@@ -46,13 +46,17 @@ public class SecurityConfiguration {
 						"/images/**",
 						
 						"/", 
-						"api/auth/login",
+						"/api/auth/login",
+						"/api/utente/nominativo/**",
 						"/viaggi",
+						"api/viaggi/**",
 						"/viaggiContinente", 
 						"/mission",
 						"/registrazione", 
 						"/viaggio",
-						"/risultati"
+						"/risultati",
+						"api/viaggi/in-partenza"
+						
 					
 				).permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/add/utente").permitAll()
