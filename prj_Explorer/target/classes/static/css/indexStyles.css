@@ -117,7 +117,7 @@ nav ul li a:hover {
     justify-content: center;
     overflow: hidden;
     margin-top: 25px;
-    background: linear-gradient(135deg, rgba(0, 53, 154, 0.7), rgba(0, 123, 255, 0.7)), url('/img/hero-background.jpg');
+ 	background-color: #00359a;
     background-size: cover;
     background-position: center;
 }
