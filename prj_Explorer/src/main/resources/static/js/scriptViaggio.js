@@ -324,6 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
         if (!data) {
             prenotaButton.style.display = 'none';
+            document.getElementById('numMaxPartecipanti').style.display = 'inline';
         }
     })
     .catch(error => {
