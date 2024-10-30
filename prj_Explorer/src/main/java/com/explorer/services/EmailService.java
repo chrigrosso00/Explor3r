@@ -29,4 +29,28 @@ public class EmailService {
 
         sendEmail(userEmail, subject, body);
 	}
+	
+	// Metodo per inviare l'email di conferma
+		public void sendBookingConf(String userEmail, String userName) {
+	        String subject = "Conferma Prenotazione!";
+	        String body = "Ciao " + userName + ",\n\n"
+	                + "Ti confermiamo che la tua prenotazione è avvenuta con successo "
+	                + "Se desideri controllare il viaggio puoi accederci dalla tua area personale e controllare la sezione: Le tue prenotazioni .\n\n"
+	                + "Cordiali saluti,\nIl team di Viaggi";
+
+	        sendEmail(userEmail, subject, body);
+		}
+		
+		// Metodo per inviare l'email di conferma della disiscrizione al viaggio
+				public void sendUnsubscribeConf(String userEmail, String userName) {
+			        String subject = "Conferma Prenotazione!";
+			        String body = "Ciao " + userName + ",\n\n"
+			                + "Ti confermiamo che la tua disiscrizione dal viaggio è avvenuta con successo. "
+			                + "Se desideri visualizzare o modificare altre prenotazioni, puoi accedere alla tua area personale nella sezione: Le tue prenotazioni.\n\n"
+			                + "Cordiali saluti,\nIl team di Viaggi";
+
+			        sendEmail(userEmail, subject, body);
+				}
+	
+	
 }
