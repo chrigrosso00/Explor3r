@@ -1,3 +1,5 @@
+let username = JSON.parse(localStorage.getItem('username'));
+
 // Funzione per verificare se il token JWT è presente nei cookie
 function checkLoginStatus() {
     const token = document.cookie.split('; ').find(row => row.startsWith('token='));
@@ -28,7 +30,6 @@ function checkLoginStatus() {
 // Funzione per gestire il logout
 function handleLogout() {
     document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    localStorage.removeItem("username");
     window.location.href = '/';
 }
 

@@ -1,4 +1,4 @@
-let username = JSON.parse(localStorage.getItem('username'));
+
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();

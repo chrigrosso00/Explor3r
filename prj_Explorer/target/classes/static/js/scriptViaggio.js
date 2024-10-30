@@ -181,7 +181,20 @@ function prenotaViaggio() {
     });
 }
 
+
+
 function deleteButton(){
+	
+	let user = "admin";
+	let currentUsername = JSON.parse(localStorage.getItem('username'));
+	
+	if (!currentUsername) {
+        localStorage.setItem('username', JSON.stringify(user));
+    } else if (currentUsername !== user) {
+        user = currentUsername;
+        localStorage.setItem('username', JSON.stringify(user));
+    }
+	
     let utenteId;
     fetch(`/api/viaggi/${id_viaggio}`)
         .then(response => {
@@ -218,8 +231,6 @@ function deleteButton(){
             document.getElementById('dettagli-viaggio').innerHTML = '<p>Errore nel caricamento dei dettagli del viaggio.</p>';
         });
 
-        let user = JSON.parse(localStorage.getItem('username'));
-        
         
 }
 
