@@ -46,6 +46,7 @@ public class SecurityConfiguration {
 						"/images/**",
 						
 						"/", 
+						"api/auth/login",
 						"/viaggi",
 						"/viaggiContinente", 
 						"/mission",
