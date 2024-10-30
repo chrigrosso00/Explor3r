@@ -307,3 +307,7 @@ footer .social a {
 footer .social a:hover {
     color: #ffd700;
 }
+
+#numMaxPartecipanti{
+	display: none;
+}
