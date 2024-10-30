@@ -3,8 +3,10 @@ package com.explorer.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.explorer.entities.UserAuthority;
 import com.explorer.entities.UserAuthorityId;
@@ -36,11 +38,19 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Override
     public Utente addUtente(Utente utente) {
+        // Verifica se l'email esiste già nel database
+        if (utenteDAO.findByEmail(utente.getEmail()).isPresent()) {
+            throw new ResponseStatusException(
+                HttpStatus.CONFLICT, "L'email è già registrata. Utilizza un'altra email."
+            );
+        }
+
         // Cripta la password prima di salvare l'utente
         String encodedPassword = passwordEncoder.encode(utente.getPassword());
         utente.setPassword(encodedPassword); // Imposta la password criptata
         Utente savedUtente = utenteDAO.save(utente);
         
+        // Crea e assegna l'autorità predefinita all'utente
         UserAuthority userAuthority = new UserAuthority();
         UserAuthorityId userAuthorityId = new UserAuthorityId();
         userAuthorityId.setUserId(savedUtente.getId_utente());
@@ -55,7 +65,7 @@ public class UtenteServicesImpl implements UtenteServices {
 
     @Override
     public void deleteUtente(int id) {
-        utenteDAO.deleteById(id); // Converti l'id in Long
+        utenteDAO.deleteById(id); 
     }
 
     @Override

@@ -20,4 +20,6 @@ public interface UtenteDAO extends JpaRepository<Utente,Integer> {
 	
 	Optional<Utente> findByUsername(String username);
 	
+	Optional<Utente> findByEmail(String email);
+	
 }
