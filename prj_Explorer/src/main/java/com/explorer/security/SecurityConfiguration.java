@@ -2,6 +2,7 @@ package com.explorer.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -39,34 +40,37 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers(
-						"/", 
-						"/**",
-						"/viaggi/**",
-						"/registrazione", 
-						"/index", 
-						"/api/**",
 						"/css/**", 
 						"/js/**", 
 						"/img/**",
 						"/images/**",
-						"viaggiContinente/**", 
-						"api/add/**", 
-						"api/viaggi/**",
-						"viaggio/**",
-						"/profilo",
-						"/risultati",
-						"api/viaggi/partecipanti/{idViaggio}",
-						"api/utente/nominativo/**",
-						"/api/viaggi/delete"
+						
+						"/", 
+						"/viaggi",
+						"/viaggiContinente", 
+						"/mission",
+						"/registrazione", 
+						"/viaggio",
+						"/risultati"
+					
 				).permitAll()
-						// .requestMatchers(HttpMethod.POST, "/api/ordini").permitAll()
-						// .requestMatchers(HttpMethod.GET, "/api/ordini").hasAnyRole("ADMIN","USER")
-						.requestMatchers("/swagger-ui/**", 
+						.requestMatchers(HttpMethod.POST, "/api/add/utente").permitAll()
+						//.requestMatchers(HttpMethod.GET, "/api/").hasAnyRole("ADMIN","USER")
+						.requestMatchers(
+								"/swagger-ui/**", 
+								"/index", 
 								"/swagger-ui.html", 
 								"/v3/api-docs.yaml", 
 								"/v3/api-docs/**",
 								"/api/v1/auth/**",
-								"api/utente/codice/**"
+								"api/utente/codice/**",
+								"api/add/**", 
+								"api/viaggi/**",
+								"/api/**",
+								"/profilo",
+								"api/viaggi/partecipanti/{idViaggio}",
+								"api/utente/nominativo/**",
+								"/api/viaggi/delete"
 								)
 						.hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
 				.formLogin(formLogin -> formLogin.loginPage("/login").permitAll())
