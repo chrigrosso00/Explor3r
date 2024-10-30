@@ -72,12 +72,14 @@ function mostraDettagliViaggio(viaggio) {
     document.getElementById('data-partenza').textContent = viaggio.data_Partenza;
     document.getElementById('data-arrivo').textContent = viaggio.data_Arrivo;
     document.getElementById('prezzo').textContent = viaggio.prezzo;
+    document.getElementById('maxPartecipanti').textContent = viaggio.maxPartecipanti;
 
     // Aggiorna la descrizione, itinerario e difficoltà
     document.getElementById('descrizione').textContent = viaggio.descrizione;
     document.getElementById('itinerario').textContent = viaggio.itinerario;
     document.getElementById('tipologia').textContent = viaggio.tipologia;
     document.getElementById('creatore').textContent = viaggio.utente.username;
+    
 }
 
 // Funzione per verificare se il token JWT è presente nei cookie
