@@ -24,6 +24,7 @@ import com.explorer.entities.Utente;
 import com.explorer.entities.Viaggio;
 import com.explorer.repos.UtenteDAO;
 import com.explorer.repos.ViaggioDAO;
+import com.explorer.services.EmailService;
 import com.explorer.services.PrenotazioneServices;
 
 @RestController
@@ -32,6 +33,9 @@ public class PrenotazioneREST {
 	
 	@Autowired
 	private PrenotazioneServices pService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@Autowired
 	private UtenteDAO utentedao;
@@ -149,7 +153,8 @@ public class PrenotazioneREST {
 	    // 7. Se l'utente non è il creatore e non è già iscritto, procedi con la prenotazione
 	    Prenotazione nuovaPrenotazione = pService.addPrenotazione(currentUser, viaggioPrenotazione);
 	    LocalDate today = LocalDate.now();  // Get today's date
-
+	    
+	    emailService.sendBookingConf(currentUser.getEmail(), currentUser.getUsername());
 	    // Convert LocalDate to java.sql.Date
 	    Date formattedDate = Date.valueOf(today);  // This is a convenient way to convert LocalDate to java.sql.Date
 
@@ -173,6 +178,7 @@ public class PrenotazioneREST {
 	    
 	    if (prenotazioneOptional.isPresent()) {
 	        pService.deletePrenotazione(prenotazioneOptional.get());
+	        emailService.sendUnsubscribeConf(utente.getEmail(), utente.getUsername());
 	        return ResponseEntity.ok("Prenotazione eliminata con successo.");
 	    } else {
 	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prenotazione non trovata.");
