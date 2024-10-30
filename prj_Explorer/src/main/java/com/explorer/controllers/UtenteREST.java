@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.explorer.entities.Utente;
-import com.explorer.services.EmailServices;
+import com.explorer.services.EmailService;
 import com.explorer.services.UtenteServices;
 
 @RestController
@@ -25,9 +25,9 @@ public class UtenteREST {
 	
 	@Autowired
 	private UtenteServices uService;
-	
-	/*@Autowired
-	private EmailServices emailService;*/
+
+	@Autowired
+	private EmailService emailService;
 	
 	@GetMapping("utenti")
 	public List<Utente> getUtente() {
@@ -46,18 +46,19 @@ public class UtenteREST {
 	
 	@PostMapping(value = "/add/utente", consumes = "application/json")
 	public ResponseEntity<Utente> addUtente(@RequestBody Utente u) {
-	    try {
-	        Utente nuovoUtente = uService.addUtente(u);
-	        //emailService.sendEmail(u.getEmail(), "Benvenuto!", "Grazie per esserti registrato!");
-	        return new ResponseEntity<Utente>(nuovoUtente, HttpStatus.CREATED);
-	    } catch (MailException e) {
-	        System.err.println("Errore durante l'invio dell'email: " + e.getMessage());
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	    } catch (RuntimeException e) {
-	        System.err.println("Errore durante la registrazione: " + e.getMessage());
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	    }
-	}
+		try {
+            Utente nuovoUtente = uService.addUtente(u);
+            emailService.sendWelcomeEmail(nuovoUtente.getEmail(), nuovoUtente.getNome());
+            return new ResponseEntity<>(nuovoUtente, HttpStatus.CREATED);
+        } catch (MailException e) {
+            System.err.println("Errore durante l'invio dell'email: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } catch (RuntimeException e) {
+            System.err.println("Errore durante la registrazione: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
 	
 	@DeleteMapping("utente/delete/{id}")
 	public ResponseEntity<String> deleteUtente(@PathVariable int id) {
