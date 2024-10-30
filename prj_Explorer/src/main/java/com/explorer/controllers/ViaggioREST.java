@@ -139,15 +139,22 @@ public class ViaggioREST {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();
 
-            // 2. Trova l'utente dal database (presuppone che ci sia un metodo per cercare l'utente per username)
+            // 2. Trova l'utente dal database
             Utente utente = utenteServices.findByUsername(username);
-            
-            List<Prenotazione> prenotazioniUtente =  prenoServices.findByUtente(utente);
-            
+
+            // Controlla che la data di partenza del nuovo viaggio sia successiva alla data corrente
+            LocalDate dataInizioNuovo = nuovoViaggio.getData_Partenza();
+            if (dataInizioNuovo.isBefore(LocalDate.now())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(null); // 400 BAD REQUEST - Data di partenza non valida
+            }
+
+            // 3. Verifica sovrapposizioni con viaggi esistenti dell'utente
+            List<Prenotazione> prenotazioniUtente = prenoServices.findByUtente(utente);
+
             for (Prenotazione prenotazione : prenotazioniUtente) {
                 LocalDate dataInizioEsistente = prenotazione.getData_Partenza();
                 LocalDate dataFineEsistente = prenotazione.getData_Arrivo();
-                LocalDate dataInizioNuovo = nuovoViaggio.getData_Partenza();
                 LocalDate dataFineNuovo = nuovoViaggio.getData_Arrivo();
 
                 // Verifica la sovrapposizione delle date
@@ -159,22 +166,23 @@ public class ViaggioREST {
             }
 
             if (utente != null) {
-                // 3. Assegna l'utente al viaggio
+                // 4. Assegna l'utente al viaggio
                 nuovoViaggio.setUtente(utente);
-                
-                // 4. Salva il viaggio con l'utente assegnato
+
+                // 5. Salva il viaggio con l'utente assegnato
                 Viaggio salvaViaggio = viaggioServices.createViaggio(nuovoViaggio);
-                
+
                 prenoServices.addPrenotazione(utente, salvaViaggio);
                 return ResponseEntity.status(201).body(salvaViaggio);
             } else {
-                return ResponseEntity.badRequest().body(null); // Restituisce 400 se l'utente non è trovato
+                return ResponseEntity.badRequest().body(null); // 400 se l'utente non è trovato
             }
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().build(); // Gestisce eventuali errori
         }
     }
+
 
     
     @GetMapping("viaggi/partecipanti/{idViaggio}")

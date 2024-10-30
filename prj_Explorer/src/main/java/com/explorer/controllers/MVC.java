@@ -61,5 +61,10 @@ public class MVC {
 		return "mission";
 	}
 	
+	@GetMapping("contatti")
+	public String contatti() {
+		return "contatti";
+	}
+	
 }
 

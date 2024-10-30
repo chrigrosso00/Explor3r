@@ -108,6 +108,12 @@ document.getElementById('creaViaggioForm').addEventListener('submit', function(e
         submitButton.disabled = false; // Riabilita il pulsante
         return; // Blocca l'invio se le date non sono valide
     }
+	
+	if (dataPartenza <= new Date()) {
+	        alert("Errore: La data di partenza deve essere successiva alla data odierna.");
+	        submitButton.disabled = false; // Riabilita il pulsante
+	        return; // Blocca l'invio se la data di partenza non è valida
+	    }
 
     // Converti l'ID del paese in un oggetto
     viaggioData.paese = { id_paese: parseInt(viaggioData['paese.id_paese']) };
