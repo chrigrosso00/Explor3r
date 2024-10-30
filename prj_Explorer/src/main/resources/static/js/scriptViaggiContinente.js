@@ -43,7 +43,7 @@ function mostraViaggi(viaggi) {
             const prezzo = viaggio.prezzo;
             const descrizione = viaggio.descrizione;
             const immagine = viaggio.paese.img;
-
+            
             // Costruisci l'elemento HTML per ogni viaggio
              const viaggioElement = `
                 <div class="viaggio">

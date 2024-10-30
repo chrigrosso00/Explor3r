@@ -174,6 +174,7 @@ function mostraViaggiInPartenza(viaggi) {
             const dataPartenza = viaggio.data_Partenza; // Data di partenza
             const prezzo = viaggio.prezzo;
             const img = viaggio.paese.img; // Immagine del paese
+            const maxPartecipanti = viaggio.maxPartecipanti
 
             // Costruisci l'elemento HTML per ogni viaggio
             const viaggioElement = `
@@ -183,6 +184,7 @@ function mostraViaggiInPartenza(viaggi) {
                         <h3>${paese}</h3>
                         <p>Partenza: ${dataPartenza}</p>
                         <p>Prezzo: €${prezzo}</p>
+                        <p>Numero massimo partecipanti: ${maxPartecipanti}</p>
                         <button class="cta-button" onclick="apriPaginaViaggio(${id_viaggio})">Info</button>
                     </div>
                 </div>
