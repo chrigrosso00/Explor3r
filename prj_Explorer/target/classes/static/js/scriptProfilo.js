@@ -3,8 +3,10 @@ function caricaUtente() {
 	let user = JSON.parse(localStorage.getItem('username'));
 	
 	let title = document.createElement('h1');
-    title.textContent = 'Profilo ' + user;
-    document.body.insertBefore(title, document.querySelector('main'));
+	title.textContent = 'Profilo ' + user;
+	title.classList.add('title-center'); // Applica la classe CSS
+	document.body.insertBefore(title, document.querySelector('main'));
+
 	
 	let container = document.getElementById('left-section');
     container.innerHTML = ''; 
@@ -144,6 +146,11 @@ function caricaPrenotazioni() {
                     itinerary.textContent = "Itinerario: " + prenotation.itinerario;
                     itinerary.classList.add("hidden-content");
                     dateElement.appendChild(itinerary);
+					
+					let tipology = document.createElement("p");
+					tipology.textContent = "Tipologia: " + prenotation.tipologia;
+					itinerary.classList.add("hidden-content");
+					dateElement.appendChild(tipology);
 
                     let toggleButton = document.createElement("button");
                     toggleButton.textContent = "Leggi di più";
@@ -224,8 +231,13 @@ function caricaViaggi() {
                 let itinerary = document.createElement("p");
                 itinerary.textContent = "Itinerario: " + travelDetails[i].itinerario;
                 itinerary.classList.add("hidden");
+				
+                let type = document.createElement("p");
+                type.textContent = "Tipologia: " + travelDetails[i].tipologia;
+                dateElement.appendChild(type);
                 
-                // Bottone "Leggi di più"
+				
+				// Bottone "Leggi di più"
                 let toggleButton = document.createElement("button");
                 toggleButton.textContent = "Leggi di più";
                 toggleButton.onclick = function() {
@@ -238,9 +250,7 @@ function caricaViaggi() {
                 dateElement.appendChild(itinerary);
                 dateElement.appendChild(toggleButton);
 
-                let type = document.createElement("p");
-                type.textContent = "Tipologia: " + travelDetails[i].tipologia;
-                dateElement.appendChild(type);
+                
 
                 travelSection.appendChild(dateElement);
             }

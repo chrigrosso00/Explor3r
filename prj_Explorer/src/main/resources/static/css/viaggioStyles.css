@@ -214,11 +214,11 @@ h2 {
 
 
 
-/* Pulsante "Iscriviti" spostato in fondo */
-#iscriviti-container {
+#iscriviti-container,
+#discriviti-container {
     text-align: center;
-    margin-top: 20px;
-    padding: 20px 0;
+    margin-top: 10px;
+    padding: 10px 0;
 }
 
 
@@ -235,6 +235,23 @@ h2 {
 }
 
 #prenotaButton:hover {
+    background-color: #0054d4;
+    transform: scale(1.05);
+}
+
+#discrivitiButton {
+    background-color: #00359a;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    
+}
+
+#discrivitiButton:hover {
     background-color: #0054d4;
     transform: scale(1.05);
 }
