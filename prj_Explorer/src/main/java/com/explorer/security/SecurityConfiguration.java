@@ -55,8 +55,8 @@ public class SecurityConfiguration {
 						"/registrazione", 
 						"/viaggio",
 						"/risultati",
-						"api/viaggi/in-partenza"
-						
+						"api/viaggi/in-partenza",
+						"api/suggestions"
 					
 				).permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/add/utente").permitAll()
